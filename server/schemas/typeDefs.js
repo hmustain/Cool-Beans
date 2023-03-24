@@ -19,7 +19,7 @@ const typeDefs = gql`
     users: [User]
     user(_id: ID!): User
     me: User
-    categories: [Category]
+    collections: [Collection]
   }
 
   type Collection {
