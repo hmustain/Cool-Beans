@@ -44,7 +44,7 @@ const productSeedData = [
     name: "Light Roast 1",
     description: "This is a sample product",
     image: "/client/images/light-roast-coffee.jpg",
-    category: "LightRoast",
+    collection: "LightRoast",
     price: 14.99,
     quantity: 500
   },
@@ -52,7 +52,7 @@ const productSeedData = [
     name: "Light Roast 2",
     description: "This is a sample product",
     image: "/client/images/light-roast-coffee.jpg",
-    category: "LightRoast",
+    collection: "LightRoast",
     price: 14.99,
     quantity: 500
   },
@@ -60,7 +60,7 @@ const productSeedData = [
     name: "Light Roast 3",
     description: "This is a sample product",
     image: "/client/images/light-roast-coffee.jpg",
-    category: "LightRoast",
+    collection: "LightRoast",
     price: 14.99,
     quantity: 500
   },
@@ -68,7 +68,7 @@ const productSeedData = [
     name: "Medium Roast 1",
     description: "This is a sample product",
     image: "/client/images/medium-roast-coffee.jpg",
-    category: "mediumRoast",
+    collection: "mediumRoast",
     price: 15.99,
     quantity: 500
   },
@@ -76,7 +76,7 @@ const productSeedData = [
     name: "Medium Roast 2",
     description: "This is a sample product",
     image: "/client/images/medium-roast-coffee.jpg",
-    category: "mediumRoast",
+    collection: "mediumRoast",
     price: 15.99,
     quantity: 500
   },
@@ -84,7 +84,7 @@ const productSeedData = [
     name: "Medium Roast 3",
     description: "This is a sample product",
     image: "/client/images/medium-roast-coffee.jpg",
-    category: "mediumRoast",
+    collection: "mediumRoast",
     price: 15.99,
     quantity: 500
   },
@@ -92,7 +92,7 @@ const productSeedData = [
     name: "Dark Roast 1",
     description: "This is a sample product",
     image: "/client/images/dark-roast-coffee.jpg",
-    category: "darkRoast",
+    collection: "darkRoast",
     price: 16.99,
     quantity: 500
   },
@@ -100,7 +100,7 @@ const productSeedData = [
     name: "Dark Roast 2",
     description: "This is a sample product",
     image: "/client/images/dark-roast-coffee.jpg",
-    category: "darkRoast",
+    collection: "darkRoast",
     price: 16.99,
     quantity: 500
   },
@@ -109,7 +109,7 @@ const productSeedData = [
     name: "Dark Roast 3",
     description: "This is a sample product",
     image: "/client/images/dark-roast-coffee.jpg",
-    category: "darkRoast",
+    collection: "darkRoast",
     price: 16.99,
     quantity: 500
   },
