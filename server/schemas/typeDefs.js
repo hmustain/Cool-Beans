@@ -19,7 +19,7 @@ const typeDefs = gql`
     users: [User]
     user(_id: ID!): User
     me: User
-    collections: [Collection]
+    collection: [Collection]
     products(collection: ID, name: String): [Product]
     product(_id: ID!): Product
   }
