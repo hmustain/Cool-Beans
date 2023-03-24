@@ -20,7 +20,7 @@ const resolvers = {
       return await Product.find(params).populate("collection");
     },
     product: async (parent, { _id }) => {
-      return await Product.findById(_id).populate("category");
+      return await Product.findById(_id).populate("collection");
     },
     collections: async () => {
       return await Collection.find();
