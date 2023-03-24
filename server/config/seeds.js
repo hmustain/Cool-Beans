@@ -39,6 +39,13 @@ const collectionSeedData = [
   },
 ];
 
+// reserved for order seed
+// const orderSeedData = [
+//   {
+
+//   }
+// ];
+
 db.once("open", async () => {
   try {
     await User.deleteMany({});
