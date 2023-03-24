@@ -1,5 +1,5 @@
 const db = require('./connection');
-const { User } = require('../models/User');
+const { User } = require('../models');
 
 const userSeedData = [
   {
