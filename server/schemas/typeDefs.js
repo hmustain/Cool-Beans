@@ -20,6 +20,8 @@ const typeDefs = gql`
     user(_id: ID!): User
     me: User
     collections: [Collection]
+    products(collection: ID, name: String): [Product]
+    product(_id: ID!): Product
   }
 
   type Collection {
@@ -33,7 +35,7 @@ const typeDefs = gql`
     image: String
     quantity: Int
     price: Float
-    category: Category
+    collection: Collection
   }
 
   type Mutation {
@@ -44,6 +46,7 @@ const typeDefs = gql`
       password: String!
     ): Auth
     login(email: String!, password: String!): Auth
+    updateProduct(_id: ID!, quantity: Int!): Product
   }
 `;
 
