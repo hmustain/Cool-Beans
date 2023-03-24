@@ -4,6 +4,21 @@ const { signToken } = require("../utils/auth");
 
 const resolvers = {
   Query: {
+    products: async (parent, { collection, name }) => {
+      const params = {};
+
+      if (collection) {
+        params.collection = collection;
+      }
+
+      if (name) {
+        params.name = {
+          $regex: name,
+        };
+      }
+
+      return await Product.find(params).populate("collection");
+    },
     collections: async () => {
       return await Collection.find();
     },
