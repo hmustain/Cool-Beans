@@ -123,6 +123,7 @@ const productSeedData = [
 // ];
 
 db.once("open", async () => {
+  console.log("Connected to database")
   try {
     await User.deleteMany({});
     await User.create(userSeedData);
@@ -134,4 +135,6 @@ db.once("open", async () => {
   } catch (err) {
     console.error(err);
   }
+
+  process.exit();
 });
