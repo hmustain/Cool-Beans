@@ -1,5 +1,5 @@
-const db = require('./connection');
-const { User } = require('../models');
+const db = require("./connection");
+const { User, Collection } = require("../models");
 
 const userSeedData = [
   {
@@ -27,13 +27,26 @@ const userSeedData = [
   },
 ];
 
-db.once('open', async () => {
-    try {
-      await User.deleteMany({});
-      await User.create(userSeedData);
-      console.log("Users seeded successfully!");
-    } catch (err) {
-      console.error(err);
-    }
-  });
+const collectionSeedData = [
+  {
+    name: "LightRoast",
+  },
+  {
+    name: "mediumRoast",
+  },
+  {
+    name: "darkRoast",
+  },
+];
 
+db.once("open", async () => {
+  try {
+    await User.deleteMany({});
+    await User.create(userSeedData);
+    await Collection.deleteMany();
+    await Collection.create(collectionSeedData);
+    console.log("Users and collections seeded successfully!");
+  } catch (err) {
+    console.error(err);
+  }
+});
