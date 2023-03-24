@@ -1,9 +1,27 @@
 const { AuthenticationError } = require("apollo-server-express");
-const { User, Collection } = require("../models");
+const { User, Collection, Product } = require("../models");
 const { signToken } = require("../utils/auth");
 
 const resolvers = {
   Query: {
+    products: async (parent, { collection, name }) => {
+      const params = {};
+
+      if (collection) {
+        params.collection = collection;
+      }
+
+      if (name) {
+        params.name = {
+          $regex: name,
+        };
+      }
+
+      return await Product.find(params).populate("collection");
+    },
+    product: async (parent, { _id }) => {
+      return await Product.findById(_id).populate("category");
+    },
     collections: async () => {
       return await Collection.find();
     },
@@ -30,6 +48,15 @@ const resolvers = {
       const newUser = await User.create(args);
       const token = signToken(newUser);
       return { token, user: newUser };
+    },
+    updateProduct: async (parent, { _id, quantity }) => {
+      const decrement = Math.abs(quantity) * -1;
+
+      return await Product.findByIdAndUpdate(
+        _id,
+        { $inc: { quantity: decrement } },
+        { new: true }
+      );
     },
     login: async (parent, { email, password }) => {
       const user = await User.findOne({ email });
