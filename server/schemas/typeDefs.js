@@ -9,6 +9,11 @@ const typeDefs = gql`
     password: String
     role: String
   }
+  type Order {
+    _id: ID
+    purchaseDate: String
+    products: [Product]
+  }
 
   type Auth {
     token: ID
