@@ -9,6 +9,11 @@ const typeDefs = gql`
     password: String
     role: String
   }
+  type Order {
+    _id: ID
+    purchaseDate: String
+    products: [Product]
+  }
 
   type Auth {
     token: ID
@@ -22,6 +27,7 @@ const typeDefs = gql`
     categories: [Category]
     products(category: ID, name: String): [Product]
     product(_id: ID!): Product
+    order(_id: ID!): Order
   }
 
   type Category {
@@ -45,6 +51,7 @@ const typeDefs = gql`
       email: String!
       password: String!
     ): Auth
+    addOrder(products: [ID]!): Order
     login(email: String!, password: String!): Auth
     updateProduct(_id: ID!, quantity: Int!): Product
   }
