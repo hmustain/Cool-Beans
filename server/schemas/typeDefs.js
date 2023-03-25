@@ -19,12 +19,12 @@ const typeDefs = gql`
     users: [User]
     user(_id: ID!): User
     me: User
-    collections: [Collection]
-    products(collection: ID, name: String): [Product]
+    categories: [Category]
+    products(category: ID, name: String): [Product]
     product(_id: ID!): Product
   }
 
-  type Collection {
+  type Category {
     _id: ID
     name: String
   }
@@ -35,7 +35,7 @@ const typeDefs = gql`
     image: String
     quantity: Int
     price: Float
-    collection: Collection
+    category: Category
   }
 
   type Mutation {

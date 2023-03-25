@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
-
 const { Schema } = mongoose;
+
 
 const productSchema = new Schema({
   name: {
@@ -24,13 +24,15 @@ const productSchema = new Schema({
     min: 0,
     default: 0,
   },
-  collection: {
+  category: {
     type: Schema.Types.ObjectId,
-    ref: "Collection",
+    ref: "Category",
     required: true,
   },
 });
 
+console.log('Before creating Product model');
 const Product = mongoose.model("Product", productSchema);
+console.log('After creating Product model');
 
 module.exports = Product;
