@@ -20,6 +20,10 @@ const typeDefs = gql`
     user: User
   }
 
+  type Checkout {
+    session: ID
+  }
+
   type Query {
     users: [User]
     user(_id: ID!): User
