@@ -55,4 +55,9 @@ const reviewMiddleware = async (resolve, parent, args, context, info) => {
   return resolve(parent, args, context, info);
 };
 
-module.exports = { authMiddleware, reviewMiddleware };
+const signToken = ({ firstName, email, _id }) => {
+  const payload = { firstName, email, _id };
+  return jwt.sign({ data: payload }, secret, { expiresIn: expiration });
+};
+
+module.exports = { authMiddleware, reviewMiddleware, signToken };
