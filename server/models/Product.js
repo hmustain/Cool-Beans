@@ -1,7 +1,6 @@
 const mongoose = require("mongoose");
 const { Schema } = mongoose;
 
-
 const productSchema = new Schema({
   name: {
     type: String,
@@ -10,6 +9,7 @@ const productSchema = new Schema({
   },
   description: {
     type: String,
+    required: true
   },
   image: {
     type: String,
@@ -29,6 +29,10 @@ const productSchema = new Schema({
     ref: "Category",
     required: true,
   },
+  reviews: [{
+    type: Schema.Types.ObjectId,
+    ref: 'Review'
+  }]
 });
 
 console.log('Before creating Product model');
