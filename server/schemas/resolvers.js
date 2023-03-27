@@ -133,6 +133,24 @@ const resolvers = {
       const token = signToken(user);
       return { token, user };
     },
+    createReview: async (parent, { productid, review }, context) => {
+      try {
+        // Check for authentication and validation of review
+        await reviewMiddleware(null, { productId: productid }, { req: context }, null);
+
+        // Add review to product and save to database
+        const product = await Product.findOneAndUpdate(
+          { _id: productid },
+          { $push: { reviews: { user: context.req.user._id, text: review.text } } },
+          { new: true }
+        );
+
+        return product;
+      } catch (err) {
+        console.log(err);
+        throw new AuthenticationError('Invalid token');
+      }
+    },
   },
 };
 

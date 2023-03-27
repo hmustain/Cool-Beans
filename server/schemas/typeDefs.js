@@ -49,6 +49,17 @@ const typeDefs = gql`
     category: Category
   }
 
+  type Review {
+  _id: ID!
+  user: User!
+  text: String!
+  createdAt: String!
+  }
+
+  input ReviewInput {
+  text: String!
+  }
+
   type Mutation {
     addUser(
       firstName: String!
@@ -59,6 +70,7 @@ const typeDefs = gql`
     addOrder(products: [ID]!): Order
     login(email: String!, password: String!): Auth
     updateProduct(_id: ID!, quantity: Int!): Product
+    createReview(productid: ID!, review: ReviewInput!): Product
   }
 `;
 

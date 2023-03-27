@@ -22,6 +22,10 @@ db.once("open", async () => {
       category: categories[0]._id,
       price: 14.99,
       quantity: 500,
+      reviews: [
+        { rating: 4, comment: "Great Coffee!" },
+        { rating: 3, comment: "Average at best!" }
+      ]
     },
     {
       name: "Light Roast 2",

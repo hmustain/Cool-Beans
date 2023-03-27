@@ -34,17 +34,6 @@ const productSchema = new Schema({
     min: 1,
     max: 5,
   }],
-  reviews: [{
-    user: {
-      type: Schema.Types.ObjectId,
-      ref: 'User',
-    },
-    text: String,
-    createdAt: {
-      type: Date,
-      default: Date.now,
-    },
-  }],
 });
 
 console.log('Before creating Product model');
