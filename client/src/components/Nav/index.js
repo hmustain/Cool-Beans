@@ -1,7 +1,11 @@
 import React from "react";
 import Auth from "../../utils/auth";
 import { Link } from "react-router-dom";
-
+import "../../styles/header.css";
+import { COffcanvas } from "@coreui/bootstrap-react";
+import { COffcanvasHeader } from "@coreui/bootstrap-react";
+import { COffcanvasTitle } from "@coreui/bootstrap-react";
+import { COffcanvasBody } from "@coreui/bootstrap-react";
 function Nav() {
   //   function showNavigation() {
   //     if (Auth.loggedIn()) {
@@ -25,38 +29,36 @@ function Nav() {
   //       );
   //     }
   //   }
-
+  const [visibleScrolling, setVisibleScrolling] = useState(false);
+  const [visibleWithBackdrop, setVisibleWithBackdrop] = useState(false);
+  const [visibleWithBothOptions, setVisibleWithBothOptions] = useState(false);
   return (
     <header>
-      <div classname="header">
-        <div>
-          <h1>Coffee Brigade</h1>
-        </div>
-        <div>
-          <i class="bi bi-cart3"></i>
-          <i class="bi bi-person-circle"></i>
-        </div>
-      </div>
-      <nav className="navbar navbar-expand-lg custom-navbar">
-        <div className="collapse navbar-collapse " id="navbarNav">
-          <ul className="navbar-nav ml-auto">
-            <li className="nav-item">
-              <Link to="/home">Shop All</Link>
-            </li>
-            <li className="nav-item">
-              <Link to="/home">Coffee Bags</Link>
-            </li>
-            <li className="nav-item">
-              {" "}
-              <Link to="/home">Single Serve</Link>
-            </li>
-          </ul>
-        </div>
-      </nav>
-
-      {/* <nav> {showNavigation()}</nav> */}
+      <CButton onClick={() => setVisible(true)}>Toggle offcanvas</CButton>
+      <COffcanvas
+        placement="start"
+        visible={visible}
+        onHide={() => setVisible(false)}
+      >
+        <COffcanvasHeader>
+          <COffcanvasTitle>Offcanvas</COffcanvasTitle>
+          <CCloseButton
+            className="text-reset"
+            onClick={() => setVisible(false)}
+          />
+        </COffcanvasHeader>
+        <COffcanvasBody>
+          Content for the offcanvas goes here. You can place just about any
+          Bootstrap React component or custom elements here.
+        </COffcanvasBody>
+      </COffcanvas>
     </header>
   );
 }
-
+{
+  /* <Link to="/home">Single Serve</Link> */
+}
+{
+  /* <nav> {showNavigation()}</nav> */
+}
 export default Nav;

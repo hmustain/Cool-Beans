@@ -1,0 +1,18 @@
+.header {
+    Display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+i {
+    font-size: 25px;
+}
+
+.headerIcons {
+    display: flex;
+}
+
+.custom-navbar {
+    display: flex;
+    justify-content: center;
+}
