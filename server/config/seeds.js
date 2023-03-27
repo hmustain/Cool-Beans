@@ -1,7 +1,37 @@
 const db = require("./connection");
-const { User, Category, Product } = require("../models");
+const { User, Category, Product, Review } = require("../models");
 
 db.once("open", async () => {
+  await User.deleteMany();
+
+  const users = await User.insertMany([
+    {
+      firstName: "Caleb",
+      lastName: "Carnett",
+      email: "caleb@example.com",
+      password: "Password12345!",
+      role: "admin",
+    },
+
+    {
+      firstName: "Kaikane",
+      lastName: "Lacno",
+      email: "kai@example.com",
+      password: "Password12345!",
+      role: "admin",
+    },
+
+    {
+      firstName: "Hunter",
+      lastName: "Mustain",
+      email: "hunter@example.com",
+      password: "Password12345!",
+      role: "admin",
+    },
+  ]);
+
+  console.log('Users Seeded');
+
   await Category.deleteMany();
 
   const categories = await Category.insertMany([
@@ -22,18 +52,6 @@ db.once("open", async () => {
       category: categories[0]._id,
       price: 14.99,
       quantity: 500,
-      reviews: [
-        {
-          user: User[0]._id,
-          rating: 4,
-          comment: "This coffee is amazing!, It has a light and refreshing taste that i really enjoy."
-        },
-        {
-          user: User[1]._id,
-          rating: 5,
-          comment: "Amazing coffee, best i've ever had!."
-        }
-      ]
     },
     {
       name: "Light Roast 2",
@@ -104,33 +122,25 @@ db.once("open", async () => {
 
   console.log("products seeded");
 
-  await User.deleteMany();
+  await Review.deleteMany();
 
-  await User.insertMany([
-    {
-      firstName: "Caleb",
-      lastName: "Carnett",
-      email: "caleb@example.com",
-      password: "Password12345!",
-      role: "admin",
-    },
+  const reviews = await Review.insertMany([
+      {
+        user: users[0]._id,
+        product: products[0]._id,
+        rating: 4,
+        comment: "This coffee is amazing!, It has a light and refreshing taste that i really enjoy."
+      },
+      {
+        user: users[1]._id,
+        product: products[1]._id,
+        rating: 5,
+        comment: "Amazing coffee, best i've ever had!."
+      }
+  ])
 
-    {
-      firstName: "Kaikane",
-      lastName: "Lacno",
-      email: "kai@example.com",
-      password: "Password12345!",
-      role: "admin",
-    },
+  console.log('reviews Seeded');
 
-    {
-      firstName: "Hunter",
-      lastName: "Mustain",
-      email: "hunter@example.com",
-      password: "Password12345!",
-      role: "admin",
-    },
-  ]);
 
   // reserved for order seed
   // const orderSeedData = [
