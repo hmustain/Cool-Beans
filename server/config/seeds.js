@@ -138,6 +138,7 @@ db.once("open", async () => {
         comment: "Amazing coffee, best i've ever had!."
       }
   ])
+  console.log('Type of reviews:', Array.isArray(reviews) ? 'Array' : typeof reviews);
 
   console.log('reviews Seeded');
 

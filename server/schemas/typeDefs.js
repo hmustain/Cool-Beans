@@ -33,6 +33,7 @@ const typeDefs = gql`
     product(_id: ID!): Product
     order(_id: ID!): Order
     checkout(products: [ID]!): Checkout
+    reviews: [Review!]
   }
 
   type Category {
@@ -47,17 +48,19 @@ const typeDefs = gql`
     quantity: Int
     price: Float
     category: Category
+    reviews: [Review!]
   }
 
   type Review {
   _id: ID!
   user: User!
-  text: String!
+  comment: String!
+  rating: Float!
   createdAt: String!
   }
 
   input ReviewInput {
-  text: String!
+  comment: String!
   }
 
   type Mutation {
@@ -70,7 +73,7 @@ const typeDefs = gql`
     addOrder(products: [ID]!): Order
     login(email: String!, password: String!): Auth
     updateProduct(_id: ID!, quantity: Int!): Product
-    createReview(_id: ID!, review: ReviewInput!): Product
+    createReview(_id: ID!, rating: Float!, review: ReviewInput!): Product
   }
 `;
 
