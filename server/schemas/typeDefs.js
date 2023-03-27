@@ -70,7 +70,7 @@ const typeDefs = gql`
     addOrder(products: [ID]!): Order
     login(email: String!, password: String!): Auth
     updateProduct(_id: ID!, quantity: Int!): Product
-    createReview(productid: ID!, review: ReviewInput!): Product
+    createReview(_id: ID!, review: ReviewInput!): Product
   }
 `;
 

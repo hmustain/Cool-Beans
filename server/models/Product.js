@@ -34,6 +34,10 @@ const productSchema = new Schema({
     min: 1,
     max: 5,
   }],
+  reviews: [{
+    type: Schema.Types.ObjectId,
+    ref: 'Review'
+  }]
 });
 
 console.log('Before creating Product model');
