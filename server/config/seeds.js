@@ -1,4 +1,5 @@
 const db = require("./connection");
+const bcrypt = require("bcrypt");
 const { User, Category, Product, Review } = require("../models");
 
 db.once("open", async () => {
@@ -9,7 +10,7 @@ db.once("open", async () => {
       firstName: "Caleb",
       lastName: "Carnett",
       email: "caleb@example.com",
-      password: "Password12345!",
+      password: await bcrypt.hash("Password12345!", 10),
       role: "admin",
     },
 
@@ -17,7 +18,7 @@ db.once("open", async () => {
       firstName: "Kaikane",
       lastName: "Lacno",
       email: "kai@example.com",
-      password: "Password12345!",
+      password: await bcrypt.hash("Password12345!", 10),
       role: "admin",
     },
 
@@ -25,7 +26,7 @@ db.once("open", async () => {
       firstName: "Hunter",
       lastName: "Mustain",
       email: "hunter@example.com",
-      password: "Password12345!",
+      password: await bcrypt.hash("Password12345!", 10),
       role: "admin",
     },
   ]);
