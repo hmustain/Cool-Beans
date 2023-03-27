@@ -1,6 +1,6 @@
 const { AuthenticationError } = require("apollo-server-express");
-const { User, Category, Product, Order } = require("../models");
-const { signToken } = require("../utils/auth");
+const { User, Category, Product, Review, Order } = require("../models");
+const { signToken, reviewMiddleware } = require("../utils/auth");
 
 const resolvers = {
   Query: {
@@ -17,22 +17,30 @@ const resolvers = {
         };
       }
 
-      return await Product.find(params).populate("category");
+      const products = await Product.find(params).populate("category").select('-__v -updatedAt');
+
+      // Populate reviews for each product
+      for (let i = 0; i < products.length; i++) {
+        products[i].reviews = await Review.find({ product: products[i]._id }).populate('user', '_id email firstName lastName');
+      }
+
+      return products;
     },
     product: async (parent, { _id }) => {
-      return await Product.findById(_id).populate("category");
+      const product = await Product.findById(_id).populate("category").populate('reviews.user', '_id email firstName lastName');
+      product.reviews = await Review.find({ product: product._id }).populate('user', '_id email firstName lastName');
+      return product;
     },
     categories: async () => {
       return await Category.find();
     },
+    reviews: async () => {
+      return await Review.find().populate('user', '_id email firstName lastName').populate({ path: 'product', populate: { path: 'reviews', populate: { path: 'createdAt' } } });
+    },
+    
     users: async () => {
       const users = await User.find();
       return users;
-    },
-
-    user: async (parent, { _id }) => {
-      const user = await User.findById(_id);
-      return user;
     },
 
     me: async (parent, args, context) => {
@@ -132,6 +140,24 @@ const resolvers = {
       }
       const token = signToken(user);
       return { token, user };
+    },
+    createReview: async (parent, { productid, review }, context) => {
+      try {
+        // Check for authentication and validation of review
+        await reviewMiddleware(null, { productId: productid }, { req: context }, null);
+
+        // Add review to product and save to database
+        const product = await Product.findOneAndUpdate(
+          { _id: productid },
+          { $push: { reviews: { user: context.req.user._id, text: review.text } } },
+          { new: true }
+        );
+
+        return product;
+      } catch (err) {
+        console.log(err);
+        throw new AuthenticationError('Invalid token');
+      }
     },
   },
 };
