@@ -11,6 +11,8 @@
       "@testing-library/user-event": "^7.2.1",
       "graphql": "^15.4.0",
       "jwt-decode": "^2.2.0",
+      "bootstrap": "^5.2.3",
+      "bootstrap-icons": "^1.10.3",
       "react": "^16.13.1",
       "react-dom": "^16.13.1",
       "react-router-dom": "^6.2.1",
