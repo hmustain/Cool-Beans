@@ -23,8 +23,16 @@ db.once("open", async () => {
       price: 14.99,
       quantity: 500,
       reviews: [
-        { rating: 4, comment: "Great Coffee!" },
-        { rating: 3, comment: "Average at best!" }
+        {
+          user: User[0]._id,
+          rating: 4,
+          comment: "This coffee is amazing!, It has a light and refreshing taste that i really enjoy."
+        },
+        {
+          user: User[1]._id,
+          rating: 5,
+          comment: "Amazing coffee, best i've ever had!."
+        }
       ]
     },
     {
