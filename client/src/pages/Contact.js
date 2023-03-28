@@ -18,7 +18,5 @@ function ContactForm() {
     </form>
   );
 }
-function App() {
-  return <ContactForm />;
-}
-export default App;
+
+export default ContactForm;
