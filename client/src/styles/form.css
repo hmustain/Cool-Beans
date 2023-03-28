@@ -1,0 +1,18 @@
+.contact-page {
+    display: flex;
+    
+}
+
+.contact-form {
+    display: flex;
+    justify-content: center;
+}
+
+.send-button {
+    margin-top: 5px;
+    
+} 
+
+.send-button i {
+    padding-left: 7px;
+}

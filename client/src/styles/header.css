@@ -12,7 +12,12 @@ body {
     padding-bottom: 16px;
  }
 
-i {
+
+.bi-cart4 {
+    font-size: 25px;
+    padding: 8px;
+}
+.bi-person-cycle {
     font-size: 25px;
     padding: 8px;
 }
