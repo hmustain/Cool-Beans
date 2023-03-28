@@ -1,15 +1,33 @@
 import React, { useState, useEffect } from "react";
 
-function productReviews() {
-    const [reviews, setReviews] = useState([]);
+function ProductReviews() {
+  const [reviews, setReviews] = useState([]);
 
-    useEffect(() => {
-        async function fetchReviews() {
-          const response = await fetch("https://example.com/reviews");
-          const reviewsData = await response.json();
-          setReviews(reviewsData);
-        }
-        fetchReviews();
+  useEffect(() => {
+    async function fetchReviews() {
+      const response = await fetch("https://example.com/reviews", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          query: `
+            query {
+              reviews {
+                createdAt
+                rating
+                comment
+                user {
+                  firstName
+                  lastName
+                }
+              }
+            }
+          `
+        })
+      });
+      const reviewsData = await response.json();
+      setReviews(reviewsData.data.reviews);
+    }
+    fetchReviews();
   }, []);
 
   return (
@@ -18,9 +36,9 @@ function productReviews() {
       {reviews.map((review) => (
         <div key={review.id}>
           <div>{renderStars(review.rating)}</div>
-          <div>{new Date(review.created_at).toLocaleDateString()}</div>
-          <div>{review.text}</div>
-          <div>{`${review.user.first_name} ${review.user.last_name}`}</div>
+          <div>{new Date(review.createdAt).toLocaleDateString()}</div>
+          <div>{review.comment}</div>
+          <div>{`${review.user.firstName} ${review.user.lastName}`}</div>
         </div>
       ))}
     </div>
@@ -39,4 +57,4 @@ function renderStars(rating) {
   return <div>{stars}</div>;
 }
 
-export default productReviews;
+export default ProductReviews;
