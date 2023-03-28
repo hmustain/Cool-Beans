@@ -141,21 +141,34 @@ const resolvers = {
       const token = signToken(user);
       return { token, user };
     },
-    createReview: async (parent, { productid, review }, context) => {
+    createReview: async (parent, args, context) => {
+      console.log('args:');
+      console.log(args);
+      const product = await Product.findById(args._id);
+      const newReview = await Review.create({rating: args.rating, comment: args.review.comment, user: context.user, product});
+      console.log('---product-----')
+      console.log(product);
+      console.log('---newReview--- ');
+      console.log(newReview);
       try {
         // Check for authentication and validation of review
-        await reviewMiddleware(null, { productId: productid }, { req: context }, null);
+        // console.log('context');
+        // console.log(context);
+        // await reviewMiddleware(null, { productId: productid }, { req: context }, null);
 
         // Add review to product and save to database
-        const product = await Product.findOneAndUpdate(
-          { _id: productid },
-          { $push: { reviews: { user: context.req.user._id, text: review.text } } },
+        const updatedProduct = await Product.findOneAndUpdate(
+          { _id: args._id },  
+          { $push: { reviews: newReview } },
           { new: true }
-        );
+        ).populate("reviews").populate({
+          path: "reviews",
+          populate: "user"
+        }).populate("category");
 
-        return product;
+        return updatedProduct;
       } catch (err) {
-        console.log(err);
+        console.log(err); 
         throw new AuthenticationError('Invalid token');
       }
     },
