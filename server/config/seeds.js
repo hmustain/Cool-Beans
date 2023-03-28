@@ -1,6 +1,6 @@
 const db = require("./connection");
 const bcrypt = require("bcrypt");
-const { User, Category, Product, Review } = require("../models");
+const { User, Category, Product, Review, Order } = require("../models");
 
 db.once("open", async () => {
   await User.deleteMany();
@@ -143,13 +143,49 @@ db.once("open", async () => {
 
   console.log('reviews Seeded');
 
+  
+  await Order.deleteMany();
 
-  // reserved for order seed
-  // const orderSeedData = [
-  //   {
+console.log('users:', users);
+console.log('products:', products);
+console.log('categories:', categories);
 
-  //   }
-  // ];
+
+  const orders = await Order.insertMany([
+    {
+      user: users[0]._id,
+      products: [
+        {
+          product: products[0]._id,
+          quantity: 1,
+        },
+        {
+          product: products[1]._id,
+          quantity: 2,
+        },
+      ],
+      total: 44.97,
+      status: "completed",
+    },
+    {
+      user: users[1]._id,
+      products: [
+        {
+          product: products[3]._id,
+          quantity: 1,
+        },
+        {
+          product: products[4]._id,
+          quantity: 3,
+        },
+      ],
+      total: 78.96,
+      status: "completed",
+    },
+  ]);
+  
+  console.log("orders seeded");
+  
 
   process.exit();
 });
