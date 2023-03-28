@@ -1,9 +1,9 @@
 import React from "react";
-import Auth from "../../utils/auth";
+import Auth from "../utils/auth";
 import { Link } from "react-router-dom";
-import "../../styles/header.css";
+import "../styles/header.css";
 
-function Nav() {
+function Nav(currentPage, handlePageChange) {
   //   function showNavigation() {
   //     if (Auth.loggedIn()) {
   //       return (
