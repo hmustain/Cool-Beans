@@ -3,7 +3,8 @@ import Auth from "../utils/auth";
 import { Link } from "react-router-dom";
 import "../styles/header.css";
 
-function Nav(currentPage, handlePageChange) {
+function Nav(props) {
+  const {currentPage, handlePageChange} = props;
   //   function showNavigation() {
   //     if (Auth.loggedIn()) {
   //       return (
@@ -36,7 +37,7 @@ function Nav(currentPage, handlePageChange) {
       </div>
       <div className="icons">
         <i class="bi bi-cart4"></i>
-        <i class="bi bi-person-circle"></i>
+        <i class="bi bi-person-circle" href="#Login" onClick={() => handlePageChange("Login")}> </i>
       </div>
       <p className="brand-name">Coffee Brigade</p>
       <header id="header">
