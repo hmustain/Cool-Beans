@@ -35,7 +35,7 @@ const authMiddleware = async ({ req }) => {
 
 const reviewMiddleware = async (resolve, parent, args, context, info) => {
   const { productId } = args;
-  const { user } = context.req;
+  const { user } = context;
   const product = await Product.findById(productId);
 
   if (!product) {
