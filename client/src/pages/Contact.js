@@ -6,13 +6,26 @@ function ContactForm() {
     return <p>Thanks for joining!</p>;
   }
   return (
-    <form onSubmit={handleSubmit}>
-      <label htmlFor="email">Email Address</label>
-      <input id="email" type="email" name="email" />
-      <ValidationError prefix="Email" field="email" errors={state.errors} />
-      <textarea id="message" name="message" />
-      <ValidationError prefix="Message" field="message" errors={state.errors} />
-      <button type="submit" disabled={state.submitting}>
+    <form className="contact-form" onSubmit={handleSubmit}>
+      <div className="form-group">
+        <label htmlFor="email">Email Address</label>
+        <input className="form-control" id="email" type="email" name="email" />
+      </div>
+      <div className="form-group">
+        <label htmlFor="email">Leave a message!</label>
+        <ValidationError prefix="Email" field="email" errors={state.errors} />
+        <textarea className="form-control" id="message" name="message" />
+        <ValidationError
+          prefix="Message"
+          field="message"
+          errors={state.errors}
+        />
+      </div>
+      <button
+        className="btn btn-primary"
+        type="submit"
+        disabled={state.submitting}
+      >
         Submit
       </button>
     </form>
