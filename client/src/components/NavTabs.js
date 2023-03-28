@@ -36,12 +36,12 @@ function Nav(props) {
         </p>
       </div>
       <div className="icons">
-        <i class="bi bi-cart4"></i>
+        <i className="bi bi-cart4"></i>
         <div id="icons"  href="#Login"
                     onClick={() => handlePageChange("Login")}
                     className={
                       currentPage === "Login" ? "nav-link active" : "nav-link"
-                    }><span class="bi bi-person-circle"></span></div>
+                    }><span className="bi bi-person-circle"></span></div>
       </div>
       <p className="brand-name" ><a
                     href="#Home"
@@ -56,7 +56,7 @@ function Nav(props) {
         <nav className="navbar navbar-expand-lg ">
           <div className="container justify-content-center">
             <button
-              class="navbar-toggler"
+              className="navbar-toggler"
               type="button"
               data-bs-toggle="collapse"
               data-bs-target="#navbarNav"
@@ -64,7 +64,7 @@ function Nav(props) {
               aria-expanded="false"
               aria-label="Toggle navigation"
             >
-              <span class="navbar-toggler-icon"></span>
+              <span className="navbar-toggler-icon"></span>
             </button>
             <div className="collapse navbar-collapse" id="navbarNav">
               <ul className="navbar-nav mx-auto">

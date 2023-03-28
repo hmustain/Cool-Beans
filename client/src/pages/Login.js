@@ -32,28 +32,28 @@ function Login(props) {
 
   return (
   
-    <div class="container" onSubmit={handleFormSubmit}>
-<div class="card">
-  <div class="card-image">	
-    <h2 class="card-heading">
+    <div className="container" onSubmit={handleFormSubmit}>
+<div className="card">
+  <div className="card-image">	
+    <h2 className="card-heading">
       
       <small>Sign in to your account</small>
     </h2>
   </div>
-  <form class="card-form">
-          <div class="input">
-      <input type="email" class="input-field"  onChange={handleChange} required/><br></br>
-      <label class="input-label">Email:</label>
+  <form className="card-form">
+          <div className="input">
+      <input type="email" className="input-field"  onChange={handleChange} required/><br></br>
+      <label className="input-label">Email:</label>
     </div>
-          <div class="input">
-      <input type="password" class="input-field" required/><br></br>
-      <label class="input-label" onChange={handleChange}>Password:</label>
+          <div className="input">
+      <input type="password" className="input-field" required/><br></br>
+      <label className="input-label" onChange={handleChange}>Password:</label>
     </div>
-    <div class="action">
-      <button class="action-button">Login</button>
+    <div className="action">
+      <button className="action-button">Login</button>
     </div>
   </form>
-  <div class="card-info">
+  <div className="card-info">
     <p>Dont have an account? <a href="#Signup">Signup Here</a></p>
   </div> 
 </div>
