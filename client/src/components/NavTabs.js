@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import "../styles/header.css";
 
 function Nav(props) {
-  const {currentPage, handlePageChange} = props;
+  const { currentPage, handlePageChange } = props;
   //   function showNavigation() {
   //     if (Auth.loggedIn()) {
   //       return (
@@ -37,21 +37,24 @@ function Nav(props) {
       </div>
       <div className="icons">
         <i className="bi bi-cart4"></i>
-        <div id="icons"  href="#Login"
-                    onClick={() => handlePageChange("Login")}
-                    className={
-                      currentPage === "Login" ? "nav-link active" : "nav-link"
-                    }><span className="bi bi-person-circle"></span></div>
+        <div
+          id="icons"
+          href="#Login"
+          onClick={() => handlePageChange("Login")}
+          className={currentPage === "Login" ? "nav-link active" : "nav-link"}
+        >
+          <span className="bi bi-person-circle"></span>
+        </div>
       </div>
-      <p className="brand-name" ><a
-                    href="#Home"
-                    onClick={() => handlePageChange("Home")}
-                    className={
-                      currentPage === "Home" ? "nav-link active" : "nav-link"
-                    }
-                  >
-                    Coffee Brigade
-                  </a></p>
+      <p className="brand-name">
+        <a
+          href="#Home"
+          onClick={() => handlePageChange("Home")}
+          className={currentPage === "Home" ? "nav-link active" : "nav-link"}
+        >
+          Coffee Brigade
+        </a>
+      </p>
       <header id="header">
         <nav className="navbar navbar-expand-lg ">
           <div className="container justify-content-center">

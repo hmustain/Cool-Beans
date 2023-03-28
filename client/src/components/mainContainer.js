@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import NavTabs from "./NavTabs";
-import Login from '../pages/Login'
+import Login from "../pages/Login";
 import Signup from "../pages/Signup";
+import Contact from "../pages/Contact";
 export default function PortfolioContainer() {
   const [currentPage, setCurrentPage] = useState("Home");
 
@@ -9,12 +10,12 @@ export default function PortfolioContainer() {
     // if (currentPage === "Shop All") {
     //   return <ShopAll />;
     // }
-     if (currentPage === "Signup") {
-       return <Signup />;
-     }
-    // if (currentPage === "Contact Us") {
-    //   return <Contact />;
-    // }
+    if (currentPage === "Signup") {
+      return <Signup />;
+    }
+    if (currentPage === "Contact") {
+      return <Contact />;
+    }
     // if (currentPage === "Shopping Cart") {
     //   return <Cart />;
     // }
@@ -35,9 +36,7 @@ export default function PortfolioContainer() {
         />
         {renderPage()}
       </div>
-      <div>
-        {/* <Footer /> */}
-      </div>
+      <div>{/* <Footer /> */}</div>
     </div>
   );
 }
