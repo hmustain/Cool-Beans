@@ -56,7 +56,13 @@ function Nav() {
             <div className="collapse navbar-collapse" id="navbarNav">
               <ul className="navbar-nav mx-auto">
                 <li className="nav-item">
-                  <a className="nav-link" href="#home">
+                  <a
+                    href="#ShopAll"
+                    onClick={() => handlePageChange("ShopAll")}
+                    className={
+                      currentPage === "ShopAll" ? "nav-link active" : "nav-link"
+                    }
+                  >
                     Shop All
                   </a>
                 </li>
@@ -64,12 +70,24 @@ function Nav() {
               <a className="nav-link" href="#about" onClick={() => handlePageChange('About')}>About</a>
             </li> */}
                 <li className="nav-item">
-                  <a className="nav-link" href="#projects">
+                  <a
+                    href="#Contact"
+                    onClick={() => handlePageChange("Contact")}
+                    className={
+                      currentPage === "Contact" ? "nav-link active" : "nav-link"
+                    }
+                  >
                     Contact Us
                   </a>
                 </li>
                 <li className="nav-item">
-                  <a className="nav-link" href="#contact">
+                  <a
+                    href="#Contact"
+                    onClick={() => handlePageChange("Join")}
+                    className={
+                      currentPage === "Join" ? "nav-link active" : "nav-link"
+                    }
+                  >
                     Join Here
                   </a>
                 </li>
