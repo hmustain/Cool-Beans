@@ -34,10 +34,10 @@ function ProductReviews() {
   }, []);
 
   return (
-    <div>
+    <div className="review-container">
       {/* <h1>Reviews</h1> */}
       {reviews.map((review) => (
-        <Card key={review.id} className="my-3">
+        <Card key={review.id} className="my-3 col-sm-12 col-md-10 col-lg-8">
           <Card.Body>
             <Card.Title className="mb-2 font-weight-bold">
               {`${review.user.firstName} ${review.user.lastName}`}
