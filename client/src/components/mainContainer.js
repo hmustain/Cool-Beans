@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import NavTabs from "./NavTabs";
 import Login from '../pages/Login'
+import Signup from "../pages/Signup";
 export default function PortfolioContainer() {
   const [currentPage, setCurrentPage] = useState("Home");
 
@@ -8,9 +9,9 @@ export default function PortfolioContainer() {
     // if (currentPage === "Shop All") {
     //   return <ShopAll />;
     // }
-    // if (currentPage === "Join") {
-    //   return <Signup />;
-    // }
+     if (currentPage === "Signup") {
+       return <Signup />;
+     }
     // if (currentPage === "Contact Us") {
     //   return <Contact />;
     // }

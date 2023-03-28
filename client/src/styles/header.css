@@ -23,6 +23,10 @@ i {
     padding-right: 15px;
     background-color: rgba(13, 143, 104, 0.496);
 }
+#icons{
+    font-size: 25px;
+    padding: 8px;
+}
 
 .brand-name {
     margin: 0;

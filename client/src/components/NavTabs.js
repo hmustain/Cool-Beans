@@ -37,7 +37,11 @@ function Nav(props) {
       </div>
       <div className="icons">
         <i class="bi bi-cart4"></i>
-        <i class="bi bi-person-circle" href="#Login" onClick={() => handlePageChange("Login")}> </i>
+        <div id="icons"  href="#Login"
+                    onClick={() => handlePageChange("Login")}
+                    className={
+                      currentPage === "Login" ? "nav-link active" : "nav-link"
+                    }><span class="bi bi-person-circle"></span></div>
       </div>
       <p className="brand-name" ><a
                     href="#Home"
