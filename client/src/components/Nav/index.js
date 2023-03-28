@@ -2,10 +2,7 @@ import React from "react";
 import Auth from "../../utils/auth";
 import { Link } from "react-router-dom";
 import "../../styles/header.css";
-import { COffcanvas } from "@coreui/bootstrap-react";
-import { COffcanvasHeader } from "@coreui/bootstrap-react";
-import { COffcanvasTitle } from "@coreui/bootstrap-react";
-import { COffcanvasBody } from "@coreui/bootstrap-react";
+
 function Nav() {
   //   function showNavigation() {
   //     if (Auth.loggedIn()) {
@@ -29,30 +26,54 @@ function Nav() {
   //       );
   //     }
   //   }
-  const [visibleScrolling, setVisibleScrolling] = useState(false);
-  const [visibleWithBackdrop, setVisibleWithBackdrop] = useState(false);
-  const [visibleWithBothOptions, setVisibleWithBothOptions] = useState(false);
+
   return (
-    <header>
-      <CButton onClick={() => setVisible(true)}>Toggle offcanvas</CButton>
-      <COffcanvas
-        placement="start"
-        visible={visible}
-        onHide={() => setVisible(false)}
-      >
-        <COffcanvasHeader>
-          <COffcanvasTitle>Offcanvas</COffcanvasTitle>
-          <CCloseButton
-            className="text-reset"
-            onClick={() => setVisible(false)}
-          />
-        </COffcanvasHeader>
-        <COffcanvasBody>
-          Content for the offcanvas goes here. You can place just about any
-          Bootstrap React component or custom elements here.
-        </COffcanvasBody>
-      </COffcanvas>
-    </header>
+    <>
+      <div className="icons">
+        <i class="bi bi-cart4"></i>
+        <i class="bi bi-person-circle"></i>
+      </div>
+      <p className="brand-name">Coffee Brigade</p>
+      <header id="header">
+        <nav className="navbar navbar-expand-lg ">
+          <div className="container justify-content-center">
+            <button
+              class="navbar-toggler"
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#navbarNav"
+              aria-controls="navbarSupportedContent"
+              aria-expanded="false"
+              aria-label="Toggle navigation"
+            >
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div className="collapse navbar-collapse" id="navbarNav">
+              <ul className="navbar-nav mx-auto">
+                <li className="nav-item">
+                  <a className="nav-link" href="#home">
+                    Shop All
+                  </a>
+                </li>
+                {/* <li className="nav-item">
+              <a className="nav-link" href="#about" onClick={() => handlePageChange('About')}>About</a>
+            </li> */}
+                <li className="nav-item">
+                  <a className="nav-link" href="#projects">
+                    Contact Us
+                  </a>
+                </li>
+                <li className="nav-item">
+                  <a className="nav-link" href="#contact">
+                    Join Here
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </nav>
+      </header>
+    </>
   );
 }
 {
