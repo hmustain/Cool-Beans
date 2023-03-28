@@ -39,7 +39,15 @@ function Nav(props) {
         <i class="bi bi-cart4"></i>
         <i class="bi bi-person-circle" href="#Login" onClick={() => handlePageChange("Login")}> </i>
       </div>
-      <p className="brand-name">Coffee Brigade</p>
+      <p className="brand-name" ><a
+                    href="#Home"
+                    onClick={() => handlePageChange("Home")}
+                    className={
+                      currentPage === "Home" ? "nav-link active" : "nav-link"
+                    }
+                  >
+                    Coffee Brigade
+                  </a></p>
       <header id="header">
         <nav className="navbar navbar-expand-lg ">
           <div className="container justify-content-center">
@@ -83,8 +91,8 @@ function Nav(props) {
                 </li>
                 <li className="nav-item">
                   <a
-                    href="#Contact"
-                    onClick={() => handlePageChange("Join")}
+                    href="#Signup"
+                    onClick={() => handlePageChange("Signup")}
                     className={
                       currentPage === "Join" ? "nav-link active" : "nav-link"
                     }
@@ -99,11 +107,9 @@ function Nav(props) {
       </header>
     </>
   );
-}
-{
+
   /* <Link to="/home">Single Serve</Link> */
-}
-{
+
   /* <nav> {showNavigation()}</nav> */
 }
 export default Nav;
