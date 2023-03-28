@@ -33,31 +33,9 @@ const authMiddleware = async ({ req }) => {
   return req;
 };
 
-const reviewMiddleware = async (resolve, parent, args, context, info) => {
-  const { productId } = args;
-  const { user } = context;
-  const product = await Product.findById(productId);
-
-  if (!product) {
-    throw new Error('Product not found');
-  }
-
-  const review = product.reviews.find(
-    (review) => review.user.toString() === user._id.toString()
-  );
-
-  if (review) {
-    throw new Error('You have already reviewed this product');
-  }
-
-  context.product = product;
-
-  return resolve(parent, args, context, info);
-};
-
 const signToken = ({ firstName, email, _id }) => {
   const payload = { firstName, email, _id };
   return jwt.sign({ data: payload }, secret, { expiresIn: expiration });
 };
 
-module.exports = { authMiddleware, reviewMiddleware, signToken };
+module.exports = { authMiddleware, signToken };

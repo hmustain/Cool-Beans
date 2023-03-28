@@ -157,37 +157,43 @@ const resolvers = {
       return { token, user };
     },
     createReview: async (parent, args, context) => {
-      console.log('args:');
-      console.log(args);
+      // Check if user has already reviewed the product
+      const existingReview = await Review.findOne({
+        user: context.user._id,
+        product: args._id
+      });
+    
+      if (existingReview) {
+        throw new Error("You've already reviewed this product!");
+      }
+    
+      // Create new review
       const product = await Product.findById(args._id);
-      const newReview = await Review.create({rating: args.rating, comment: args.review.comment, user: context.user, product});
-      console.log('---product-----')
-      console.log(product);
-      console.log('---newReview--- ');
-      console.log(newReview);
+      const newReview = await Review.create({
+        rating: args.rating,
+        comment: args.review.comment,
+        user: context.user,
+        product
+      });
+    
       try {
-        // Check for authentication and validation of review
-        // console.log('context');
-        // console.log(context);
-        // await reviewMiddleware(null, { productId: productid }, { req: context }, null);
-
         // Add review to product and save to database
         const updatedProduct = await Product.findOneAndUpdate(
-          { _id: args._id },  
+          { _id: args._id },
           { $push: { reviews: newReview } },
           { new: true }
-        ).populate("reviews").populate({
-          path: "reviews",
-          populate: "user"
-        }).populate("category");
-
+        )
+          .populate("reviews")
+          .populate({ path: "reviews", populate: "user" })
+          .populate("category");
+    
         return updatedProduct;
       } catch (err) {
-        console.log(err); 
-        throw new AuthenticationError('Invalid token');
+        console.log(err);
+        throw new AuthenticationError("Invalid token");
       }
-    },
-  },
+    }
+  }
 };
 
 module.exports = resolvers;
