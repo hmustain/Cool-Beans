@@ -3,7 +3,8 @@ import Auth from "../utils/auth";
 import { Link } from "react-router-dom";
 import "../styles/header.css";
 
-function Nav(currentPage, handlePageChange) {
+function Nav(props) {
+  const {currentPage, handlePageChange} = props;
   //   function showNavigation() {
   //     if (Auth.loggedIn()) {
   //       return (
@@ -35,15 +36,27 @@ function Nav(currentPage, handlePageChange) {
         </p>
       </div>
       <div className="icons">
-        <i class="bi bi-cart4"></i>
-        <i class="bi bi-person-circle"></i>
+        <i className="bi bi-cart4"></i>
+        <div id="icons"  href="#Login"
+                    onClick={() => handlePageChange("Login")}
+                    className={
+                      currentPage === "Login" ? "nav-link active" : "nav-link"
+                    }><span className="bi bi-person-circle"></span></div>
       </div>
-      <p className="brand-name">Coffee Brigade</p>
+      <p className="brand-name" ><a
+                    href="#Home"
+                    onClick={() => handlePageChange("Home")}
+                    className={
+                      currentPage === "Home" ? "nav-link active" : "nav-link"
+                    }
+                  >
+                    Coffee Brigade
+                  </a></p>
       <header id="header">
         <nav className="navbar navbar-expand-lg ">
           <div className="container justify-content-center">
             <button
-              class="navbar-toggler"
+              className="navbar-toggler"
               type="button"
               data-bs-toggle="collapse"
               data-bs-target="#navbarNav"
@@ -51,7 +64,7 @@ function Nav(currentPage, handlePageChange) {
               aria-expanded="false"
               aria-label="Toggle navigation"
             >
-              <span class="navbar-toggler-icon"></span>
+              <span className="navbar-toggler-icon"></span>
             </button>
             <div className="collapse navbar-collapse" id="navbarNav">
               <ul className="navbar-nav mx-auto">
@@ -82,8 +95,8 @@ function Nav(currentPage, handlePageChange) {
                 </li>
                 <li className="nav-item">
                   <a
-                    href="#Contact"
-                    onClick={() => handlePageChange("Join")}
+                    href="#Signup"
+                    onClick={() => handlePageChange("Signup")}
                     className={
                       currentPage === "Join" ? "nav-link active" : "nav-link"
                     }
@@ -98,11 +111,9 @@ function Nav(currentPage, handlePageChange) {
       </header>
     </>
   );
-}
-{
+
   /* <Link to="/home">Single Serve</Link> */
-}
-{
+
   /* <nav> {showNavigation()}</nav> */
 }
 export default Nav;

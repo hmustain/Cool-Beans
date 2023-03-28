@@ -3,6 +3,7 @@ import { useMutation } from "@apollo/client";
 import { Link } from "react-router-dom";
 import { LOGIN } from "../utils/mutations.js";
 import Auth from "../utils/auth";
+import '../styles/Login.css'
 
 function Login(props) {
   const [formState, setFormState] = useState({ email: "", password: "" });
@@ -30,42 +31,68 @@ function Login(props) {
   };
 
   return (
-    <div className="container my-1">
-      <Link to="/signup">← Go to Signup</Link>
-
-      <h2>Login</h2>
-      <form onSubmit={handleFormSubmit}>
-        <div className="flex-row space-between my-2">
-          <label htmlFor="email">Email address:</label>
-          <input
-            placeholder="youremail@test.com"
-            name="email"
-            type="email"
-            id="email"
-            onChange={handleChange}
-          />
-        </div>
-        <div className="flex-row space-between my-2">
-          <label htmlFor="pwd">Password:</label>
-          <input
-            placeholder="******"
-            name="password"
-            type="password"
-            id="pwd"
-            onChange={handleChange}
-          />
-        </div>
-        {error ? (
-          <div>
-            <p className="error-text">The provided credentials are incorrect</p>
-          </div>
-        ) : null}
-        <div className="flex-row flex-end">
-          <button type="submit">Submit</button>
-        </div>
-      </form>
+  
+    <div className="container" onSubmit={handleFormSubmit}>
+<div className="card">
+  <div className="card-image">	
+    <h2 className="card-heading">
+      
+      <small>Sign in to your account</small>
+    </h2>
+  </div>
+  <form className="card-form">
+          <div className="input">
+      <input type="email" className="input-field"  onChange={handleChange} required/><br></br>
+      <label className="input-label">Email:</label>
     </div>
+          <div className="input">
+      <input type="password" className="input-field" required/><br></br>
+      <label className="input-label" onChange={handleChange}>Password:</label>
+    </div>
+    <div className="action">
+      <button className="action-button">Login</button>
+    </div>
+  </form>
+  <div className="card-info">
+    <p>Dont have an account? <a href="#Signup">Signup Here</a></p>
+  </div> 
+</div>
+</div>
+
   );
 }
 
 export default Login;
+{/* <div class="container" onSubmit={handleFormSubmit}>
+<div class="card">
+  <div class="card-image">	
+    <h2 class="card-heading">
+      
+      <small>Sign in to your account</small>
+    </h2>
+  </div>
+  <form class="card-form">
+          <div class="input">
+      <input type="email" class="input-field"  onChange={handleChange} required/><br></br>
+      <label class="input-label">Email</label>
+    </div>
+          <div class="input">
+      <input type="password" class="input-field" required/><br></br>
+      <label class="input-label" onChange={handleChange}>Password</label>
+    </div>
+    <div class="action">
+      <button class="action-button">Login</button>
+    </div>
+  </form>
+  {/* <div class="card-info">
+    <p>By signing up you are agreeing to our <a href="#">Terms and Conditions</a></p>
+  </div> */}
+// </div>
+// </div>
+// {error ? (
+//   <div>
+//     <p className="error-text">The provided credentials are incorrect</p>
+//   </div>
+// ) : null} */}
+
+{/* <Link to="/signup">← Go to Signup</Link> */}
