@@ -53,13 +53,12 @@ const resolvers = {
     order: async (parent, { _id }, context) => {
       if (context.user) {
         const user = await User.findById(context.user._id).populate({
-          path: "orders.products",
+          path: "orders.products.product",
           populate: "category",
         });
-
-        return user.orders.id(_id);
+        const order = user.orders.id(_id);
+        return order;
       }
-
       throw new AuthenticationError("Not logged in");
     },
     checkout: async (parent, args, context) => {
@@ -106,18 +105,34 @@ const resolvers = {
       const token = signToken(newUser);
       return { token, user: newUser };
     },
+    addUser: async (parent, args) => {
+      const newUser = await User.create(args);
+      const token = signToken(newUser);
+      return { token, user: newUser };
+    },
     addOrder: async (parent, { products }, context) => {
-      console.log(context);
       if (context.user) {
-        const order = new Order({ products });
-
-        await User.findByIdAndUpdate(context.user._id, {
-          $push: { orders: order },
+        const productOrders = await Promise.all(products.map(async (productId) => {
+          const product = await Product.findById(productId);
+          return {
+            product,
+            quantity: 1,
+          };
+        }));
+        const total = productOrders.reduce(
+          (acc, { product, quantity }) => acc + product.price * quantity,
+          0
+        );
+        const order = new Order({
+          user: context.user._id,
+          products: productOrders,
+          total,
+          status: "completed",
         });
-
+        await order.save();
+        await User.findByIdAndUpdate(context.user._id, { $push: { orders: order } });
         return order;
       }
-
       throw new AuthenticationError("Not logged in");
     },
     updateProduct: async (parent, { _id, quantity }) => {
