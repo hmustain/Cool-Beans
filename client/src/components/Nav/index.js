@@ -29,6 +29,11 @@ function Nav() {
 
   return (
     <>
+      <div className="subscribe">
+        <p>
+          <a>Join </a> and Save!
+        </p>
+      </div>
       <div className="icons">
         <i class="bi bi-cart4"></i>
         <i class="bi bi-person-circle"></i>

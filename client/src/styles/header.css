@@ -29,6 +29,7 @@ i {
     font-size: 25px;
     text-align: center;
     background-color: rgba(13, 143, 104, 0.496);
+    font-weight: 450;
 }
 
 #header {
@@ -37,7 +38,13 @@ i {
 }
 
 .nav-item {
-font-size: 20px;
+font-size: 15px;
 padding-right: 25px;
 padding-left: 25px;
+}
+
+.subscribe p {
+    margin: 0;
+    text-align: center;
+    background-color: rgb(165,210,235);
 }
