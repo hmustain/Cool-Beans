@@ -47,8 +47,6 @@ function ProductReviews() {
   );
 }
 
-const rating = 0; 
-
 function renderStars(rating) {
     const filledStars = Array.from({ length: rating }, (_, i) => (
       <span key={i} className="filled-star">&#9733;</span>
