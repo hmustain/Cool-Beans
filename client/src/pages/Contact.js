@@ -5,16 +5,16 @@ import "../styles/form.css";
 function ContactForm() {
   const [state, handleSubmit] = useForm("xayzpyor");
   if (state.succeeded) {
-    return <p>Thanks for joining!</p>;
+    return <h1 className="thanks">Thanks for your feedback!</h1>;
   }
   return (
     <section className="contact-page">
-      <div className="col-md-3 text-center">
-        <ul className="list-unstyled mb-0">
+      <div className="col-md-5 m-2 ">
+        <ul className="list-unstyled ">
           <li>
-            <p>Contact our Customer Support:</p>
+            <p className="info-headers">Contact our Customer Support:</p>
             <br />
-            <p>
+            <p className="info-paragraph">
               If you would like to discuss any problems related to your order,
               would like to find out more about the brand, or simply have a
               chat, please fill out the form on this page, or give us an email
@@ -23,8 +23,8 @@ function ContactForm() {
           </li>
 
           <li>
-            <p>Collaborations:</p>
-            <p>
+            <p className="info-headers">Collaborations:</p>
+            <p className="info-paragraph">
               If you are interested in working with Buzz Coffee please contact
               business@buzzcoffee.com:
             </p>
@@ -32,17 +32,19 @@ function ContactForm() {
           </li>
 
           <li>
-            <p>Products</p>
-            <p>
+            <p className="info-headers">Products</p>
+            <p className="info-paragraph">
               View all of our products <a href="./home">here</a>
             </p>
           </li>
         </ul>
       </div>
-      <div className="contact-form row">
+      <div className="contact-form row col-md-4 m-2  ">
         <form className="" onSubmit={handleSubmit}>
           <div className="form-group">
-            <label htmlFor="name">Name</label>
+            <label htmlFor="name" className="info-headers-form">
+              Name
+            </label>
             <input
               name="name"
               id="name"
@@ -52,7 +54,9 @@ function ContactForm() {
             />
           </div>
           <div className="form-group">
-            <label htmlFor="email">Email</label>
+            <label htmlFor="email" className="info-headers-form">
+              Email
+            </label>
             <input
               className="form-control"
               id="email"
@@ -62,7 +66,9 @@ function ContactForm() {
             />
           </div>
           <div className="form-group">
-            <label htmlFor="email">Message</label>
+            <label htmlFor="email" className="info-headers-form">
+              Message
+            </label>
             <ValidationError
               prefix="Email"
               field="email"
@@ -80,13 +86,13 @@ function ContactForm() {
               errors={state.errors}
             />
           </div>
-          <a
+          <button
             className="btn btn-dark send-button"
             type="submit"
             disabled={state.submitting}
           >
-            Send<i class="bi bi-send"></i>
-          </a>
+            Send<i className="bi bi-send"></i>
+          </button>
         </form>
       </div>
     </section>

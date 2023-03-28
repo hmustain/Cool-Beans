@@ -5,6 +5,10 @@
 *:before {
 	box-sizing: border-box;
 }
+body {
+    margin: 0;    
+} /*-- default width of body is 100% --*/
+
 
 body {
 	font-family: "DM Sans", sans-serif;

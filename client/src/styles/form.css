@@ -1,18 +1,39 @@
 .contact-page {
+    margin-top: 100px;
     display: flex;
-    
+    justify-content: center;
+    flex-direction: row;
+    flex-wrap: wrap;
 }
 
 .contact-form {
     display: flex;
-    justify-content: center;
+  
 }
 
 .send-button {
-    margin-top: 5px;
-    
+    margin-top: 20px;
 } 
 
 .send-button i {
     padding-left: 7px;
+}
+.info-headers {
+    font-weight:bold;
+}
+
+.info-headers-form {
+    font-weight:500;
+    padding-bottom: 10px;
+    padding-top: 10px;
+}
+
+
+.info-paragraph {
+    font-weight:300;
+}
+
+.thanks {
+    text-align: center;
+    margin-top: 100px;
 }
