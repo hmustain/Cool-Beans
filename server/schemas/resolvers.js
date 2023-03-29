@@ -2,6 +2,7 @@ const { AuthenticationError } = require("apollo-server-express");
 const { User, Category, Product, Review, Order } = require("../models");
 const { signToken, reviewMiddleware } = require("../utils/auth");
 const stripe = require('stripe')('sk_test_4eC39HqLyjWDarjtT1zdp7dc');
+const moment = require('moment');
 
 const resolvers = {
   Query: {
@@ -106,11 +107,6 @@ const resolvers = {
       const token = signToken(newUser);
       return { token, user: newUser };
     },
-    addUser: async (parent, args) => {
-      const newUser = await User.create(args);
-      const token = signToken(newUser);
-      return { token, user: newUser };
-    },
     addOrder: async (parent, { products }, context) => {
       if (context.user) {
         const productOrders = await Promise.all(products.map(async (productId) => {
@@ -173,6 +169,7 @@ const resolvers = {
       const newReview = await Review.create({
         rating: args.rating,
         comment: args.review.comment,
+        createdAt: args.review.createdAt,
         user: context.user,
         product
       });

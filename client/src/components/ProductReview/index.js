@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "./style.css"
+import { Card } from 'react-bootstrap';
 
 function ProductReviews() {
   const [reviews, setReviews] = useState([]);
@@ -33,15 +34,21 @@ function ProductReviews() {
   }, []);
 
   return (
-    <div>
-      <h1>Reviews</h1>
+    <div className="review-container">
+      {/* <h1>Reviews</h1> */}
       {reviews.map((review) => (
-        <div key={review.id}>
-          <div>{renderStars(review.rating)}</div>
-          <div>{review.comment}</div>
-          <div>{`${review.user.firstName} ${review.user.lastName}`}</div>
-          <div>{new Date(review.createdAt).toLocaleDateString()}</div>
-        </div>
+        <Card key={review.id} className="my-3 col-sm-12 col-md-10 col-lg-8">
+          <Card.Body>
+            <Card.Title className="mb-2 font-weight-bold">
+              {`${review.user.firstName} ${review.user.lastName}`}
+            </Card.Title>
+            <Card.Subtitle className="mb-2 text-muted">
+              {new Date(review.createdAt).toLocaleDateString()}
+            </Card.Subtitle>
+            <div>{renderStars(review.rating)}</div>
+            <Card.Text className="mt-2">{review.comment}</Card.Text>
+          </Card.Body>
+        </Card>
       ))}
     </div>
   );

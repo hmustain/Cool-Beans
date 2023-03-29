@@ -64,7 +64,7 @@ const typeDefs = gql`
   user: User!
   comment: String!
   rating: Float!
-  createdAt: String!
+  createdAt: String
   }
 
   input ReviewInput {
