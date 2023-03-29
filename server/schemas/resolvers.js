@@ -169,7 +169,7 @@ const resolvers = {
       const newReview = await Review.create({
         rating: args.rating,
         comment: args.review.comment,
-        createdAt: moment().format('MMMM DD, YYYY'),
+        createdAt: args.review.createdAt,
         user: context.user,
         product
       });

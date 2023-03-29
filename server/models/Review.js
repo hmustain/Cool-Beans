@@ -1,5 +1,6 @@
 const mongoose = require("mongoose");
 const { Schema } = mongoose;
+const dateFormat = require('../utils/dateFormat');
 
 const reviewSchema = new Schema({
     user: {
@@ -26,7 +27,6 @@ const reviewSchema = new Schema({
       type: Date,
       default: Date.now,
       get: (timestamp) => dateFormat(timestamp),
-      required: true
     }
   }, { timestamps: true });
   
