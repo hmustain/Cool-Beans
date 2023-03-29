@@ -8,47 +8,54 @@ import { QUERY_PRODUCTS } from '../../utils/queries';
 // import spinner from '../../assets/spinner.gif';
 
 function Products() {
-//   const [state, dispatch] = useStoreContext();
+    //   const [state, dispatch] = useStoreContext();
 
-//   const { currentCategory } = state;
+    //   const { currentCategory } = state;
 
-  const { loading, data } = useQuery(QUERY_PRODUCTS);
+    const { loading, data } = useQuery(QUERY_PRODUCTS);
 
-//   useEffect(() => {
-//     if (data) {
-//       dispatch({
-//         type: UPDATE_PRODUCTS,
-//         products: data.products,
-//       });
-//       data.products.forEach((product) => {
-//         idbPromise('products', 'put', product);
-//       });
-//     } else if (!loading) {
-//       idbPromise('products', 'get').then((products) => {
-//         dispatch({
-//           type: UPDATE_PRODUCTS,
-//           products: products,
-//         });
-//       });
-//     }
-//   }, [data, loading, dispatch]);
+    //   useEffect(() => {
+    //     if (data) {
+    //       dispatch({
+    //         type: UPDATE_PRODUCTS,
+    //         products: data.products,
+    //       });
+    //       data.products.forEach((product) => {
+    //         idbPromise('products', 'put', product);
+    //       });
+    //     } else if (!loading) {
+    //       idbPromise('products', 'get').then((products) => {
+    //         dispatch({
+    //           type: UPDATE_PRODUCTS,
+    //           products: products,
+    //         });
+    //       });
+    //     }
+    //   }, [data, loading, dispatch]);
 
-//   function filterProducts() {
-//     if (!currentCategory) {
-//       return state.products;
-//     }
+    //   function filterProducts() {
+    //     if (!currentCategory) {
+    //       return state.products;
+    //     }
 
-//     return state.products.filter(
-//       (product) => product.category._id === currentCategory
-//     );
-//   }
+    //     return state.products.filter(
+    //       (product) => product.category._id === currentCategory
+    //     );
+    //   }
+    if (!loading) {
+        console.log('the data', data);
+    }
 
-  return (
-    <div className="my-2">
-      <h2>Our Products:</h2>
-      {data?.products.length ? (
-        <div className="flex-row">
-          {data.products.map((product) => (
+    return (
+        <div className="my-2">
+            <h2>Our Products:</h2>
+            {
+
+                loading ? <div>Data is loading</div> :
+                (
+                    data?.products.length && (
+                        <div className="flex-row">
+                            {data.products.map((product) => (
             <ProductItem
               key={product._id}
               _id={product._id}
@@ -56,15 +63,14 @@ function Products() {
               name={product.name}
               price={product.price}
               description={product.description}
+              reviews = {product.reviews}
             />
-          ))}
-        </div>
-      ) : (
-        <h3>You haven't added any products yet!</h3>
-      )}
-      {loading ? <img src="no" alt="loading" /> : null}
-    </div>
-  );
+                               ))}
+                        </div>)
+                )
+            }
+          </div>                         
+    );
 }
 
 export default Products;

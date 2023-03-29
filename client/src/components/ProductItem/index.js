@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 
 function ProductItem(item) {
 //   const [state, dispatch] = useStoreContext();
-
+console.log(item,"here");
   const {
     image,
     description,
@@ -55,6 +55,9 @@ function ProductItem(item) {
         <div>{quantity} {("item", quantity)} in stock</div>
         <span>${price}</span><br></br>
         <span>${description}</span>
+        <span>${reviews?.length && reviews.map(review => {
+            return <span> <br></br>{review.rating} </span>
+        })}</span>
       </div>
       <button >Add to cart</button>
     </div>
