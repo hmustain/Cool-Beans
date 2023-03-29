@@ -158,14 +158,16 @@ console.log('categories:', categories);
         {
           product: products[0]._id,
           quantity: 1,
+          price: products[0].price,
         },
         {
           product: products[1]._id,
           quantity: 2,
+          price: products[1].price
+
         },
       ],
-      total: 44.97,
-      status: "completed",
+      status: "confirmed",
     },
     {
       user: users[1]._id,
@@ -173,14 +175,15 @@ console.log('categories:', categories);
         {
           product: products[3]._id,
           quantity: 1,
+          price: products[3].price
         },
         {
           product: products[4]._id,
           quantity: 3,
+          price: products[4].price
         },
       ],
-      total: 78.96,
-      status: "completed",
+      status: "confirmed",
     },
   ]);
   

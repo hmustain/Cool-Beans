@@ -1,6 +1,6 @@
 const { AuthenticationError } = require("apollo-server-express");
 const { User, Category, Product, Review, Order } = require("../models");
-const { signToken, reviewMiddleware } = require("../utils/auth");
+const { signToken } = require("../utils/auth");
 const stripe = require('stripe')('sk_test_4eC39HqLyjWDarjtT1zdp7dc');
 
 const resolvers = {
@@ -116,14 +116,14 @@ const resolvers = {
           };
         }));
         const total = productOrders.reduce(
-          (acc, { product, quantity }) => acc + product.price * quantity,
+          (acc, { product, quantity }) => acc + (product.price * quantity),
           0
         );
         const order = new Order({
           user: context.user._id,
           products: productOrders,
           total,
-          status: "completed",
+          status: "confirmed",
         });
         await order.save();
         await User.findByIdAndUpdate(context.user._id, { $push: { orders: order } });
