@@ -44,6 +44,7 @@ body {
 #header {
     border-bottom: 1px solid black;
     background-color: rgba(13, 143, 104, 0.496);
+    position: relative;
 }
 
 .nav-item {
@@ -56,4 +57,24 @@ padding-left: 25px;
     margin: 0;
     text-align: center;
     background-color: rgb(165,210,235);
+}
+
+.cool-beans {
+	border-radius: 65px;
+	overflow: hidden;
+	padding-bottom: 220px;
+	background-image: url("file:///C:/Users/carne/Downloads/Retro%20and%20Vintage%20Coffee%20Shop%20Badge%20Logo.svg");
+	background-repeat: no-repeat;
+    margin: 0;
+    position: relative;
+    width: 40%;
+    background-position: center;
+    background-size:contain;
+
+}
+
+.logo {
+    background-color: rgba(13, 143, 104, 0.496);
+    display: flex;
+    justify-content: center;
 }
