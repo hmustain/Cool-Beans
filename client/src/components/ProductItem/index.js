@@ -55,13 +55,27 @@ console.log(item,"here");
         <div>{quantity} {("item", quantity)} in stock</div>
         <span>${price}</span><br></br>
         <span>${description}</span>
-        <span>${reviews?.length && reviews.map(review => {
-            return <span> <br></br>{review.rating} </span>
-        })}</span>
+        <span>{displayAverageRating(reviews)}</span>
       </div>
       <button >Add to cart</button>
     </div>
   );
 }
+
+function displayAverageRating(reviews) {
+  if (!reviews || !reviews.length) {
+    return null;
+  }
+
+  const totalRating = reviews.reduce((acc, curr) => acc + curr.rating, 0);
+  const averageRating = totalRating / reviews.length;
+
+  return (
+    <div>
+      {averageRating.toFixed(1)} ({reviews.length})
+    </div>
+  );
+}
+
 
 export default ProductItem;
