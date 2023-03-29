@@ -125,23 +125,45 @@ db.once("open", async () => {
 
   await Review.deleteMany();
 
-  const reviews = await Review.insertMany([
-      {
-        user: users[0]._id,
-        product: products[0]._id,
-        rating: 4,
-        comment: "This coffee is amazing!, It has a light and refreshing taste that i really enjoy."
-      },
-      {
-        user: users[1]._id,
-        product: products[1]._id,
-        rating: 5,
-        comment: "Amazing coffee, best i've ever had!."
+  const reviews = [];
+  
+  for (let i = 0; i < products.length; i++) {
+    for (let j = 0; j < users.length; j++) {
+      const rating = Math.floor(Math.random() * 5) + 1;
+      let comment = "";
+      switch (rating) {
+        case 1:
+          comment = "Terrible product.";
+          break;
+        case 2:
+          comment = "Not very good, could be better.";
+          break;
+        case 3:
+          comment = "It's okay, nothing special.";
+          break;
+        case 4:
+          comment = "Pretty good, I enjoyed it.";
+          break;
+        case 5:
+          comment = "Amazing product, would definitely recommend!";
+          break;
       }
-  ])
-  console.log('Type of reviews:', Array.isArray(reviews) ? 'Array' : typeof reviews);
-
-  console.log('reviews Seeded');
+      const review = {
+        user: users[j]._id,
+        product: products[i]._id,
+        rating,
+        comment
+      };
+      reviews.push(review);
+    }
+  }
+  
+  const createdReviews = await Review.insertMany(reviews);
+  
+  console.log("Type of reviews:", Array.isArray(createdReviews) ? "Array" : typeof createdReviews);
+  
+  console.log("reviews Seeded");
+  
 
   
   await Order.deleteMany();
