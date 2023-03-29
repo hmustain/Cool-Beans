@@ -7,7 +7,7 @@ import { idbPromise } from "../../utils/helpers";
 
 function ProductItem(item) {
   console.log(item,"here");
-  const [state, dispatch] = useStoreContext();
+  // const [state, dispatch] = useStoreContext();
   const {
     image,
     description,
@@ -27,28 +27,28 @@ function ProductItem(item) {
   // console.log('category', category);
   console.log('reviews', reviews);
 
-  const { cart } = state
+  // const { cart } = state
 
-  const addToCart = () => {
-    const itemInCart = cart.find((cartItem) => cartItem._id === _id)
-    if (itemInCart) {
-      dispatch({
-        type: UPDATE_CART_QUANTITY,
-        _id: _id,
-        purchaseQuantity: parseInt(itemInCart.purchaseQuantity) + 1
-      });
-      idbPromise('cart', 'put', {
-        ...itemInCart,
-        purchaseQuantity: parseInt(itemInCart.purchaseQuantity) + 1
-      });
-    } else {
-      dispatch({
-        type: ADD_TO_CART,
-        product: { ...item, purchaseQuantity: 1 }
-      });
-      idbPromise('cart', 'put', { ...item, purchaseQuantity: 1 });
-    }
-  }
+  // const addToCart = () => {
+  //   const itemInCart = cart.find((cartItem) => cartItem._id === _id)
+  //   if (itemInCart) {
+  //     dispatch({
+  //       type: UPDATE_CART_QUANTITY,
+  //       _id: _id,
+  //       purchaseQuantity: parseInt(itemInCart.purchaseQuantity) + 1
+  //     });
+  //     idbPromise('cart', 'put', {
+  //       ...itemInCart,
+  //       purchaseQuantity: parseInt(itemInCart.purchaseQuantity) + 1
+  //     });
+  //   } else {
+  //     dispatch({
+  //       type: ADD_TO_CART,
+  //       product: { ...item, purchaseQuantity: 1 }
+  //     });
+  //     idbPromise('cart', 'put', { ...item, purchaseQuantity: 1 });
+  //   }
+  // }
 
   return (
     <div className="card px-1 py-1">
@@ -65,7 +65,7 @@ function ProductItem(item) {
         <span>${description}</span>
         <span>{displayAverageRating(reviews)}</span>
       </div>
-      <button onClick={addToCart} >Add to cart</button>
+      {/* <button onClick={addToCart} >Add to cart</button> */}
     </div>
   );
 }
