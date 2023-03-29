@@ -49,7 +49,7 @@ db.once("open", async () => {
     {
       name: "Light Roast 1",
       description: "This is a sample product",
-      image: "/client/images/light-roast-coffee.jpg",
+      image: "light-roast-coffee.jpg",
       category: categories[0]._id,
       price: 14.99,
       quantity: 500,
@@ -57,7 +57,7 @@ db.once("open", async () => {
     {
       name: "Light Roast 2",
       description: "This is a sample product",
-      image: "/client/images/light-roast-coffee.jpg",
+      image: "light-roast-coffee.jpg",
       category: categories[0]._id,
       price: 14.99,
       quantity: 500,
@@ -65,7 +65,7 @@ db.once("open", async () => {
     {
       name: "Light Roast 3",
       description: "This is a sample product",
-      image: "/client/images/light-roast-coffee.jpg",
+      image: "light-roast-coffee.jpg",
       category: categories[0]._id,
       price: 14.99,
       quantity: 500,
@@ -73,7 +73,7 @@ db.once("open", async () => {
     {
       name: "Medium Roast 1",
       description: "This is a sample product",
-      image: "/client/images/medium-roast-coffee.jpg",
+      image: "medium-roast-coffee.jpg",
       category: categories[1]._id,
       price: 15.99,
       quantity: 500,
@@ -81,7 +81,7 @@ db.once("open", async () => {
     {
       name: "Medium Roast 2",
       description: "This is a sample product",
-      image: "/client/images/medium-roast-coffee.jpg",
+      image: "medium-roast-coffee.jpg",
       category: categories[1]._id,
       price: 15.99,
       quantity: 500,
@@ -89,7 +89,7 @@ db.once("open", async () => {
     {
       name: "Medium Roast 3",
       description: "This is a sample product",
-      image: "/client/images/medium-roast-coffee.jpg",
+      image: "medium-roast-coffee.jpg",
       category: categories[1]._id,
       price: 15.99,
       quantity: 500,
@@ -97,7 +97,7 @@ db.once("open", async () => {
     {
       name: "Dark Roast 1",
       description: "This is a sample product",
-      image: "/client/images/dark-roast-coffee.jpg",
+      image: "dark-roast-coffee.jpg",
       category: categories[2]._id,
       price: 16.99,
       quantity: 500,
@@ -105,7 +105,7 @@ db.once("open", async () => {
     {
       name: "Dark Roast 2",
       description: "This is a sample product",
-      image: "/client/images/dark-roast-coffee.jpg",
+      image: "dark-roast-coffee.jpg",
       category: categories[2]._id,
       price: 16.99,
       quantity: 500,
@@ -114,7 +114,7 @@ db.once("open", async () => {
     {
       name: "Dark Roast 3",
       description: "This is a sample product",
-      image: "/client/images/dark-roast-coffee.jpg",
+      image: "dark-roast-coffee.jpg",
       category: categories[2]._id,
       price: 16.99,
       quantity: 500,

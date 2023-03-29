@@ -7,7 +7,7 @@ import { QUERY_PRODUCTS } from '../../utils/queries';
 // import { idbPromise } from '../../utils/helpers';
 // import spinner from '../../assets/spinner.gif';
 
-function ProductList() {
+function Products() {
 //   const [state, dispatch] = useStoreContext();
 
 //   const { currentCategory } = state;
@@ -46,16 +46,16 @@ function ProductList() {
   return (
     <div className="my-2">
       <h2>Our Products:</h2>
-      {data.ProductItem.length ? (
+      {data?.products.length ? (
         <div className="flex-row">
-          {data.ProductItem.map((product) => (
+          {data.products.map((product) => (
             <ProductItem
               key={product._id}
               _id={product._id}
               image={product.image}
               name={product.name}
               price={product.price}
-              quantity={product.quantity}
+              description={product.description}
             />
           ))}
         </div>
@@ -67,4 +67,4 @@ function ProductList() {
   );
 }
 
-export default ProductList;
+export default Products;
