@@ -106,11 +106,6 @@ const resolvers = {
       const token = signToken(newUser);
       return { token, user: newUser };
     },
-    addUser: async (parent, args) => {
-      const newUser = await User.create(args);
-      const token = signToken(newUser);
-      return { token, user: newUser };
-    },
     addOrder: async (parent, { products }, context) => {
       if (context.user) {
         const productOrders = await Promise.all(products.map(async (productId) => {
@@ -173,6 +168,7 @@ const resolvers = {
       const newReview = await Review.create({
         rating: args.rating,
         comment: args.review.comment,
+        createdAt: new Date().toISOString(),
         user: context.user,
         product
       });
