@@ -2,6 +2,7 @@ const { AuthenticationError } = require("apollo-server-express");
 const { User, Category, Product, Review, Order } = require("../models");
 const { signToken, reviewMiddleware } = require("../utils/auth");
 const stripe = require('stripe')('sk_test_4eC39HqLyjWDarjtT1zdp7dc');
+const moment = require('moment');
 
 const resolvers = {
   Query: {
@@ -168,7 +169,7 @@ const resolvers = {
       const newReview = await Review.create({
         rating: args.rating,
         comment: args.review.comment,
-        createdAt: new Date().toISOString(),
+        createdAt: moment().format('MMMM DD, YYYY'),
         user: context.user,
         product
       });
