@@ -116,14 +116,14 @@ const resolvers = {
           };
         }));
         const total = productOrders.reduce(
-          (acc, { product, quantity }) => acc + product.price * quantity,
+          (acc, { product, quantity }) => acc + (product.price * quantity),
           0
         );
         const order = new Order({
           user: context.user._id,
           products: productOrders,
           total,
-          status: "completed",
+          status: "confirmed",
         });
         await order.save();
         await User.findByIdAndUpdate(context.user._id, { $push: { orders: order } });

@@ -12,35 +12,38 @@ export const LOGIN = gql`
 `;
 
 export const ADD_ORDER = gql`
-  mutation addOrder(
-    $name: String!
-    $description: String
-    $image: String!
-    $quantity: Int!
-    $price: Float!
-    $category: ID!
-  ) {
-    addOrder(
-      name: $name
-      description: $description
-      image: $image
-      quantity: $quantity
-      price: $price
-      category: $category
-    ) {
-      products
-      total
-      status
-      _id
-      name
-      description
-      image
-      quantity
-      price
-      category {
+ mutation AddOrder($products: [ID]!, $total: Float!, $status: String!) {
+  addOrder(products: $products, total: $total, status: $status) {
+    _id
+    products {
+      product {
         _id
+        category {
+          name
+        }
+        description
+        image
         name
+        price
+        quantity
+        reviews {
+          _id
+          comment
+          createdAt
+          rating
+          user {
+            _id
+            email
+            firstName
+            lastName
+            password
+          }
+        }
       }
     }
+    purchaseDate
+    status
+    total
   }
+}
 `;
