@@ -32,7 +32,7 @@ function Login(props) {
 
   return (
   
-    <div className="container" onSubmit={handleFormSubmit}>
+    <div className="container">
 <div className="card">
   <div className="card-image">	
     <h2 className="card-heading">
@@ -40,7 +40,7 @@ function Login(props) {
       <small>Sign in to your account</small>
     </h2>
   </div>
-  <form className="card-form">
+  <form className="card-form" onSubmit={handleFormSubmit}>
           <div className="input">
       <input  name="email" type="email" className="input-field"  placeholder="youremail@test.com" id="email" onChange={handleChange} required/><br></br>
       <label className="input-label">Email:</label>
