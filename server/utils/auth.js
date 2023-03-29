@@ -1,15 +1,15 @@
-const jwt = require('jsonwebtoken');
-const { AuthenticationError } = require('apollo-server-express');
-const { User, Product } = require('../models');
+const jwt = require("jsonwebtoken");
+const { AuthenticationError } = require("apollo-server-express");
+const { User } = require("../models");
 
-const secret = 'mysecretsshhhhh';
-const expiration = '2h';
+const secret = "mysecretsshhhhh";
+const expiration = "2h";
 
 const authMiddleware = async ({ req }) => {
   let token = req.body.token || req.query.token || req.headers.authorization;
 
   if (req.headers.authorization) {
-    token = token.split(' ').pop().trim();
+    token = token.split(" ").pop().trim();
   }
 
   if (!token) {
@@ -21,13 +21,13 @@ const authMiddleware = async ({ req }) => {
     const user = await User.findById(data._id);
 
     if (!user) {
-      throw new Error('User not found');
+      throw new Error("User not found");
     }
 
     req.user = user;
   } catch (err) {
     console.log(err);
-    throw new AuthenticationError('Invalid token');
+    throw new AuthenticationError("Invalid token");
   }
 
   return req;
