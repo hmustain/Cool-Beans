@@ -46,15 +46,9 @@ function Nav(props) {
           <span className="bi bi-person-circle"></span>
         </div>
       </div>
-      <p className="brand-name">
-        <a
-          href="#Home"
-          onClick={() => handlePageChange("Home")}
-          className={currentPage === "Home" ? "nav-link active" : "nav-link"}
-        >
-          Coffee Brigade
-        </a>
-      </p>
+      <div className="logo">
+        <img className="cool-beans"></img>
+      </div>
       <header id="header">
         <nav className="navbar navbar-expand-lg ">
           <div className="container justify-content-center">
@@ -69,6 +63,7 @@ function Nav(props) {
             >
               <span className="navbar-toggler-icon"></span>
             </button>
+
             <div className="collapse navbar-collapse" id="navbarNav">
               <ul className="navbar-nav mx-auto">
                 <li className="nav-item">
