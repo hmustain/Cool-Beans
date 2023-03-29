@@ -10,10 +10,13 @@ function ProductItem(item) {
 
   const {
     image,
+    description,
     name,
     _id,
     price,
-    quantity
+    quantity,
+    category,
+    reviews,
   } = item;
 
 //   const { cart } = state
@@ -50,7 +53,8 @@ function ProductItem(item) {
       {/* </Link> */}
       <div>
         <div>{quantity} {("item", quantity)} in stock</div>
-        <span>${price}</span>
+        <span>${price}</span><br></br>
+        <span>${description}</span>
       </div>
       <button >Add to cart</button>
     </div>
