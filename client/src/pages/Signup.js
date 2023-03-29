@@ -21,7 +21,7 @@ return (
 				<small>Let us create your account</small>
 			</h2>
 		</div>
-		<form className="card-form" >
+		<form className="card-form" onSubmit={Signup()} >
 			{/* <div class="input">
 				<input type="text" class="input-field"  required/>
 				<label class="input-label">Username:</label><br></br>

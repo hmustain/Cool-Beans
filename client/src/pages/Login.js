@@ -42,15 +42,20 @@ function Login(props) {
   </div>
   <form className="card-form">
           <div className="input">
-      <input type="email" className="input-field"  onChange={handleChange} required/><br></br>
+      <input  name="email" type="email" className="input-field"  placeholder="youremail@test.com" id="email" onChange={handleChange} required/><br></br>
       <label className="input-label">Email:</label>
     </div>
           <div className="input">
-      <input type="password" className="input-field" required/><br></br>
-      <label className="input-label" onChange={handleChange}>Password:</label>
+      <input name="password" type="password" className="input-field" id="pwd" required onChange={handleChange}/><br></br>
+      <label className="input-label">Password:</label>
     </div>
+    {error ? (
+          <div>
+            <p className="error-text">The provided credentials are incorrect</p>
+          </div>
+        ) : null}
     <div className="action">
-      <button className="action-button">Login</button>
+      <button className="action-button" type="submit">Login</button>
     </div>
   </form>
   <div className="card-info">
