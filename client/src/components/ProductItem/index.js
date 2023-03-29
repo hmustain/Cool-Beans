@@ -4,7 +4,6 @@ import { Link } from "react-router-dom";
 // import { useStoreContext } from "../../utils/GlobalState";
 // import { ADD_TO_CART, UPDATE_CART_QUANTITY } from "../../utils/actions";
 // import { idbPromise } from "../../utils/helpers";
-
 function ProductItem(item) {
 //   const [state, dispatch] = useStoreContext();
 console.log(item,"here");
@@ -43,23 +42,26 @@ console.log(item,"here");
 //   }
 
   return (
-    <div className="card px-1 py-1">
+    <div className="ProductItem">
+    <div className="card">
       {/* <Link to={`/ProductItem/${_id}`}> */}
         <img
           alt={name}
           src={`/images/${image}`}
         />
-        <p>{name}</p>
+        <h3>{name}</h3>
       {/* </Link> */}
       <div>
-        <div>{quantity} {("item", quantity)} in stock</div>
-        <span>${price}</span><br></br>
-        <span>${description}</span>
-        <span>${reviews?.length && reviews.map(review => {
-            return <span> <br></br>{review.rating} </span>
-        })}</span>
+        
+        <div>{quantity}  in stock</div>
+        <div>${price}</div>
+        <div>Description: {description}</div>
+        <div>{reviews?.length && reviews.map(review => {
+            return <span> <br></br>Rating: {review.rating} </span>
+        })}</div>
       </div>
       <button >Add to cart</button>
+    </div>
     </div>
   );
 }

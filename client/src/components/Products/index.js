@@ -6,7 +6,6 @@ import { useQuery } from '@apollo/client';
 import { QUERY_PRODUCTS } from '../../utils/queries';
 // import { idbPromise } from '../../utils/helpers';
 // import spinner from '../../assets/spinner.gif';
-
 function Products() {
     //   const [state, dispatch] = useStoreContext();
 
@@ -47,7 +46,7 @@ function Products() {
     }
 
     return (
-        <div className="my-2">
+        <div className="productsdiv">
             <h2>Our Products:</h2>
             {
 
@@ -64,9 +63,13 @@ function Products() {
               price={product.price}
               description={product.description}
               reviews = {product.reviews}
+              quantity ={product.quantity}
+              
             />
+            
                                ))}
                         </div>)
+                        
                 )
             }
           </div>                         
