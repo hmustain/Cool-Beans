@@ -1,15 +1,15 @@
-const jwt = require('jsonwebtoken');
-const { AuthenticationError } = require('apollo-server-express');
-const { User, Product } = require('../models');
+const jwt = require("jsonwebtoken");
+const { AuthenticationError } = require("apollo-server-express");
+const { User } = require("../models");
 
-const secret = 'mysecretsshhhhh';
-const expiration = '2h';
+const secret = "mysecretsshhhhh";
+const expiration = "2h";
 
 const authMiddleware = async ({ req }) => {
   let token = req.body.token || req.query.token || req.headers.authorization;
 
   if (req.headers.authorization) {
-    token = token.split(' ').pop().trim();
+    token = token.split(" ").pop().trim();
   }
 
   if (!token) {
@@ -17,17 +17,24 @@ const authMiddleware = async ({ req }) => {
   }
 
   try {
-    const { data } = jwt.verify(token, secret, { maxAge: expiration });
+    const { data, exp } = jwt.verify(token, secret, { maxAge: expiration });
     const user = await User.findById(data._id);
 
     if (!user) {
-      throw new Error('User not found');
+      throw new Error("User not found");
     }
 
     req.user = user;
+
+    // Check if token has expired and generate a new one
+    const now = Math.floor(Date.now() / 1000);
+    if (exp - now < 60 * 60) { // if token expires in less than an hour
+      const newToken = signToken(user);
+      res.set('Authorization', newToken);
+    }
   } catch (err) {
     console.log(err);
-    throw new AuthenticationError('Invalid token');
+    throw new AuthenticationError("Invalid token");
   }
 
   return req;

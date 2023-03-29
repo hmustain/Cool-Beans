@@ -60,10 +60,27 @@ console.log(item,"here");
             return <span> <br></br>Rating: {review.rating} </span>
         })}</div>
       </div>
+      <span>{displayAverageRating(reviews)}</span>
       <button >Add to cart</button>
     </div>
     </div>
   );
 }
+
+function displayAverageRating(reviews) {
+  if (!reviews || !reviews.length) {
+    return null;
+  }
+
+  const totalRating = reviews.reduce((acc, curr) => acc + curr.rating, 0);
+  const averageRating = totalRating / reviews.length;
+
+  return (
+    <div>
+      {averageRating.toFixed(1)} ({reviews.length})
+    </div>
+  );
+}
+
 
 export default ProductItem;
