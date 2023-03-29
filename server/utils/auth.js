@@ -17,7 +17,7 @@ const authMiddleware = async ({ req }) => {
   }
 
   try {
-    const { data } = jwt.verify(token, secret, { maxAge: expiration });
+    const { data, exp } = jwt.verify(token, secret, { maxAge: expiration });
     const user = await User.findById(data._id);
 
     if (!user) {
@@ -25,6 +25,13 @@ const authMiddleware = async ({ req }) => {
     }
 
     req.user = user;
+
+    // Check if token has expired and generate a new one
+    const now = Math.floor(Date.now() / 1000);
+    if (exp - now < 60 * 60) { // if token expires in less than an hour
+      const newToken = signToken(user);
+      res.set('Authorization', newToken);
+    }
   } catch (err) {
     console.log(err);
     throw new AuthenticationError("Invalid token");
