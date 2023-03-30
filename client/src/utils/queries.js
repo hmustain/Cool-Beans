@@ -78,3 +78,38 @@ export const QUERY_USER = gql`
     }
   }
 `;
+export const QUERY_ME = gql`
+{
+me {
+firstName
+lastName
+role
+email
+password
+}
+}`;
+export const QUERY_PRODUCT = gql`
+query Product($id: ID!) {
+product(_id: $id) {
+_id
+name
+description
+image
+quantity
+price
+category {
+    _id
+    name
+         }
+reviews  {
+user {
+  _id
+  firstName
+  lastName
+  email
+  password
+  role
+     }
+         }
+  }
+}`
