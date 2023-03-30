@@ -64,7 +64,7 @@ function ProductItem(item) {
         <br />
         {displayAverageRating(reviews)}
         <br />
-        <Link to={`/product/${_id}/reviews`}>See All Reviews</Link>
+        <Link to={`/product/${_id}/reviews`} productId={_id}>See All Reviews</Link>
       </div>
       {/* <button onClick={addToCart} >Add to cart</button> */}
     </div>

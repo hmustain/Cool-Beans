@@ -1,34 +1,38 @@
 import React, { useState, useEffect } from "react";
 import "./style.css";
 import { Card } from "react-bootstrap";
+import { useParams } from "react-router-dom";
 
-function ProductReviews({ productId }) {
+function ProductReviews() {
+  const { productId } = useParams();
   const [reviews, setReviews] = useState([]);
 
   useEffect(() => {
     async function fetchReviews() {
+      console.log("productId", productId);
       const response = await fetch("http://localhost:3001/graphql", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           query: `
-            query ProductReviews($productId: String!) {
-              product(id: $productId) {
-                reviews {
-                  createdAt
-                  rating
-                  comment
-                  user {
-                    firstName
-                    lastName
-                  }
+          query ProductReviews($productId: ID!) {
+            product(_id: $productId) {
+              reviews {
+                createdAt
+                rating
+                comment
+                user {
+                  firstName
+                  lastName
                 }
               }
             }
-          `,
+          }
+        `,
           variables: { productId },
         }),
       });
+      console.log("response:", response)
       const reviewsData = await response.json();
       console.log("reviewsData:", reviewsData);
       setReviews(reviewsData.data.product.reviews);
