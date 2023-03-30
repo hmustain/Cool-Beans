@@ -1,18 +1,23 @@
 import React, { useState, useEffect } from "react";
-import "./style.css"
-import { Card } from 'react-bootstrap';
+import "./style.css";
+import { Card } from "react-bootstrap";
+import { useParams } from "react-router-dom";
+import Nav from "../NavTabs";
 
 function ProductReviews() {
+  const { productId } = useParams();
   const [reviews, setReviews] = useState([]);
 
   useEffect(() => {
     async function fetchReviews() {
+      console.log("productId", productId);
       const response = await fetch("http://localhost:3001/graphql", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           query: `
-            query {
+          query ProductReviews($productId: ID!) {
+            product(_id: $productId) {
               reviews {
                 createdAt
                 rating
@@ -23,19 +28,23 @@ function ProductReviews() {
                 }
               }
             }
-          `
-        })
+          }
+        `,
+          variables: { productId },
+        }),
       });
+      console.log("response:", response)
       const reviewsData = await response.json();
-      console.log('reviewsData:', reviewsData);
-      setReviews(reviewsData.data.reviews);
+      console.log("reviewsData:", reviewsData);
+      setReviews(reviewsData.data.product.reviews);
     }
     fetchReviews();
-  }, []);
+  }, [productId]);
 
   return (
+    <>
+    <Nav />
     <div className="review-container">
-      {/* <h1>Reviews</h1> */}
       {reviews.map((review) => (
         <Card key={review.id} className="my-3 col-sm-12 col-md-10 col-lg-8">
           <Card.Body>
@@ -51,24 +60,26 @@ function ProductReviews() {
         </Card>
       ))}
     </div>
+    </>
   );
 }
 
 function renderStars(rating) {
-    const filledStars = Array.from({ length: rating }, (_, i) => (
-      <span key={i} className="filled-star">&#9733;</span>
-    ));
-  
-    const unfilledStars = Array.from({ length: 5 - rating }, (_, i) => (
-      <span key={i} className="unfilled-star">&#9734;</span>
-    ));
-  
-    const stars = [...filledStars, ...unfilledStars];
-  
-    return <div>{stars}</div>;
-  }
-  
+  const filledStars = Array.from({ length: rating }, (_, i) => (
+    <span key={i} className="filled-star">
+      &#9733;
+    </span>
+  ));
 
+  const unfilledStars = Array.from({ length: 5 - rating }, (_, i) => (
+    <span key={i} className="unfilled-star">
+      &#9734;
+    </span>
+  ));
 
+  const stars = [...filledStars, ...unfilledStars];
+
+  return <div>{stars}</div>;
+}
 
 export default ProductReviews;
