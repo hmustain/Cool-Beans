@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import "./style.css";
 import { Card } from "react-bootstrap";
 import { useParams } from "react-router-dom";
+import Nav from "../NavTabs";
 
 function ProductReviews() {
   const { productId } = useParams();
@@ -41,6 +42,8 @@ function ProductReviews() {
   }, [productId]);
 
   return (
+    <>
+    <Nav />
     <div className="review-container">
       {reviews.map((review) => (
         <Card key={review.id} className="my-3 col-sm-12 col-md-10 col-lg-8">
@@ -57,6 +60,7 @@ function ProductReviews() {
         </Card>
       ))}
     </div>
+    </>
   );
 }
 
