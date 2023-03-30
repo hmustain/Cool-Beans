@@ -5,28 +5,88 @@ import "../styles/header.css";
 
 function Nav(props) {
   const { currentPage, handlePageChange } = props;
-  //   function showNavigation() {
-  //     if (Auth.loggedIn()) {
-  //       return (
-  //         <ul className="flex-row">
-  //           <li className="mx-1">
-  //             {/* this is not using the Link component to logout or user and then refresh the application to the start */}
-  //             <a href="/" onClick={() => Auth.logout()}>
-  //               Logout
-  //             </a>
-  //           </li>
-  //         </ul>
-  //       );
-  //     } else {
-  //       return (
-  //         <ul className="flex-row">
-  //           <li className="mx-1">
-  //             <Link to="/signup">Signup</Link>
-  //           </li>
-  //         </ul>
-  //       );
-  //     }
-  //   }
+    function showNavigation() {
+      if (Auth.loggedIn()) {
+        return (
+          <ul className="navbar-nav mx-auto">
+          <li className="nav-item">
+            <Link to="/ShopAll">
+              <p  className={
+                currentPage === "/ShopAll" ? "nav-link active" : "nav-link"
+              }>Shop All</p>
+            </Link>
+          </li>
+          {/* <li className="nav-item">
+        <a className="nav-link" href="#about" onClick={() => handlePageChange('About')}>About</a>
+      </li> */}
+          <li className="nav-item">
+            <Link to="/Contact">
+            <p
+              href="/Contact"
+              className={
+                currentPage === "/Contact" ? "nav-link active" : "nav-link"
+              }
+
+            >
+              Contact Us
+            </p>
+            </Link>
+          </li>
+           
+             <li className="nav-item">
+              {/* this is not using the Link component to logout or user and then refresh the application to the start */}
+              <Link>
+              <p className="nav-link"
+                href="/logout" onClick={() => Auth.logout()}>
+                Logout
+              </p>
+              </Link>
+            </li>
+           
+          
+        </ul>
+       
+        );
+      } else {
+        return (
+          <ul className="navbar-nav mx-auto">
+          <li className="nav-item">
+            <Link to="/ShopAll">
+              <p  className={
+                currentPage === "/ShopAll" ? "nav-link active" : "nav-link"
+              }>Shop All</p>
+            </Link>
+          </li>
+          {/* <li className="nav-item">
+        <a className="nav-link" href="#about" onClick={() => handlePageChange('About')}>About</a>
+      </li> */}
+          <li className="nav-item">
+            <Link to="/Contact">
+            <p
+              href="/Contact"
+              className={
+                currentPage === "/Contact" ? "nav-link active" : "nav-link"
+              }
+
+            >
+              Contact Us
+            </p>
+            </Link>
+          </li>
+          <li className="nav-item">
+          <Link to="/Signup">
+            <p  className={
+                currentPage === "/Signup" ? "nav-link active" : "nav-link"
+              }>
+              Join Here
+            </p>
+            </Link>
+          </li>
+          
+        </ul>
+        );
+      }
+    }
 
   return (
     <>
@@ -66,40 +126,7 @@ function Nav(props) {
             </button>
 
             <div className="collapse navbar-collapse" id="navbarNav">
-              <ul className="navbar-nav mx-auto">
-                <li className="nav-item">
-                  <Link to="/ShopAll">
-                    <p  className={
-                      currentPage === "/ShopAll" ? "nav-link active" : "nav-link"
-                    }>Shop All</p>
-                  </Link>
-                </li>
-                {/* <li className="nav-item">
-              <a className="nav-link" href="#about" onClick={() => handlePageChange('About')}>About</a>
-            </li> */}
-                <li className="nav-item">
-                  <Link to="/Contact">
-                  <p
-                    href="/Contact"
-                    className={
-                      currentPage === "/Contact" ? "nav-link active" : "nav-link"
-                    }
-
-                  >
-                    Contact Us
-                  </p>
-                  </Link>
-                </li>
-                <li className="nav-item">
-                <Link to="/Signup">
-                  <p  className={
-                      currentPage === "/Signup" ? "nav-link active" : "nav-link"
-                    }>
-                    Join Here
-                  </p>
-                  </Link>
-                </li>
-              </ul>
+             {showNavigation()}
             </div>
           </div>
         </nav>
