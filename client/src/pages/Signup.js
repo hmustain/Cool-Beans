@@ -58,25 +58,28 @@ return (
   </div>
   <form className="card-form" onSubmit={handleFormSubmit}>
     <div className="input">
-      <input type="text" className="input-field" id="firstname" onChange={handleChange} required />
+      <input  className="input-field" id="firstName" name="firstName"
+            type="firstName" onChange={handleChange} required />
       <label className="input-label">Firstname:</label><br></br>
     </div>
 	<div className="input">
-      <input type="text" className="input-field" id="lastname" onChange={handleChange} required />
+      <input  className="input-field" name="lastName"
+            type="lastName"
+            id="lastName" onChange={handleChange} required />
       <label className="input-label">Lastname:</label><br></br>
     </div>
     <div className="input">
-      <input type="email" className="input-field" id="email" onChange={handleChange}  required />
+      <input type="email" className="input-field" id="email" name="email" onChange={handleChange}  required />
       <label className="input-label">Create Email:</label><br></br>
     </div>
     <div className="input">
-      <input type="password" className="input-field" id="password" onChange={validatePassword} required />
+      <input type="password" className="input-field" id="pwd" name="password" onChange={handleChange} required />
       <label className="input-label">Create Password:</label><br></br>
     </div>
-    <div className="input">
-      <input type="password" className="input-field" id="confirm-password" onChange={validatePassword} required />
+    {/* <div className="input">
+      <input type="password" className="input-field" id="confirm-password" name="password" onChange={validatePassword} required />
       <label className="input-label">Confirm Password:</label><br></br>
-    </div>
+    </div> */}
 	<div id="errorspan"></div>
     <div className="action">
       <button className="action-button"  type="submit">Signup</button>

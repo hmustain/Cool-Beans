@@ -102,9 +102,10 @@ const resolvers = {
 
   Mutation: {
     addUser: async (parent, args) => {
-      const newUser = await User.create(args);
-      const token = signToken(newUser);
-      return { token, user: newUser };
+      const user = await User.create(args);
+      const token = signToken(user);
+
+      return { token, user };
     },
     addOrder: async (parent, { products }, context) => {
       if (context.user) {
