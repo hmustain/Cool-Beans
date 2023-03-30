@@ -87,7 +87,33 @@ function Nav(props) {
         );
       }
     }
-
+function showprofile(){
+  if (Auth.loggedIn()) {
+    return(
+      <div className="icons">
+      <i className="bi bi-cart4"></i>
+           <Link to="/profile">
+           <div id="icons" href="/Login">
+            <span id="icons"
+            href="/profile"   className="bi bi-person-circle"></span>
+          </div>
+              </Link>
+              </div>
+    );
+}else {
+  return(
+    <div className="icons">
+    <i className="bi bi-cart4"></i>
+         <Link to="/login">
+         <div id="icons" href="/Login">
+          <span id="icons"
+          href="/Login"   className="bi bi-person-circle"></span>
+        </div>
+            </Link>
+            </div>
+  )
+}
+}
   return (
     <>
       <div className="subscribe">
@@ -95,18 +121,12 @@ function Nav(props) {
           <a>Join </a> and Save!
         </p>
       </div>
-      <div className="icons">
-      <i className="bi bi-cart4"></i>
-         <Link to="/login">
-         <div id="icons" href="/Login">
-          <span id="icons"
-          href="/Login"   className="bi bi-person-circle"></span>
-        </div>
-            </Link>
+      
+      {showprofile()}
         
         
         
-      </div>
+      
       <div className="logo">
         <img className="cool-beans"></img>
       </div>
