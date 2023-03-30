@@ -72,7 +72,7 @@ function ProductItem(item) {
     
   );
 }
-function displayAverageRating(reviews) {
+export function displayAverageRating(reviews) {
   if (!reviews || !reviews.length) {
     return null;
   }
