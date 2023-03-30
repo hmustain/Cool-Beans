@@ -3,6 +3,7 @@ import "./style.css";
 import { Card } from "react-bootstrap";
 import { useParams } from "react-router-dom";
 import Nav from "../NavTabs";
+import AddReview from "../AddReview";
 import { displayAverageRating } from "../ProductItem";
 // import ProductItem from "../ProductItem";
 
