@@ -1,7 +1,36 @@
 import '../styles/Signup.css';
-import React from 'react';
+import { useMutation } from '@apollo/client';
+import React,{ useState }  from 'react';
 import Nav from '../components/NavTabs';
+import Auth from '../utils/auth';
+import { ADD_USER } from '../utils/mutations';
 function Signup(props){
+  const [formState, setFormState] = useState({ email: '', password: '' });
+  const [addUser] = useMutation(ADD_USER);
+
+  const handleFormSubmit = async (event) => {
+    event.preventDefault();
+    const mutationResponse = await addUser({
+      variables: {
+        email: formState.email,
+        password: formState.password,
+        firstName: formState.firstName,
+        lastName: formState.lastName,
+      },
+    });
+    const token = mutationResponse.data.addUser.token;
+    Auth.login(token);
+  };
+
+  const handleChange = (event) => {
+    const { name, value } = event.target;
+    setFormState({
+      ...formState,
+      [name]: value,
+    });
+  };
+
+  
     function validatePassword() {
         var password = document.getElementById("password").value;
         var confirmPassword = document.getElementById("confirm-password").value;
@@ -14,6 +43,9 @@ function Signup(props){
         return true;
         
     }
+
+
+
 return (
 <div className="signupcontainer">
 	<Nav/>
@@ -24,30 +56,30 @@ return (
       <small>Let us create your account</small>
     </h2>
   </div>
-  <form className="card-form" onSubmit={Signup}>
+  <form className="card-form" onSubmit={handleFormSubmit}>
     <div className="input">
-      <input type="text" className="input-field" id="firstname" required />
+      <input type="text" className="input-field" id="firstname" onChange={handleChange} required />
       <label className="input-label">Firstname:</label><br></br>
     </div>
 	<div className="input">
-      <input type="text" className="input-field" id="lastname" required />
+      <input type="text" className="input-field" id="lastname" onChange={handleChange} required />
       <label className="input-label">Lastname:</label><br></br>
     </div>
     <div className="input">
-      <input type="email" className="input-field" id="email" required />
+      <input type="email" className="input-field" id="email" onChange={handleChange}  required />
       <label className="input-label">Create Email:</label><br></br>
     </div>
     <div className="input">
-      <input type="password" className="input-field" id="password" required />
+      <input type="password" className="input-field" id="password" onChange={validatePassword} required />
       <label className="input-label">Create Password:</label><br></br>
     </div>
     <div className="input">
-      <input type="password" className="input-field" id="confirm-password" required />
+      <input type="password" className="input-field" id="confirm-password" onChange={validatePassword} required />
       <label className="input-label">Confirm Password:</label><br></br>
     </div>
 	<div id="errorspan"></div>
     <div className="action">
-      <button className="action-button" onClick={validatePassword}>Signup</button>
+      <button className="action-button"  type="submit">Signup</button>
     </div>
   </form>
   <div className="card-info">
