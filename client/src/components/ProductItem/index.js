@@ -52,24 +52,27 @@ function ProductItem(item) {
   // }
 
   return (
-    <div className="card px-1 py-1 col-sm-12 col-md-6 col-lg-4">
-      <Link to={`/Product/${_id}`}>
-        <img alt={name} src={`/images/${image}`} />
-        <p>{name}</p>
-      </Link>
-      <div>
+    <div className="product pt-5 col-xs-12 col-sm-8 col-md-8 col-lg-3 ">
+      <div className="product-detail">
+        <Link to={`/Product/${_id}`}>
+          <img alt={name} src={`/images/${image}`} />
+          <p>{name}</p>
+        </Link>
         {/* <div>{quantity} {pluralize("item", quantity)} in stock</div> */}
         <span>${price}</span>
         <br />
-        <span>{description}</span>
-        <br />
-        {displayAverageRating(reviews)}
-        <br />
-        <Link to={`/product/${_id}/reviews`} productId={_id}>See All Reviews</Link>
+
+        <div className="add-cart">
+          <button className="btn btn-dark w-50 mx-auto">Add To Cart</button>
+          <Link to={`/product/${_id}/reviews`} productId={_id}>
+            See All Reviews <br />
+            {displayAverageRating(reviews)}
+            <br />
+          </Link>
+        </div>
       </div>
       {/* <button onClick={addToCart} >Add to cart</button> */}
     </div>
-    
   );
 }
 export function displayAverageRating(reviews) {
