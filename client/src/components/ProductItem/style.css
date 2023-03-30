@@ -40,6 +40,8 @@
 .partially-filled-star {
   background: linear-gradient(to right, gold 50%, lightgray 50%);
   -webkit-background-clip: text;
+  -moz-background-clip: text;
+  background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
