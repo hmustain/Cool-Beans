@@ -1,8 +1,21 @@
-/* .card {
-    border: 1px solid #ddd;
-    border-radius: 5px;
+.product {
+    border: 2px solid #ddd;
+    border-radius: 30px;
     box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
-    margin: 2rem;
-    width: 90%; 
-  } */
+    margin: 10px;
+    padding: 50px;
+    display: flex;
+    flex-direction: row;
+    width: auto;
+  } 
+
+  .product-detail {
+    padding: 1rem;
+    font-weight: 600;
+    text-decoration: none;
+  }
+
   
+  .product-detail a {
+    text-decoration: none;
+  }
