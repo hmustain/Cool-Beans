@@ -2,7 +2,7 @@ import React from "react";
 import Products from "../components/Products";
 import Nav from "../components/NavTabs";
 // import CategoryMenu from "../components/CategoryMenu";
-// import Cart from "../components/Cart";
+import Cart from "../components/Cart";
 import "../styles/ShopAll.css";
 const ShopAll = () => {
   return (
@@ -12,7 +12,7 @@ const ShopAll = () => {
       <div>
         <Products />
       </div>
-      {/* <Cart /> */}
+      <Cart />
     </div>
   );
 };
