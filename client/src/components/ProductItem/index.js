@@ -9,48 +9,49 @@ import { renderStars } from "../ProductReview";
 
 function ProductItem(item) {
   console.log(item, "here");
-  // const [state, dispatch] = useStoreContext();
+  const [state, dispatch] = useStoreContext();
   const {
     image,
     description,
     name,
     _id,
     price,
-    // quantity = 1,
-    // category = "coffee",
+    quantity = 1,
+    category = "coffee",
     reviews,
   } = item;
-  console.log("image", image);
-  console.log("description", description);
-  console.log("name", name);
-  console.log("_id", _id);
-  console.log("price", price);
+  // console.log("image", image);
+  // console.log("description", description);
+  // console.log("name", name);
+  // console.log("_id", _id);
+  // console.log("price", price);
   // console.log('quantity', quantity);
   // console.log('category', category);
-  console.log("reviews", reviews);
+  // console.log("reviews", reviews);
 
-  // const { cart } = state
+  const { cart } = state
+  console.log('page loading:', state)
 
-  // const addToCart = () => {
-  //   const itemInCart = cart.find((cartItem) => cartItem._id === _id)
-  //   if (itemInCart) {
-  //     dispatch({
-  //       type: UPDATE_CART_QUANTITY,
-  //       _id: _id,
-  //       purchaseQuantity: parseInt(itemInCart.purchaseQuantity) + 1
-  //     });
-  //     idbPromise('cart', 'put', {
-  //       ...itemInCart,
-  //       purchaseQuantity: parseInt(itemInCart.purchaseQuantity) + 1
-  //     });
-  //   } else {
-  //     dispatch({
-  //       type: ADD_TO_CART,
-  //       product: { ...item, purchaseQuantity: 1 }
-  //     });
-  //     idbPromise('cart', 'put', { ...item, purchaseQuantity: 1 });
-  //   }
-  // }
+  const addToCart = () => {
+    const itemInCart = cart.find((cartItem) => cartItem._id === _id)
+    if (itemInCart) {
+      dispatch({
+        type: UPDATE_CART_QUANTITY,
+        _id: _id,
+        purchaseQuantity: parseInt(itemInCart.purchaseQuantity) + 1
+      });
+      idbPromise('cart', 'put', {
+        ...itemInCart,
+        purchaseQuantity: parseInt(itemInCart.purchaseQuantity) + 1
+      });
+    } else {
+      dispatch({
+        type: ADD_TO_CART,
+        product: { ...item, purchaseQuantity: 1 }
+      });
+      idbPromise('cart', 'put', { ...item, purchaseQuantity: 1 });
+    }
+  }
 
   return (
     <div className="product pt-5 col-xs-12 col-sm-8 col-md-8 col-lg-3 ">
@@ -64,7 +65,7 @@ function ProductItem(item) {
         <br />
 
         <div className="add-cart">
-          <button className="btn btn-dark w-50 mx-auto">Add To Cart</button>
+          <button onClick={addToCart} className="btn btn-dark w-50 mx-auto">Add To Cart</button>
           <Link to={`/product/${_id}/reviews`} productId={_id}>
             See All Reviews <br />
             {displayAverageRating(reviews)}

@@ -35,6 +35,7 @@ export const reducer = (state, action) => {
     // Returns a copy of state, sets the cartOpen to true and maps through the items in the cart.
     // If the item's `id` matches the `id` that was provided in the action.payload, we update the purchase quantity.
     case UPDATE_CART_QUANTITY:
+      return state
       return {
         ...state,
         cartOpen: true,
@@ -49,6 +50,7 @@ export const reducer = (state, action) => {
     // First we iterate through each item in the cart and check to see if the `product._id` matches the `action._id`
     // If so, we remove it from our cart and set the updated state to a variable called `newState`
     case REMOVE_FROM_CART:
+      return state
       let newState = state.cart.filter((product) => {
         return product._id !== action._id;
       });

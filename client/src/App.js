@@ -1,5 +1,6 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { StoreProvider } from "./utils/GlobalState";
 
 import {
   ApolloClient,
@@ -40,6 +41,7 @@ function App() {
     <ApolloProvider client={client}>
       <Router>
         <div>
+          <StoreProvider>
           <Routes>
             <Route path="/" element={<MainContainer />} />
             <Route path="/ShopAll" element={<ShopAll />} />
@@ -53,6 +55,7 @@ function App() {
             <Route path="/product/:id" element={<Detail />} />
             <Route path="/profile" element={<Profile />} />
           </Routes>
+          </StoreProvider>
         </div>
       </Router>
     </ApolloProvider>
