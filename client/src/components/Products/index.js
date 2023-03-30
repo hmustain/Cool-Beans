@@ -43,13 +43,13 @@ function Products() {
 //   }
 
   return (
-    <div className="my-2">
+    <div className="my-2 container">
       <h2>Our Products:</h2>
       {loading ? (
         <div>Data is loading</div>
       ) : (
         data?.products.length && (
-          <div className="flex-row">
+          <div className="row">
             {data.products.map((product) => (
               <ProductItem
                 key={product._id}

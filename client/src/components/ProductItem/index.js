@@ -4,6 +4,7 @@ import { pluralize } from "../../utils/helpers";
 import { useStoreContext } from "../../utils/GlobalState";
 import { ADD_TO_CART, UPDATE_CART_QUANTITY } from "../../utils/actions";
 import { idbPromise } from "../../utils/helpers";
+import "./style.css";
 
 function ProductItem(item) {
   console.log(item, "here");
@@ -51,7 +52,7 @@ function ProductItem(item) {
   // }
 
   return (
-    <div className="card px-1 py-1">
+    <div className="card px-1 py-1 col-sm-12 col-md-6 col-lg-4">
       <Link to={`/Product/${_id}`}>
         <img alt={name} src={`/images/${image}`} />
         <p>{name}</p>
