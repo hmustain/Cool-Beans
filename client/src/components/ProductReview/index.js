@@ -11,6 +11,30 @@ function ProductReviews() {
   const { productId } = useParams();
   const [reviews, setReviews] = useState([]);
   const [product, setProduct] = useState(null);
+  const [user, setUser] = useState(null);
+
+  useEffect(() => {
+    async function fetchUser() {
+      // Fetch the authenticated user's ID and set it in state
+      const response = await fetch("http://localhost:3001/graphql", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        credentials: "include",
+        body: JSON.stringify({
+          query: `
+            query Me {
+              me {
+                _id
+              }
+            }
+          `,
+        }),
+      });
+      const { data } = await response.json();
+      setUser(data.me._id);
+    }
+    fetchUser();
+  }, []);
 
   useEffect(() => {
     async function fetchProductAndReviews() {
@@ -58,6 +82,38 @@ function ProductReviews() {
     return <div>Loading product...</div>;
   }
 
+  const handleAddReview = async (review) => {
+    const response = await fetch("http://localhost:3001/graphql", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      credentials: "include",
+      body: JSON.stringify({
+        query: `
+          mutation AddReview($productId: ID!, $rating: Int!, $comment: String!) {
+            addReview(productId: $productId, rating: $rating, comment: $comment) {
+              _id
+              createdAt
+              rating
+              comment
+              user {
+                _id
+                email
+                firstName
+                lastName
+              }
+            }
+          }
+        `,
+        variables: {
+          productId,
+          rating: review.rating,
+          comment: review.comment,
+        },
+      }),
+    });
+    const data = await response.json();
+    setReviews([...reviews, data.data.addReview]);
+  };
   return (
     <>
       <Nav />
@@ -74,22 +130,27 @@ function ProductReviews() {
               {displayAverageRating(product?.reviews)}
             </div>
           </div>
-        </div>
-        <div className="reviews-container">
-          {reviews.map((review) => (
-            <Card key={review._id} className="my-3">
-              <Card.Body>
-                <Card.Title className="mb-2 font-weight-bold">
-                  {`${review.user.firstName} ${review.user.lastName}`}
-                </Card.Title>
-                <Card.Subtitle className="mb-2 text-muted">
-                  {new Date(review.createdAt).toLocaleDateString()}
-                </Card.Subtitle>
-                <div>{renderStars(review.rating)}</div>
-                <Card.Text className="mt-2">{review.comment}</Card.Text>
-              </Card.Body>
-            </Card>
-          ))}
+          <div className="reviews-container">
+            {reviews.map((review) => (
+              <Card key={review._id} className="my-3">
+                <Card.Body>
+                  <Card.Title className="mb-2 font-weight-bold">
+                    {`${review.user.firstName} ${review.user.lastName}`}
+                  </Card.Title>
+                  <Card.Subtitle className="mb-2 text-muted">
+                    {new Date(review.createdAt).toLocaleDateString()}
+                  </Card.Subtitle>
+                  <div>{renderStars(review.rating)}</div>
+                  <Card.Text className="mt-2">{review.comment}</Card.Text>
+                </Card.Body>
+              </Card>
+            ))}
+            <AddReview
+              productId={productId}
+              userId={user}
+              onSubmit={handleAddReview}
+            />
+          </div>
         </div>
       </div>
     </>

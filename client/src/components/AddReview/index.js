@@ -1,50 +1,41 @@
 import React, { useState } from "react";
-import { Form, Button } from "react-bootstrap";
 
-function AddReview({ productId, onSubmit }) {
-  const [rating, setRating] = useState(0);
+function AddReview({ productId, userId, onSubmit }) {
+  const [rating, setRating] = useState(1);
   const [comment, setComment] = useState("");
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    onSubmit({ rating, comment });
-    setRating(0);
+    await onSubmit({ productId, userId, rating, comment });
+    setRating(1);
     setComment("");
   };
 
   return (
-    <div>
-      <h2>Add a Review</h2>
-      <Form onSubmit={handleSubmit}>
-        <Form.Group>
-          <Form.Label>Rating:</Form.Label>
-          <Form.Control
-            as="select"
-            value={rating}
-            onChange={(event) => setRating(parseInt(event.target.value))}
-          >
-            <option value={0}>Select a rating...</option>
-            <option value={1}>1 Star</option>
-            <option value={2}>2 Stars</option>
-            <option value={3}>3 Stars</option>
-            <option value={4}>4 Stars</option>
-            <option value={5}>5 Stars</option>
-          </Form.Control>
-        </Form.Group>
-        <Form.Group>
-          <Form.Label>Comment:</Form.Label>
-          <Form.Control
-            as="textarea"
-            rows={3}
-            value={comment}
-            onChange={(event) => setComment(event.target.value)}
-          />
-        </Form.Group>
-        <Button type="submit" disabled={!rating}>
-          Submit Review
-        </Button>
-      </Form>
-    </div>
+    <form onSubmit={handleSubmit}>
+      <h4>Add Review</h4>
+      <div>
+        <label htmlFor="rating">Rating:</label>
+        <select id="rating" value={rating} onChange={(e) => setRating(Number(e.target.value))}>
+          <option value="1">1 star</option>
+          <option value="2">2 stars</option>
+          <option value="3">3 stars</option>
+          <option value="4">4 stars</option>
+          <option value="5">5 stars</option>
+        </select>
+      </div>
+      <div>
+        <label htmlFor="comment">Comment:</label>
+        <textarea
+          id="comment"
+          value={comment}
+          onChange={(e) => setComment(e.target.value)}
+          rows="5"
+          cols="50"
+        />
+      </div>
+      <button type="submit">Submit</button>
+    </form>
   );
 }
 
