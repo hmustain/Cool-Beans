@@ -1,16 +1,14 @@
 .product {
-    border: 2px solid #ddd;
     border-radius: 30px;
-    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
-    margin: 10px;
-    padding: 50px;
+    text-align: center;
+    margin: 5px;
     display: flex;
     flex-direction: row;
     width: auto;
   } 
 
-  .product-detail {
-    padding: 1rem;
+  .product-detail p {
+    padding-top: 10px;
     font-weight: 600;
     text-decoration: none;
   }
@@ -18,4 +16,22 @@
   
   .product-detail a {
     text-decoration: none;
+    color: black;
   }
+
+.product
+
+  .add-cart {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+  }
+
+  
+  .product-detail img {
+    border-radius: 30px;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+  }
+
+ 
+ 
