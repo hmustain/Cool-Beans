@@ -15,6 +15,7 @@ import Contact from "./pages/Contact";
 import ProductReviews from "./components/ProductReview";
 import ShopAll from "./pages/ShopAll";
 import Detail from "./pages/Detail";
+import Profile from "./pages/Profile";
 const httpLink = createHttpLink({
   uri: "/graphql",
 });
@@ -50,6 +51,7 @@ function App() {
               element={<ProductReviews />}
             />
             <Route path="/product/:id" element={<Detail />} />
+            <Route path="/profile" element={<Profile />} />
           </Routes>
         </div>
       </Router>
