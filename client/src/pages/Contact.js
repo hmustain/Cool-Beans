@@ -1,13 +1,15 @@
 import React from "react";
 import { useForm, ValidationError } from "@formspree/react";
 import "../styles/form.css";
-
+import Nav from "../components/NavTabs";
 function ContactForm() {
   const [state, handleSubmit] = useForm("xayzpyor");
   if (state.succeeded) {
     return <h1 className="thanks">Thanks for your feedback!</h1>;
   }
   return (
+    <div className="ContactContainer">
+      <Nav/>
     <section className="contact-page">
       <div className="col-md-5 m-2 ">
         <ul className="list-unstyled ">
@@ -96,6 +98,7 @@ function ContactForm() {
         </form>
       </div>
     </section>
+    </div>
   );
 }
 

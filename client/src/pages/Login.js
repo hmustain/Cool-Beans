@@ -4,6 +4,8 @@ import { Link } from "react-router-dom";
 import { LOGIN } from "../utils/mutations.js";
 import Auth from "../utils/auth";
 import '../styles/Login.css'
+import Nav from "../components/NavTabs.js";
+
 
 function Login(props) {
   const [formState, setFormState] = useState({ email: "", password: "" });
@@ -32,7 +34,8 @@ function Login(props) {
 
   return (
   
-    <div className="container">
+    <div className="Logincontainer">
+      <Nav/>
 <div className="card">
   <div className="card-image">	
     <h2 className="card-heading">
@@ -51,7 +54,7 @@ function Login(props) {
     </div>
     {error ? (
           <div>
-            <p className="error-text">The provided credentials are incorrect</p>
+            <p className="error-text" style="color:red;">The provided credentials are incorrect</p>
           </div>
         ) : null}
     <div className="action">
@@ -59,7 +62,7 @@ function Login(props) {
     </div>
   </form>
   <div className="card-info">
-    <p>Dont have an account? <a href="#Signup">Signup Here</a></p>
+    <p>Dont have an account? <a href="/Signup">Signup Here</a></p>
   </div> 
 </div>
 </div>

@@ -7,24 +7,24 @@ import ShopAll from "../pages/ShopAll"
 export default function PortfolioContainer() {
   const [currentPage, setCurrentPage] = useState("Home");
 
-  const renderPage = () => {
-    if (currentPage === "ShopAll") {
-      return <ShopAll />;
-    }
-    if (currentPage === "Signup") {
-      return <Signup />;
-    }
-    if (currentPage === "Contact") {
-      return <Contact />;
-    }
-    // if (currentPage === "Shopping Cart") {
-    //   return <Cart />;
-    // }
-    if (currentPage === "Login") {
-      return <Login />;
-    }
-    // return <Contact />;
-  };
+  // const renderPage = () => {
+  //   if (currentPage === "ShopAll") {
+  //     return <ShopAll />;
+  //   }
+  //   if (currentPage === "Signup") {
+  //     return <Signup />;
+  //   }
+  //   if (currentPage === "Contact") {
+  //     return <Contact />;
+  //   }
+  //   // if (currentPage === "Shopping Cart") {
+  //   //   return <Cart />;
+  //   // }
+  //   if (currentPage === "Login") {
+  //     return <Login />;
+  //   }
+  //   // return <Contact />;
+  // };
 
   const handlePageChange = (page) => setCurrentPage(page);
 
@@ -35,7 +35,7 @@ export default function PortfolioContainer() {
           currentPage={currentPage}
           handlePageChange={handlePageChange}
         />
-        {renderPage()}
+        {/* {renderPage()} */}
       </div>
       <div>{/* <Footer /> */}</div>
     </div>

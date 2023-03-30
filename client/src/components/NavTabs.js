@@ -36,15 +36,16 @@ function Nav(props) {
         </p>
       </div>
       <div className="icons">
-        <i className="bi bi-cart4"></i>
-        <div
-          id="icons"
-          href="#Login"
-          onClick={() => handlePageChange("Login")}
-          className={currentPage === "Login" ? "nav-link active" : "nav-link"}
-        >
-          <span className="bi bi-person-circle"></span>
+      <i className="bi bi-cart4"></i>
+         <Link to="/login">
+         <div id="icons" href="/Login">
+          <span id="icons"
+          href="/Login"   className="bi bi-person-circle"></span>
         </div>
+            </Link>
+        
+        
+        
       </div>
       <div className="logo">
         <img className="cool-beans"></img>
@@ -67,40 +68,36 @@ function Nav(props) {
             <div className="collapse navbar-collapse" id="navbarNav">
               <ul className="navbar-nav mx-auto">
                 <li className="nav-item">
-                  <a
-                    href="#ShopAll"
-                    onClick={() => handlePageChange("ShopAll")}
-                    className={
-                      currentPage === "ShopAll" ? "nav-link active" : "nav-link"
-                    }
-                  >
-                    Shop All
-                  </a>
+                  <Link to="/ShopAll">
+                    <p  className={
+                      currentPage === "/ShopAll" ? "nav-link active" : "nav-link"
+                    }>Shop All</p>
+                  </Link>
                 </li>
                 {/* <li className="nav-item">
               <a className="nav-link" href="#about" onClick={() => handlePageChange('About')}>About</a>
             </li> */}
                 <li className="nav-item">
-                  <a
-                    href="#Contact"
-                    onClick={() => handlePageChange("Contact")}
+                  <Link to="/Contact">
+                  <p
+                    href="/Contact"
                     className={
-                      currentPage === "Contact" ? "nav-link active" : "nav-link"
+                      currentPage === "/Contact" ? "nav-link active" : "nav-link"
                     }
+
                   >
                     Contact Us
-                  </a>
+                  </p>
+                  </Link>
                 </li>
                 <li className="nav-item">
-                  <a
-                    href="#Signup"
-                    onClick={() => handlePageChange("Signup")}
-                    className={
-                      currentPage === "Join" ? "nav-link active" : "nav-link"
-                    }
-                  >
+                <Link to="/Signup">
+                  <p  className={
+                      currentPage === "/Signup" ? "nav-link active" : "nav-link"
+                    }>
                     Join Here
-                  </a>
+                  </p>
+                  </Link>
                 </li>
               </ul>
             </div>
