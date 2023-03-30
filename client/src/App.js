@@ -42,7 +42,7 @@ function App() {
             <Route path="/login" element={<Login />} />
             <Route path="/Signup" element={<Signup />} />
             <Route path="/Contact" element={<Contact />} />
-            <Route path="/product-reviews" element={<ProductReviews />} />
+            <Route path="/product/:productId/reviews" element={<ProductReviews />} />
           </Routes>
         </div>
       </Router>

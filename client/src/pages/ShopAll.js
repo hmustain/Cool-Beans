@@ -1,5 +1,5 @@
 import React from "react";
-import ProductList from "../components/Products";
+import Products from "../components/Products";
 // import CategoryMenu from "../components/CategoryMenu";
 // import Cart from "../components/Cart";
 import '../styles/ShopAll.css'
