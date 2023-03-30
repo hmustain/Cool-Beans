@@ -157,22 +157,24 @@ function ProductReviews() {
   );
 }
 
-function renderStars(rating) {
-  const filledStars = Array.from({ length: rating }, (_, i) => (
-    <span key={i} className="filled-star">
-      &#9733;
-    </span>
-  ));
+export function renderStars(averageRating) {
+  const filledStarsCount = Math.floor(averageRating);
+  const percentageFilled = (averageRating - filledStarsCount) * 100;
 
-  const unfilledStars = Array.from({ length: 5 - rating }, (_, i) => (
-    <span key={i} className="unfilled-star">
-      &#9734;
-    </span>
-  ));
-
-  const stars = [...filledStars, ...unfilledStars];
-
+  const stars = [];
+  for (let i = 0; i < 5; i++) {
+    if (i < filledStarsCount) {
+      stars.push(<span key={i} className="filled-star">&#9733;</span>);
+    } else if (i === filledStarsCount && percentageFilled > 0) {
+      stars.push(
+        <span key={i} className="partially-filled-star">&#9733;</span>
+      );
+    } else {
+      stars.push(<span key={i} className="unfilled-star">&#9733;</span>);
+    }
+  }
   return <div>{stars}</div>;
 }
+
 
 export default ProductReviews;

@@ -5,6 +5,7 @@ import { useStoreContext } from "../../utils/GlobalState";
 import { ADD_TO_CART, UPDATE_CART_QUANTITY } from "../../utils/actions";
 import { idbPromise } from "../../utils/helpers";
 import "./style.css";
+import { renderStars } from "../ProductReview";
 
 function ProductItem(item) {
   console.log(item, "here");
@@ -82,10 +83,15 @@ export function displayAverageRating(reviews) {
 
   const totalRating = reviews.reduce((acc, curr) => acc + curr.rating, 0);
   const averageRating = totalRating / reviews.length;
+  const filledStars = Math.floor(averageRating);
+  const unfilledStars = 5 - filledStars;
 
   return (
     <div>
-      {averageRating.toFixed(1)} ({reviews.length})
+      {renderStars(averageRating)}
+      <span style={{ marginLeft: '0.5rem', color: 'blue', fontSize: '0.8rem' }}>
+        ({averageRating.toFixed(1)})
+      </span>
     </div>
   );
 }
