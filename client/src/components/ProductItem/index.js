@@ -8,7 +8,7 @@ import "./style.css";
 import { renderStars } from "../ProductReview";
 
 function ProductItem(item) {
-  console.log(item, "here");
+  // console.log(item, "here");
   const [state, dispatch] = useStoreContext();
   const {
     image,
@@ -30,7 +30,7 @@ function ProductItem(item) {
   // console.log("reviews", reviews);
 
   const { cart } = state
-  console.log('page loading:', state)
+  // console.log('page loading:', state)
 
   const addToCart = () => {
     const itemInCart = cart.find((cartItem) => cartItem._id === _id)
@@ -66,7 +66,7 @@ function ProductItem(item) {
 
         <div className="add-cart">
           <button onClick={addToCart} className="btn btn-dark w-50 mx-auto">Add To Cart</button>
-          <Link to={`/product/${_id}/reviews`} productId={_id}>
+          <Link to={`/product/${_id}/reviews`} productid={_id}>
             See All Reviews <br />
             {displayAverageRating(reviews)}
             <br />

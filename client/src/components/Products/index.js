@@ -48,9 +48,9 @@ function Products() {
       {loading ? (
         <div>Data is loading</div>
       ) : (
-        data?.products.length && (
+        state.products.length && (
           <div className="products">
-            {data.products.map((product) => (
+            {filterProducts().map((product) => (
               <ProductItem
                 key={product._id}
                 _id={product._id}

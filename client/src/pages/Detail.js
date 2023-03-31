@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { useQuery } from '@apollo/client';
-
+import "../styles/singleproduct.css"
 import Cart from '../components/Cart';
 import { useStoreContext } from '../utils/GlobalState';
 import {
@@ -96,13 +96,16 @@ return (
 <>
 <Navtabs/>
 {currentProduct ? (
-<div className="container my-1">
+<div className="singleproduct">
 <Link to="/ShopAll">← Back to Products</Link>
-
+<div className='card'>
 <h2>{currentProduct.name}</h2>
 
 <p>{currentProduct.description}</p>
-
+<img
+src={`/images/${currentProduct.image}`}
+alt={currentProduct.name}
+/>
 <p>
 <strong>Price:</strong>${currentProduct.price}{' '}
 <button>Add to Cart</button>
@@ -112,10 +115,7 @@ Remove from Cart
 </button>
 </p>
 
-<img
-src={`/images/${currentProduct.image}`}
-alt={currentProduct.name}
-/>
+</div>
 </div>
 ) : null}
 {loading ? <p>loading..</p> : null}

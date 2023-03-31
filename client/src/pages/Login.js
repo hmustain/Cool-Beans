@@ -19,6 +19,7 @@ function Login(props) {
       const token = mutationResponse.data.login.token;
       Auth.login(token);
     } catch (e) {
+      document.getElementById("errordiv").innerHTML=`<span style="color:red;">Incorrect email or password!</span>`
       console.log(e);
     }
   };
@@ -66,13 +67,7 @@ function Login(props) {
             <br></br>
             <label className="input-label">Password:</label>
           </div>
-          {error ? (
-            <div>
-              <p className="error-text" style="color:red;">
-                The provided credentials are incorrect
-              </p>
-            </div>
-          ) : null}
+          <div id="errordiv"></div>
           <div className="action">
             <button className="action-button" type="submit">
               Login
