@@ -46,7 +46,7 @@ function Products() {
     <div className="my-2 container ">
       <h2>Our Products:</h2>
       {loading ? (
-        <div>Data is loading</div>
+        <div>Data is loading...</div>
       ) : (
         state.products.length && (
           <div className="products">
