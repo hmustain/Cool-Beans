@@ -107,7 +107,7 @@ src={`/images/${currentProduct.image}`}
 alt={currentProduct.name}
 />
 <p>
-<strong>Price:</strong>${currentProduct.price}{' '}
+<strong>Price:</strong>${currentProduct.price}{' '}<br></br>
 <button>Add to Cart</button>
 <button
 >
@@ -120,9 +120,6 @@ Remove from Cart
 ) : null}
 {loading ? <p>loading..</p> : null}
 {/* <Cart /> */}
-<div>
-hello
-</div>
 </>
 );
 }
