@@ -107,7 +107,8 @@ alt={currentProduct.name}
 />
 <p>
 <strong>Price:</strong>${currentProduct.price}{' '}<br></br>
-<button>Add to Cart</button>
+<button className="btn btn-dark">Add to Cart</button>
+
 </p>
 <Link to="/ShopAll">← Back to Products</Link>
 </div>
