@@ -51,17 +51,18 @@ function Nav(props) {
         return (
           <ul className="navbar-nav mx-auto">
           <li className="nav-item">
-            <Link to="/ShopAll">
-              <p  className={
-                currentPage === "/ShopAll" ? "nav-link active" : "nav-link"
-              }>Shop All</p>
+            <Link to="/ShopAll" style={{ color: 'inherit', textDecoration: 'inherit'}}>
+              <p id="shop" className={
+                currentPage === "/Contact" ? "nav-link active" : "nav-link"
+              }
+              >Shop All</p>
             </Link>
           </li>
           {/* <li className="nav-item">
         <a className="nav-link" href="#about" onClick={() => handlePageChange('About')}>About</a>
       </li> */}
           <li className="nav-item">
-            <Link to="/Contact">
+            <Link to="/Contact" style={{ color: 'inherit', textDecoration: 'inherit'}}>
             <p
               href="/Contact"
               className={
@@ -74,7 +75,7 @@ function Nav(props) {
             </Link>
           </li>
           <li className="nav-item">
-          <Link to="/Signup">
+          <Link to="/Signup" style={{ color: 'inherit', textDecoration: 'inherit'}}>
             <p  className={
                 currentPage === "/Signup" ? "nav-link active" : "nav-link"
               }>

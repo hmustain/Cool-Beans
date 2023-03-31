@@ -8,7 +8,7 @@ import {
 import { QUERY_CATEGORIES } from '../../utils/queries';
 import { idbPromise } from '../../utils/helpers';
 import { Link } from 'react-router-dom';
-
+import '../../styles/CM.css'
 function CategoryMenu() {
   const [state, dispatch] = useStoreContext();
 
@@ -64,9 +64,10 @@ function CategoryMenu() {
 
   return (
     <div>
-      <h2>Sort by Category:</h2>
+    <h2>Sort by Category:</h2>
+    <div className='Catdiv'>
       {categories.map((item) => (
-        <button
+        <button className="btn btn-dark m-2"
           key={item._id}
           onClick={() => {
             handleClick(item._id);
@@ -75,6 +76,7 @@ function CategoryMenu() {
           {item.name}
         </button>
       ))}
+    </div>
     </div>
   );
 }
