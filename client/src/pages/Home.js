@@ -32,7 +32,7 @@ function ControlledCarousel() {
               Looking for the perfect cup of{" "}
               <a className="coffee-link" href="ShopAll">
                 coffee
-              </a>
+              </a>{" "}
               to start your day?
             </h3>
             <p>
@@ -92,7 +92,9 @@ function ControlledCarousel() {
         </div>
       </div>
       <div>
-        <img className="cool-beans mx-auto"></img>
+        <div className="logo-homepage">
+          <img className="mx-auto second-logo"></img>
+        </div>
         <section className="w-50 mx-auto text-center about-us">
           <h2>Hi, we are Kai, Caleb, and Hunter. This is our coffee.</h2>
           <p className="w-35 mx-auto ">

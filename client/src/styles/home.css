@@ -1,14 +1,15 @@
 .first-ad {
-    background-image: url(./images/coffee-grounds.jpg);
+    background-color: rgb(17, 17, 19);
     background-size: 100%;
     object-fit:contain;
     object-position: bottom;
+    bottom: 5px;
     height: 300px;
     width: 400px;   
     border-radius: 0px 0px 50px 50px; 
 }
 .second-ad {
-    background-image: url(./images/black-coffee.jpg);
+    background-color: rgb(17, 17, 19);
     background-size: 100%;
     object-fit:fill;
     height: 300px;
@@ -16,9 +17,10 @@
     border-radius: 0px 0px 50px 50px; 
 }
 .third-ad {
-    background-image: url(./images/coffee-grounds.jpg);
+    background-color: rgb(17, 17, 19);
     background-size: 100%;
     object-fit: fill;
+    object-position: bottom;
     height: 300px;
     width: 400px;   
     border-radius: 0px 0px 50px 50px; 
@@ -41,9 +43,20 @@ background-color: rgb(235, 238, 235);
    color: rgba(13, 143, 104, 0.791);
  }
 
- .cool-beans img {
-    background-image: url(./images/logo.svg);
-    width: 100%;
+ .second-logo {
+	overflow: hidden;
+	padding-bottom: 220px;
+	background-image: url("./images/secondlogo.svg");
+	background-repeat: no-repeat;
+    margin: 0;
+    position: relative;
+    width: 110%;
+    background-position: center;
+    background-size:contain;
+    background-color: rgb(235, 238, 235);
+    height: 500px;
+
+
  }
 
 
@@ -58,6 +71,3 @@ background-color: rgb(235, 238, 235);
     margin-bottom: 100px;
  }
 
- .cool-beans {
-    background-color: white;
- }
