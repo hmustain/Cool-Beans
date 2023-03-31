@@ -1,19 +1,35 @@
 import React from "react";
 import Auth from "../utils/auth";
-import { Link,  } from "react-router-dom";
+import { Link } from "react-router-dom";
 import "../styles/header.css";
 
 function Nav(props) {
   const { currentPage, handlePageChange } = props;
-    function showNavigation() {
-      if (Auth.loggedIn()) {
-        return (
-          <ul className="navbar-nav mx-auto">
+  function showNavigation() {
+    if (Auth.loggedIn()) {
+      return (
+        <ul className="navbar-nav mx-auto">
+          \a
+          <li className="nav-item">
+            <Link to="/Home">
+              <p
+                className={
+                  currentPage === "/Home" ? "nav-link active" : "nav-link"
+                }
+              >
+                Home
+              </p>
+            </Link>
+          </li>
           <li className="nav-item">
             <Link to="/ShopAll">
-              <p  className={
-                currentPage === "/ShopAll" ? "nav-link active" : "nav-link"
-              }>Shop All</p>
+              <p
+                className={
+                  currentPage === "/ShopAll" ? "nav-link active" : "nav-link"
+                }
+              >
+                Shop All
+              </p>
             </Link>
           </li>
           {/* <li className="nav-item">
@@ -21,40 +37,53 @@ function Nav(props) {
       </li> */}
           <li className="nav-item">
             <Link to="/Contact">
-            <p
-              href="/Contact"
-              className={
-                currentPage === "/Contact" ? "nav-link active" : "nav-link"
-              }
-
-            >
-              Contact Us
-            </p>
+              <p
+                href="/Contact"
+                className={
+                  currentPage === "/Contact" ? "nav-link active" : "nav-link"
+                }
+              >
+                Contact Us
+              </p>
             </Link>
           </li>
-           
-             <li className="nav-item">
-              {/* this is not using the Link component to logout or user and then refresh the application to the start */}
-              <Link>
-              <p className="nav-link"
-                href="/logout" onClick={() => Auth.logout()}>
+          <li className="nav-item">
+            {/* this is not using the Link component to logout or user and then refresh the application to the start */}
+            <Link>
+              <p
+                className="nav-link"
+                href="/logout"
+                onClick={() => Auth.logout()}
+              >
                 Logout
               </p>
-              </Link>
-            </li>
-           
-          
+            </Link>
+          </li>
         </ul>
-       
-        );
-      } else {
-        return (
-          <ul className="navbar-nav mx-auto">
+      );
+    } else {
+      return (
+        <ul className="navbar-nav mx-auto">
+          <li className="nav-item">
+            <Link to="/Home">
+              <p
+                className={
+                  currentPage === "/Home" ? "nav-link active" : "nav-link"
+                }
+              >
+                Home
+              </p>
+            </Link>
+          </li>
           <li className="nav-item">
             <Link to="/ShopAll">
-              <p  className={
-                currentPage === "/ShopAll" ? "nav-link active" : "nav-link"
-              }>Shop All</p>
+              <p
+                className={
+                  currentPage === "/ShopAll" ? "nav-link active" : "nav-link"
+                }
+              >
+                Shop All
+              </p>
             </Link>
           </li>
           {/* <li className="nav-item">
@@ -62,58 +91,64 @@ function Nav(props) {
       </li> */}
           <li className="nav-item">
             <Link to="/Contact">
-            <p
-              href="/Contact"
-              className={
-                currentPage === "/Contact" ? "nav-link active" : "nav-link"
-              }
-
-            >
-              Contact Us
-            </p>
+              <p
+                href="/Contact"
+                className={
+                  currentPage === "/Contact" ? "nav-link active" : "nav-link"
+                }
+              >
+                Contact Us
+              </p>
             </Link>
           </li>
           <li className="nav-item">
-          <Link to="/Signup">
-            <p  className={
-                currentPage === "/Signup" ? "nav-link active" : "nav-link"
-              }>
-              Join Here
-            </p>
+            <Link to="/Signup">
+              <p
+                className={
+                  currentPage === "/Signup" ? "nav-link active" : "nav-link"
+                }
+              >
+                Join Here
+              </p>
             </Link>
           </li>
-          
         </ul>
-        );
-      }
+      );
     }
-function showprofile(){
-  if (Auth.loggedIn()) {
-    return(
-      <div className="icons">
-      <i className="bi bi-cart4"></i>
-           <Link to="/profile">
-           <div id="icons" href="/Login">
-            <span id="icons"
-            href="/profile"   className="bi bi-person-circle"></span>
-          </div>
-              </Link>
-              </div>
-    );
-}else {
-  return(
-    <div className="icons">
-    <i className="bi bi-cart4"></i>
-         <Link to="/login">
-         <div id="icons" href="/Login">
-          <span id="icons"
-          href="/Login"   className="bi bi-person-circle"></span>
-        </div>
-            </Link>
+  }
+  function showprofile() {
+    if (Auth.loggedIn()) {
+      return (
+        <div className="icons">
+          <i className="bi bi-cart4"></i>
+          <Link to="/profile">
+            <div id="icons" href="/Login">
+              <span
+                id="icons"
+                href="/profile"
+                className="bi bi-person-circle"
+              ></span>
             </div>
-  )
-}
-}
+          </Link>
+        </div>
+      );
+    } else {
+      return (
+        <div className="icons">
+          <i className="bi bi-cart4"></i>
+          <Link to="/login">
+            <div id="icons" href="/Login">
+              <span
+                id="icons"
+                href="/Login"
+                className="bi bi-person-circle"
+              ></span>
+            </div>
+          </Link>
+        </div>
+      );
+    }
+  }
   return (
     <>
       <div className="subscribe">
@@ -121,12 +156,9 @@ function showprofile(){
           <a>Join </a> and Save!
         </p>
       </div>
-      
+
       {showprofile()}
-        
-        
-        
-      
+
       <div className="logo">
         <img className="cool-beans"></img>
       </div>
@@ -146,7 +178,7 @@ function showprofile(){
             </button>
 
             <div className="collapse navbar-collapse" id="navbarNav">
-             {showNavigation()}
+              {showNavigation()}
             </div>
           </div>
         </nav>

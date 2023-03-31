@@ -1,0 +1,26 @@
+.first-ad {
+    background-image: url(./images/coffee-grounds.jpg);
+    background-size: 100%;
+    object-fit:contain;
+    object-position: bottom;
+    height: 300px;
+    width: 400px;   
+    border-radius: 0px 0px 50px 50px; 
+}
+.second-ad {
+    background-image: url(./images/black-coffee.jpg);
+    background-size: 100%;
+    object-fit:fill;
+    height: 300px;
+    width: 400px;  
+    border-radius: 0px 0px 50px 50px; 
+}
+.third-ad {
+    background-image: url(./images/coffee-grounds.jpg);
+    background-size: 100%;
+    object-fit:fill;
+    height: 300px;
+    width: 400px;   
+    border-radius: 0px 0px 50px 50px; 
+}
+
