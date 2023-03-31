@@ -20,6 +20,7 @@ import Profile from "./pages/Profile";
 import Home from "./pages/Home";
 import Success from "./pages/Success";
 
+
 const httpLink = createHttpLink({
   uri: "/graphql",
 });
