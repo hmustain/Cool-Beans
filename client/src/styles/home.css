@@ -18,9 +18,16 @@
 .third-ad {
     background-image: url(./images/coffee-grounds.jpg);
     background-size: 100%;
-    object-fit:fill;
+    object-fit: fill;
     height: 300px;
     width: 400px;   
     border-radius: 0px 0px 50px 50px; 
 }
 
+.carousel {
+    background-color: rgb(235, 238, 235);
+}
+
+.homepage-products {
+background-color: rgb(235, 238, 235);
+}
