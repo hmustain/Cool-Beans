@@ -76,7 +76,7 @@ function Login(props) {
         </form>
         <div className="card-info">
           <p>
-            Dont have an account? <a href="/Signup">Signup Here</a>
+            Dont have an account? <Link to="/Signup"><a>Signup Here</a></Link>
           </p>
         </div>
       </div>
