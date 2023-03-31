@@ -4,6 +4,7 @@ import React,{ useState }  from 'react';
 import Nav from '../components/NavTabs';
 import Auth from '../utils/auth';
 import { ADD_USER } from '../utils/mutations';
+import { Link } from 'react-router-dom';
 function Signup(props){
   const [formState, setFormState] = useState({ email: '', password: '' });
   const [addUser] = useMutation(ADD_USER);
@@ -86,7 +87,7 @@ return (
     </div>
   </form>
   <div className="card-info">
-    <p>already have an account? <a href="/Login">Login</a></p>
+    <p>already have an account? </p><Link to="/Login"><a>Login Here</a></Link>
   </div>
 </div>
 
