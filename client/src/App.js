@@ -18,7 +18,7 @@ import ShopAll from "./pages/ShopAll";
 import Detail from "./pages/Detail";
 import Profile from "./pages/Profile";
 import Home from "./pages/Home";
-
+import Pagenotfound from './pages/pagenotfound'
 const httpLink = createHttpLink({
   uri: "/graphql",
 });
@@ -45,6 +45,7 @@ function App() {
         <div>
           <StoreProvider>
             <Routes>
+            <Route path="*" element={<Pagenotfound/>} />
               <Route path="/" element={<Home />} />
               <Route path="/Home" element={<Home />} />
               <Route path="/ShopAll" element={<ShopAll />} />
