@@ -36,7 +36,7 @@ function Login(props) {
     <div className="Logincontainer">
       <Nav />
       <div className="card">
-        <div className="card-image">
+        <div className="card-image" >
           <h2 className="card-heading">
             <small>Sign in to your account</small>
           </h2>
@@ -85,40 +85,3 @@ function Login(props) {
 }
 
 export default Login;
-{
-  /* <div class="container" onSubmit={handleFormSubmit}>
-<div class="card">
-  <div class="card-image">	
-    <h2 class="card-heading">
-      
-      <small>Sign in to your account</small>
-    </h2>
-  </div>
-  <form class="card-form">
-          <div class="input">
-      <input type="email" class="input-field"  onChange={handleChange} required/><br></br>
-      <label class="input-label">Email</label>
-    </div>
-          <div class="input">
-      <input type="password" class="input-field" required/><br></br>
-      <label class="input-label" onChange={handleChange}>Password</label>
-    </div>
-    <div class="action">
-      <button class="action-button">Login</button>
-    </div>
-  </form>
-  {/* <div class="card-info">
-    <p>By signing up you are agreeing to our <a href="#">Terms and Conditions</a></p>
-  </div> */
-}
-// </div>
-// </div>
-// {error ? (
-//   <div>
-//     <p className="error-text">The provided credentials are incorrect</p>
-//   </div>
-// ) : null} */}
-
-{
-  /* <Link to="/signup">← Go to Signup</Link> */
-}
