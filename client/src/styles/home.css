@@ -44,29 +44,24 @@ background-color: rgb(235, 238, 235);
  }
 
  .second-logo {
-	overflow: hidden;
-	padding-bottom: 220px;
 	background-image: url("./images/secondlogo.svg");
 	background-repeat: no-repeat;
     margin: 0;
-    position: relative;
     width: 110%;
     background-position: center;
     background-size:contain;
     background-color: rgb(235, 238, 235);
-    height: 500px;
-
-
+    height: 350px;
  }
 
 
  .about-us p {
-  font-size: 30px;
-  font-weight: 300;
-
+  font-size: 20px;
+font-weight: lighter;
+  font-family:cursive
  }
 
- .about-us {
+ .about-us { 
     margin-top: 30px;
     margin-bottom: 100px;
  }
