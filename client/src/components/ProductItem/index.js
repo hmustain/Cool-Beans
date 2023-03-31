@@ -73,7 +73,6 @@ function ProductItem(item) {
           </Link>
         </div>
       </div>
-      {/* <button onClick={addToCart} >Add to cart</button> */}
     </div>
   );
 }
