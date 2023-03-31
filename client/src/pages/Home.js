@@ -49,17 +49,29 @@ function ControlledCarousel() {
         ) : (
           data?.products.length && (
             <div className="products">
-              {data.products.map((product) => (
-                <ProductItem
-                  key={product._id}
-                  _id={product._id}
-                  image={product.image}
-                  name={product.name}
-                  price={product.price}
-                  description={product.description}
-                  reviews={product.reviews}
-                />
-              ))}
+              {data.products
+                .slice()
+                .sort((a, b) => {
+                  const aRating =
+                    a.reviews.reduce((acc, review) => acc + review.rating, 0) /
+                    a.reviews.length;
+                  const bRating =
+                    b.reviews.reduce((acc, review) => acc + review.rating, 0) /
+                    b.reviews.length;
+                  return bRating - aRating;
+                })
+                .slice(0, 3)
+                .map((product) => (
+                  <ProductItem
+                    key={product._id}
+                    _id={product._id}
+                    image={product.image}
+                    name={product.name}
+                    price={product.price}
+                    description={product.description}
+                    reviews={product.reviews}
+                  />
+                ))}
             </div>
           )
         )}
