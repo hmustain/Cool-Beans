@@ -97,7 +97,6 @@ return (
 <Navtabs/>
 {currentProduct ? (
 <div className="singleproduct">
-<Link to="/ShopAll">← Back to Products</Link>
 <div className='card'>
 <h2>{currentProduct.name}</h2>
 
@@ -114,15 +113,14 @@ alt={currentProduct.name}
 Remove from Cart
 </button>
 </p>
-
+<Link to="/ShopAll">← Back to Products</Link>
 </div>
+
 </div>
 ) : null}
 {loading ? <p>loading..</p> : null}
 <Cart />
-<div>
-hello
-</div>
+
 </>
 );
 }
