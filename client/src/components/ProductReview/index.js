@@ -16,7 +16,7 @@ function ProductReviews() {
   useEffect(() => {
     async function fetchUser() {
       // Fetch the authenticated user's ID and set it in state
-      const response = await fetch("http://localhost:3001/graphql", {
+      const response = await fetch("https://cool-beans-ecommerce.herokuapp.com/graphql", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         credentials: "include",
@@ -39,7 +39,7 @@ function ProductReviews() {
   useEffect(() => {
     async function fetchProductAndReviews() {
       console.log("productId", productId);
-      const response = await fetch("http://localhost:3001/graphql", {
+      const response = await fetch("https://cool-beans-ecommerce.herokuapp.com/graphql", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -83,7 +83,7 @@ function ProductReviews() {
   }
 
   const handleAddReview = async (review) => {
-    const response = await fetch("http://localhost:3001/graphql", {
+    const response = await fetch("https://cool-beans-ecommerce.herokuapp.com/graphql", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       credentials: "include",
