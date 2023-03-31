@@ -31,3 +31,33 @@
 .homepage-products {
 background-color: rgb(235, 238, 235);
 }
+
+.coffee-link {
+   color: rgb(255, 255, 255);
+   text-decoration: underline;
+}
+
+.coffee-link:hover {
+   color: rgba(13, 143, 104, 0.791);
+ }
+
+ .cool-beans img {
+    background-image: url(./images/logo.svg);
+    width: 100%;
+ }
+
+
+ .about-us p {
+  font-size: 30px;
+  font-weight: 300;
+
+ }
+
+ .about-us {
+    margin-top: 30px;
+    margin-bottom: 100px;
+ }
+
+ .cool-beans {
+    background-color: white;
+ }

@@ -28,8 +28,17 @@ function ControlledCarousel() {
           <img className="d-block  w-100 second-ad" alt="Second slide" />
 
           <Carousel.Caption>
-            <h3>Second slide label</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+            <h3>
+              Looking for the perfect cup of{" "}
+              <a className="coffee-link" href="ShopAll">
+                coffee
+              </a>
+              to start your day?
+            </h3>
+            <p>
+              Our expertly sourced and roasted beans provide a rich and robust
+              flavor that will satisfy any coffee lover.
+            </p>
           </Carousel.Caption>
         </Carousel.Item>
 
@@ -81,6 +90,29 @@ function ControlledCarousel() {
             )
           )}
         </div>
+      </div>
+      <div>
+        <img className="cool-beans mx-auto"></img>
+        <section className="w-50 mx-auto text-center about-us">
+          <h2>Hi, we are Kai, Caleb, and Hunter. This is our coffee.</h2>
+          <p className="w-35 mx-auto ">
+            Coffee. For some people (aka us), it’s more than a drink. It’s a way
+            to connect. It’s a way to share moments. And, ok, sometimes it’s
+            just a way to wake up and get stuff done.
+          </p>
+        </section>
+        <section className="w-50 mx-auto text-center about-us">
+          <h2>Created with love</h2>
+          <p className="w-30 mx-auto ">
+            At Cool Beans Coffee, we’re passionate about providing high quality,
+            delicious beverages. So you can enjoy every sip, slurp and spill (it
+            happens) with the knowledge that what you’re drinking isn’t just
+            delicious, but also thoughtfully made. We are grateful to be a part
+            of your daily routine, and we take it seriously. We believe that
+            drinks can be more than just drinks, but sources of joy, inspiration
+            and creativity in a cup.
+          </p>
+        </section>
       </div>
     </div>
   );
