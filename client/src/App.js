@@ -17,6 +17,8 @@ import ProductReviews from "./components/ProductReview";
 import ShopAll from "./pages/ShopAll";
 import Detail from "./pages/Detail";
 import Profile from "./pages/Profile";
+import Home from "./pages/Home";
+
 const httpLink = createHttpLink({
   uri: "/graphql",
 });
@@ -42,19 +44,20 @@ function App() {
       <Router>
         <div>
           <StoreProvider>
-          <Routes>
-            <Route path="/" element={<MainContainer />} />
-            <Route path="/ShopAll" element={<ShopAll />} />
-            <Route path="/login" element={<Login />} />
-            <Route path="/Signup" element={<Signup />} />
-            <Route path="/Contact" element={<Contact />} />
-            <Route
-              path="/product/:productId/reviews"
-              element={<ProductReviews />}
-            />
-            <Route path="/product/:id" element={<Detail />} />
-            <Route path="/profile" element={<Profile />} />
-          </Routes>
+            <Routes>
+              <Route path="/" element={<MainContainer />} />
+              <Route path="/Home" element={<Home />} />
+              <Route path="/ShopAll" element={<ShopAll />} />
+              <Route path="/login" element={<Login />} />
+              <Route path="/Signup" element={<Signup />} />
+              <Route path="/Contact" element={<Contact />} />
+              <Route
+                path="/product/:productId/reviews"
+                element={<ProductReviews />}
+              />
+              <Route path="/product/:id" element={<Detail />} />
+              <Route path="/profile" element={<Profile />} />
+            </Routes>
           </StoreProvider>
         </div>
       </Router>
