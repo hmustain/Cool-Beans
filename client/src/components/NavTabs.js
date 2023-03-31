@@ -119,14 +119,13 @@ function Nav(props) {
     if (Auth.loggedIn()) {
       return (
         <div className="icons">
-          <i className="bi bi-cart4"></i>
           <Link to="/profile">
             <div id="icons" href="/Login">
               <span
                 id="icons"
                 href="/profile"
                 className="bi bi-person-circle"
-              ></span>
+              ></span>Profile
             </div>
           </Link>
         </div>
@@ -134,14 +133,13 @@ function Nav(props) {
     } else {
       return (
         <div className="icons">
-          <i className="bi bi-cart4"></i>
           <Link to="/login">
             <div id="icons" href="/Login">
               <span
                 id="icons"
                 href="/Login"
                 className="bi bi-person-circle"
-              ></span>
+              ></span>Login
             </div>
           </Link>
         </div>
@@ -164,19 +162,8 @@ function Nav(props) {
       <header id="header">
         <nav className="navbar navbar-expand-lg ">
           <div className="container justify-content-center">
-            <button
-              className="navbar-toggler"
-              type="button"
-              data-bs-toggle="collapse"
-              data-bs-target="#navbarNav"
-              aria-controls="navbarSupportedContent"
-              aria-expanded="false"
-              aria-label="Toggle navigation"
-            >
-              <span className="navbar-toggler-icon"></span>
-            </button>
 
-            <div className="collapse navbar-collapse" id="navbarNav">
+            <div  id="navbarNav">
               {showNavigation()}
             </div>
           </div>
