@@ -66,7 +66,7 @@ function ProductItem(item) {
 
         <div className="add-cart">
           <button onClick={addToCart} className="btn btn-dark w-50 mx-auto">Add To Cart</button>
-          <Link to={`/product/${_id}/reviews`} productId={_id}>
+          <Link to={`/product/${_id}/reviews`} productid={_id}>
             See All Reviews <br />
             {displayAverageRating(reviews)}
             <br />
