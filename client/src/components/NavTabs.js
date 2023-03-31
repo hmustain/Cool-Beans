@@ -66,7 +66,7 @@ function Nav(props) {
       return (
         <ul className="navbar-nav mx-auto">
           <li className="nav-item">
-            <Link to="/Home">
+            <Link style={{ color: 'inherit', textDecoration: 'inherit'}} to="/Home">
               <p
                 className={
                   currentPage === "/Home" ? "nav-link active" : "nav-link"
