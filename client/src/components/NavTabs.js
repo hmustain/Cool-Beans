@@ -9,9 +9,9 @@ function Nav(props) {
     if (Auth.loggedIn()) {
       return (
         <ul className="navbar-nav mx-auto">
-          \a
+          
           <li className="nav-item">
-            <Link to="/Home">
+            <Link  style={{ color: 'inherit', textDecoration: 'inherit'}} to="/Home">
               <p
                 className={
                   currentPage === "/Home" ? "nav-link active" : "nav-link"
@@ -22,7 +22,7 @@ function Nav(props) {
             </Link>
           </li>
           <li className="nav-item">
-            <Link to="/ShopAll">
+            <Link style={{ color: 'inherit', textDecoration: 'inherit'}} to="/ShopAll">
               <p
                 className={
                   currentPage === "/ShopAll" ? "nav-link active" : "nav-link"
@@ -36,11 +36,12 @@ function Nav(props) {
         <a className="nav-link" href="#about" onClick={() => handlePageChange('About')}>About</a>
       </li> */}
           <li className="nav-item">
-            <Link to="/Contact">
+            <Link style={{ color: 'inherit', textDecoration: 'inherit'}} to="/Contact">
               <p
                 href="/Contact"
                 className={
                   currentPage === "/Contact" ? "nav-link active" : "nav-link"
+                  
                 }
               >
                 Contact Us
@@ -49,7 +50,7 @@ function Nav(props) {
           </li>
           <li className="nav-item">
             {/* this is not using the Link component to logout or user and then refresh the application to the start */}
-            <Link>
+            <Link style={{ color: 'inherit', textDecoration: 'inherit'}}>
               <p
                 className="nav-link"
                 href="/logout"

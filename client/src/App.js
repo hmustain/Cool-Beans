@@ -45,7 +45,7 @@ function App() {
         <div>
           <StoreProvider>
             <Routes>
-              <Route path="/" element={<MainContainer />} />
+              <Route path="/" element={<Home />} />
               <Route path="/Home" element={<Home />} />
               <Route path="/ShopAll" element={<ShopAll />} />
               <Route path="/login" element={<Login />} />
