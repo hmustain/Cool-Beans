@@ -1,0 +1,68 @@
+.first-ad {
+    background-color: rgb(17, 17, 19);
+    background-size: 100%;
+    object-fit:contain;
+    object-position: bottom;
+    bottom: 5px;
+    height: 300px;
+    width: 400px;   
+    border-radius: 0px 0px 50px 50px; 
+}
+.second-ad {
+    background-color: rgb(17, 17, 19);
+    background-size: 100%;
+    object-fit:fill;
+    height: 300px;
+    width: 400px;  
+    border-radius: 0px 0px 50px 50px; 
+}
+.third-ad {
+    background-color: rgb(17, 17, 19);
+    background-size: 100%;
+    object-fit: fill;
+    object-position: bottom;
+    height: 300px;
+    width: 400px;   
+    border-radius: 0px 0px 50px 50px; 
+}
+
+.carousel {
+    background-color: rgb(235, 238, 235);
+}
+
+.homepage-products {
+background-color: rgb(235, 238, 235);
+}
+
+.coffee-link {
+   color: rgb(255, 255, 255);
+   text-decoration: underline;
+}
+
+.coffee-link:hover {
+   color: rgba(13, 143, 104, 0.791);
+ }
+
+ .second-logo {
+	background-image: url("./images/secondlogo.svg");
+	background-repeat: no-repeat;
+    margin: 0;
+    width: 110%;
+    background-position: center;
+    background-size:contain;
+    background-color: rgb(235, 238, 235);
+    height: 350px;
+ }
+
+
+ .about-us p {
+  font-size: 20px;
+font-weight: lighter;
+  font-family:cursive
+ }
+
+ .about-us { 
+    margin-top: 30px;
+    margin-bottom: 100px;
+ }
+
