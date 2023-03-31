@@ -1,6 +1,6 @@
 const db = require("./connection");
 const bcrypt = require("bcrypt");
-const { User, Category, Product, Review, Order } = require("../models");
+const { User, Category, Product, Review } = require("../models");
 
 db.once("open", async () => {
   await User.deleteMany();
@@ -163,54 +163,6 @@ db.once("open", async () => {
   console.log("Type of reviews:", Array.isArray(createdReviews) ? "Array" : typeof createdReviews);
   
   console.log("reviews Seeded");
-  
-
-  
-//   await Order.deleteMany();
-
-// console.log('users:', users);
-// console.log('products:', products);
-// console.log('categories:', categories);
-
-
-//   const orders = await Order.insertMany([
-//     {
-//       user: users[0]._id,
-//       products: [
-//         {
-//           product: products[0]._id,
-//           quantity: 1,
-//           price: products[0].price,
-//         },
-//         {
-//           product: products[1]._id,
-//           quantity: 2,
-//           price: products[1].price
-
-//         },
-//       ],
-//       status: "confirmed",
-//     },
-//     {
-//       user: users[1]._id,
-//       products: [
-//         {
-//           product: products[3]._id,
-//           quantity: 1,
-//           price: products[3].price
-//         },
-//         {
-//           product: products[4]._id,
-//           quantity: 3,
-//           price: products[4].price
-//         },
-//       ],
-//       status: "confirmed",
-//     },
-//   ]);
-  
-//   console.log("orders seeded");
-  
 
   process.exit();
 });
