@@ -34,7 +34,7 @@ function AddReview({ productId, userId, onSubmit }) {
           cols="50"
         />
       </div>
-      <button type="submit">Submit</button>
+      <input type="submit" value="Submit"/>
     </form>
   );
 }

@@ -20,7 +20,7 @@ app.use(express.json());
 
 // Enable CORS
 app.use(cors({
-  origin: 'http://localhost:300',
+  origin: 'http://localhost:3000',
   credentials: true,
 }))
 
