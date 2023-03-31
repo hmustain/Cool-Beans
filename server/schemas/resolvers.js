@@ -1,7 +1,11 @@
 const { AuthenticationError } = require("apollo-server-express");
 const { User, Category, Product, Review, Order } = require("../models");
 const { signToken } = require("../utils/auth");
-const stripe = require('stripe')('sk_test_4eC39HqLyjWDarjtT1zdp7dc');
+const stripe = require("stripe")(
+"sk_test_51MrZYVJnjl6y4QyETfkbBV2ivhB2TnwWoCGCvuExq1EBfvvXaR8SaRT8ohJHmZo7jok6at08mzKbVIK3XIv3mRud00Ei9b3ndR"
+);
+
+console.log(process.env.STRIPE_SECRET_KEY);
 
 const resolvers = {
   Query: {
@@ -18,27 +22,41 @@ const resolvers = {
         };
       }
 
-      const products = await Product.find(params).populate("category").select('-__v -updatedAt');
+      const products = await Product.find(params)
+        .populate("category")
+        .select("-__v -updatedAt");
 
       // Populate reviews for each product
       for (let i = 0; i < products.length; i++) {
-        products[i].reviews = await Review.find({ product: products[i]._id }).populate('user', '_id email firstName lastName');
+        products[i].reviews = await Review.find({
+          product: products[i]._id,
+        }).populate("user", "_id email firstName lastName");
       }
 
       return products;
     },
     product: async (parent, { _id }) => {
-      const product = await Product.findById(_id).populate("category").populate('reviews.user', '_id email firstName lastName');
-      product.reviews = await Review.find({ product: product._id }).populate('user', '_id email firstName lastName');
+      const product = await Product.findById(_id)
+        .populate("category")
+        .populate("reviews.user", "_id email firstName lastName");
+      product.reviews = await Review.find({ product: product._id }).populate(
+        "user",
+        "_id email firstName lastName"
+      );
       return product;
     },
     categories: async () => {
       return await Category.find();
     },
     reviews: async () => {
-      return await Review.find().populate('user', '_id email firstName lastName').populate({ path: 'product', populate: { path: 'reviews', populate: { path: 'createdAt' } } });
+      return await Review.find()
+        .populate("user", "_id email firstName lastName")
+        .populate({
+          path: "product",
+          populate: { path: "reviews", populate: { path: "createdAt" } },
+        });
     },
-    
+
     users: async () => {
       const users = await User.find();
       return users;
@@ -54,7 +72,7 @@ const resolvers = {
     order: async (parent, { _id }, context) => {
       if (context.user) {
         const user = await User.findById(context.user._id).populate({
-          path: "orders.products.product",
+          path: "orders.products",
           populate: "category",
         });
         const order = user.orders.id(_id);
@@ -64,18 +82,18 @@ const resolvers = {
     },
     checkout: async (parent, args, context) => {
       const url = new URL(context.headers.referer).origin;
-      const order = new Order({ products: args.products });
-      const line_items = [];
+      const order = new Order({
+        products: args.products,
+      });
 
       const { products } = await order.populate("products");
+      const line_items = [];
 
       for (let i = 0; i < products.length; i++) {
         const product = await stripe.products.create({
           name: products[i].name,
           description: products[i].description,
-          images: [`${url}/images/${products[i].image}`],
-        });
-
+        })
         const price = await stripe.prices.create({
           product: product.id,
           unit_amount: products[i].price * 100,
@@ -84,10 +102,11 @@ const resolvers = {
 
         line_items.push({
           price: price.id,
-          quantity: 1,
+          quantity: 1
         });
       }
 
+      console.log("console loggins is fun", line_items);
       const session = await stripe.checkout.sessions.create({
         payment_method_types: ["card"],
         line_items,
@@ -95,6 +114,7 @@ const resolvers = {
         success_url: `${url}/success?session_id={CHECKOUT_SESSION_ID}`,
         cancel_url: `${url}/`,
       });
+
 
       return { session: session.id };
     },
@@ -107,27 +127,25 @@ const resolvers = {
 
       return { token, user };
     },
-    addOrder: async (parent, { products }, context) => {
+    addOrder: async (parent, args, context) => {
       if (context.user) {
-        const productOrders = await Promise.all(products.map(async (productId) => {
-          const product = await Product.findById(productId);
-          return {
-            product,
-            quantity: 1,
-          };
-        }));
-        const total = productOrders.reduce(
-          (acc, { product, quantity }) => acc + (product.price * quantity),
+        const products = await Product.find({ _id: { $in: args.products } });
+        console.log("here are the products", products);
+        const total = products.reduce(
+          (acc, { product, quantity }) => acc + product.price * quantity,
           0
         );
         const order = new Order({
           user: context.user._id,
-          products: productOrders,
+          products: products,
           total,
           status: "confirmed",
         });
+        console.log("here is the new order", order);
         await order.save();
-        await User.findByIdAndUpdate(context.user._id, { $push: { orders: order } });
+        await User.findByIdAndUpdate(context.user._id, {
+          $push: { orders: order },
+        });
         return order;
       }
       throw new AuthenticationError("Not logged in");
@@ -157,13 +175,13 @@ const resolvers = {
       // Check if user has already reviewed the product
       const existingReview = await Review.findOne({
         user: context.user._id,
-        product: args._id
+        product: args._id,
       });
-    
+
       if (existingReview) {
         throw new Error("You've already reviewed this product!");
       }
-    
+
       // Create new review
       const product = await Product.findById(args._id);
       const newReview = await Review.create({
@@ -171,9 +189,9 @@ const resolvers = {
         comment: args.review.comment,
         createdAt: args.review.createdAt,
         user: context.user,
-        product
+        product,
       });
-    
+
       try {
         // Add review to product and save to database
         const updatedProduct = await Product.findOneAndUpdate(
@@ -184,14 +202,14 @@ const resolvers = {
           .populate("reviews")
           .populate({ path: "reviews", populate: "user" })
           .populate("category");
-    
+
         return updatedProduct;
       } catch (err) {
         console.log(err);
         throw new AuthenticationError("Invalid token");
       }
-    }
-  }
+    },
+  },
 };
 
 module.exports = resolvers;
