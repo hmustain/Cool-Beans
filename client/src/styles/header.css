@@ -27,7 +27,7 @@ body {
 
 .icons {
     display: flex;
-    justify-content: flex-end;
+    justify-content: flex-start;
     padding-right: 15px;
     background-color: rgba(13, 143, 104, 0.496);
 }
@@ -55,6 +55,7 @@ body {
 }
 
 .nav-item {
+    text-align: center;
 font-size: 4vh;
 padding-right: 25px;
 padding-left: 25px;
