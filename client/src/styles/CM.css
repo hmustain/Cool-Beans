@@ -1,0 +1,16 @@
+.catbtn{
+    align-items: center;
+   width: 15vh;
+   color: black;
+   margin: 2%;
+   height: 5vh;
+   padding: 1px;
+}
+
+.Catdiv{
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    align-items: center;
+    flex-wrap: wrap;
+}

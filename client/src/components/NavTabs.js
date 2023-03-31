@@ -76,40 +76,38 @@ function Nav(props) {
             </Link>
           </li>
           <li className="nav-item">
-            <Link to="/ShopAll">
-              <p
-                className={
-                  currentPage === "/ShopAll" ? "nav-link active" : "nav-link"
-                }
-              >
-                Shop All
-              </p>
+            <Link to="/ShopAll" style={{ color: 'inherit', textDecoration: 'inherit'}}>
+              <p id="shop" className={
+                currentPage === "/Contact" ? "nav-link active" : "nav-link"
+              }
+              >Shop All</p>
             </Link>
           </li>
           {/* <li className="nav-item">
         <a className="nav-link" href="#about" onClick={() => handlePageChange('About')}>About</a>
       </li> */}
           <li className="nav-item">
-            <Link to="/Contact">
-              <p
-                href="/Contact"
-                className={
-                  currentPage === "/Contact" ? "nav-link active" : "nav-link"
-                }
-              >
-                Contact Us
-              </p>
+
+            <Link to="/Contact" style={{ color: 'inherit', textDecoration: 'inherit'}}>
+            <p
+              href="/Contact"
+              className={
+                currentPage === "/Contact" ? "nav-link active" : "nav-link"
+              }
+
+            >
+              Contact Us
+            </p>
             </Link>
           </li>
           <li className="nav-item">
-            <Link to="/Signup">
-              <p
-                className={
-                  currentPage === "/Signup" ? "nav-link active" : "nav-link"
-                }
-              >
-                Join Here
-              </p>
+          <Link to="/Signup" style={{ color: 'inherit', textDecoration: 'inherit'}}>
+            <p  className={
+                currentPage === "/Signup" ? "nav-link active" : "nav-link"
+              }>
+              Join Here
+            </p>
+
             </Link>
           </li>
         </ul>

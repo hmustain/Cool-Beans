@@ -5,6 +5,9 @@ body {
     margin: 0;    
 } /*-- default width of body is 100% --*/
 
+#noneall p{
+    text-decoration:none;
+}
  ul {
     margin-top: 0;
     margin-bottom: 0;
@@ -46,12 +49,28 @@ body {
     background-color: rgba(13, 143, 104, 0.496);
     position: relative;
 }
+.nav-link{
+    background-color: rgba(10, 150, 108, 0.496);
+    border-radius: 10%;
+}
 
 .nav-item {
-font-size: 15px;
+font-size: 4vh;
 padding-right: 25px;
 padding-left: 25px;
+/* border: 1px solid black; */
+margin: 2vh;
+border-radius: 20px;
+text-decoration: none;
 }
+.nav-item p{
+    text-decoration: none;
+}
+.nav-item :hover{
+    background-color: rgba(9, 114, 82, 0.496);
+    border-radius: 10% ;
+    font-size: 3.8vh;
+} 
 
 .subscribe p {
     margin: 0;
@@ -77,4 +96,8 @@ padding-left: 25px;
     background-color: rgba(13, 143, 104, 0.496);
     display: flex;
     justify-content: center;
+}
+.text-link {
+    color: inherit;
+    text-decoration: inherit;
 }
