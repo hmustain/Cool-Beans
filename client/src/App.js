@@ -19,7 +19,6 @@ import Detail from "./pages/Detail";
 import Profile from "./pages/Profile";
 import Home from "./pages/Home";
 import Success from "./pages/Success";
-import NoMatch from "./pages/NoMatch";
 
 import Pagenotfound from './pages/pagenotfound'
 const httpLink = createHttpLink({
@@ -56,7 +55,6 @@ function App() {
               <Route path="/Signup" element={<Signup />} />
               <Route path="/Contact" element={<Contact />} />
               <Route path="/success" element={<Success/>} />
-              <Route path="*" element={<NoMatch />} />
               <Route
                 path="/product/:productId/reviews"
                 element={<ProductReviews />}
