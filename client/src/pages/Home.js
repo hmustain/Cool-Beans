@@ -17,7 +17,7 @@ function ControlledCarousel() {
     <div className="carousel w-100 mx-auto">
       <Carousel activeIndex={index} onSelect={handleSelect}>
         <Carousel.Item>
-          <img className="d-block w-100 first-ad" alt="First slide" />
+          <img className="d-block w-100 first-ad" />
           <Carousel.Caption>
             <h3>Free shipping on all orders over $50.</h3>
             <p>Try our premium roast coffee today.</p>
@@ -25,7 +25,7 @@ function ControlledCarousel() {
         </Carousel.Item>
 
         <Carousel.Item>
-          <img className="d-block  w-100 second-ad" alt="Second slide" />
+          <img className="d-block  w-100 second-ad" />
 
           <Carousel.Caption>
             <h3>
@@ -39,15 +39,6 @@ function ControlledCarousel() {
               Our expertly sourced and roasted beans provide a rich and robust
               flavor that will satisfy any coffee lover.
             </p>
-          </Carousel.Caption>
-        </Carousel.Item>
-
-        <Carousel.Item>
-          <img className="d-block  w-100 third-ad" alt="Third slide" />
-
-          <Carousel.Caption>
-            <h3>Reach out!</h3>
-            <p>Contact us if you have any special requests</p>
           </Carousel.Caption>
         </Carousel.Item>
       </Carousel>
