@@ -50,10 +50,14 @@ body {
     box-shadow: inset 0px -2px 10px rgba(0,0,0,0.75);
 }
 .nav-link{
-    background-color: rgba(10, 150, 108, 0.496);
+    background-color: rgb(151,222,203);
+    background: linear-gradient(90deg, rgba(151,222,203,1) 31%, rgba(83,201,166,1) 66%, rgba(142,219,198,1) 97%);
     border-radius: 10%;
-}
 
+}
+.nav-link:hover{
+    border: 1px solid black;
+}
 .nav-item {
     text-align: center;
 font-size: 4vh;
@@ -69,8 +73,9 @@ text-decoration: none;
 }
 .nav-item :hover{
     background-color: rgba(9, 114, 82, 0.496);
-    border-radius: 10% ;
+    border-radius: 20% ;
     font-size: 3.8vh;
+    
 } 
 
 .subscribe p {
@@ -103,4 +108,3 @@ text-decoration: none;
     color: inherit;
     text-decoration: inherit;
 }
-

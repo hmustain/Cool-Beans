@@ -80,10 +80,7 @@ function Login(props) {
         </form>
         <div className="card-info">
           <p>
-            Dont have an account?{" "}
-            <Link to="/Signup">
-              <a>Signup Here</a>
-            </Link>
+            Dont have an account? <Link to="/Signup"><p>Signup Here</p></Link>
           </p>
         </div>
       </div>
