@@ -36,15 +36,46 @@ window.location.assign('/login');
 function isadmin(){
     if(user.role == "admin"){
     return(
-        <div>
-        <h2>I see your an admin...</h2>
+        <div className="admindiv">
+        <div class="card">
         <img src={sith} alt="sith lord" width="100%" height="100%"></img>
-            </div>
+        <div class="card-body">
+          <h5 class="card-title">Admin Details</h5>
+          <p class="card-text"></p>
+          
+        </div>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item">FirstName: {user.firstName}</li>
+          <li class="list-group-item">lastName: {user.lastName}</li>
+          <li class="list-group-item">Email: {user.email}</li>
+        </ul>
+      
+      </div>
+       <div class="card">
+  <div class="card-header">
+    Reviews
+  </div>
+  <div class="card-body">
+    <blockquote class="blockquote mb-0">
+      <p>A well-known quote, contained in a blockquote element.</p>
+      <footer class="blockquote-footer">{user.firstName}</footer>
+    </blockquote><br></br>
+    <blockquote class="blockquote mb-0">
+      <p>A well-known quote, contained in a blockquote element.</p>
+      <footer class="blockquote-footer">{user.firstName}</footer>
+    </blockquote><br></br>
+    <blockquote class="blockquote mb-0">
+      <p>A well-known quote, contained in a blockquote element.</p>
+      <footer class="blockquote-footer">{user.firstName}</footer>
+    </blockquote><br></br>
+  </div>
+</div> 
+</div>
     ) } else{
         return(
             <div>
-                <h2></h2>
-            <img src={feild} alt="sith lord" width="100%" height="100%"></img>
+                <h2>Role: User</h2>
+            <img src={feild} alt="not sith lord" width="100%" height="100%"></img>
             </div>
         )
     }
@@ -52,7 +83,7 @@ function isadmin(){
 
 return (
 
-<div className="">
+<div className="profilediv">
 
 <Nav />
 
@@ -68,3 +99,22 @@ return (
 
 
 export default Profile;
+// reviews template
+
+
+/* <div>
+<h2>I see your an admin...</h2>
+
+<div className="card">
+<img src={sith} alt="sith lord" width="100%" height="100%"></img>
+<div class="card-body">
+<h5 class="card-title">Admin Info</h5>
+<p>hi</p>
+</div>
+<ul class="list-group list-group-flush">
+<li class="list-group-item">An item</li>
+<li class="list-group-item">A second item</li>
+<li class="list-group-item">A third item</li>
+</ul>
+</div>
+    </div> */

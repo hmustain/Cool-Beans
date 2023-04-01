@@ -2,6 +2,22 @@ h1{
     text-align: center;
 }
 .Profilediv{
-    display: flex;
     justify-content: center;
+}
+li{
+    list-style: none;
+}
+.profilediv{
+    background-color: rgb(235, 238, 235);
+}
+.admindiv{
+    display: flex;
+    flex-direction: row;
+    padding: 2%;
+}
+@media screen and (max-width: 990px) {
+    .admindiv{
+        display: flex;
+        flex-direction: column;
+    }
 }
