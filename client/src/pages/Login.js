@@ -5,6 +5,7 @@ import { LOGIN } from "../utils/mutations.js";
 import Auth from "../utils/auth";
 import "../styles/Login.css";
 import Nav from "../components/NavTabs.js";
+import Cart from "../components/Cart";
 
 function Login(props) {
   const [formState, setFormState] = useState({ email: "", password: "" });
@@ -19,7 +20,9 @@ function Login(props) {
       const token = mutationResponse.data.login.token;
       Auth.login(token);
     } catch (e) {
-      document.getElementById("errordiv").innerHTML=`<span style="color:red;">Incorrect email or password!</span>`
+      document.getElementById(
+        "errordiv"
+      ).innerHTML = `<span style="color:red;">Incorrect email or password!</span>`;
       console.log(e);
     }
   };
@@ -35,8 +38,9 @@ function Login(props) {
   return (
     <div className="Logincontainer">
       <Nav />
+      <Cart />
       <div className="card">
-        <div className="card-image" >
+        <div className="card-image">
           <h2 className="card-heading">
             <small>Sign in to your account</small>
           </h2>

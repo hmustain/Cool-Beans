@@ -6,14 +6,16 @@ import Cart from "../components/Cart";
 import "../styles/ShopAll.css";
 const ShopAll = () => {
   return (
-    <div className="ShopAllcontainer">
+    <>
       <Nav />
-      <CategoryMenu />
-      <div>
-        <Products />
+      <div className="ShopAllcontainer">
+        <CategoryMenu />
+        <div>
+          <Products />
+        </div>
+        <Cart />
       </div>
-      <Cart />
-    </div>
+    </>
   );
 };
 

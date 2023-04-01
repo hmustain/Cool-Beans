@@ -13,10 +13,14 @@ function AddReview({ productId, userId, onSubmit }) {
 
   return (
     <form onSubmit={handleSubmit}>
-      <h4>Add Review</h4>
-      <div>
-        <label htmlFor="rating">Rating:</label>
-        <select id="rating" value={rating} onChange={(e) => setRating(Number(e.target.value))}>
+      <div className="form-group">
+        <select
+          placeholder="custom-select"
+          className="form-control"
+          id="rating"
+          value={rating}
+          onChange={(e) => setRating(Number(e.target.value))}
+        >
           <option value="1">1 star</option>
           <option value="2">2 stars</option>
           <option value="3">3 stars</option>
@@ -24,9 +28,11 @@ function AddReview({ productId, userId, onSubmit }) {
           <option value="5">5 stars</option>
         </select>
       </div>
-      <div>
-        <label htmlFor="comment">Comment:</label>
+      <div className="form-group">
+        <br />
         <textarea
+          placeholder="Leave a review :)"
+          className="form-control"
           id="comment"
           value={comment}
           onChange={(e) => setComment(e.target.value)}
@@ -34,7 +40,9 @@ function AddReview({ productId, userId, onSubmit }) {
           cols="50"
         />
       </div>
-      <button type="submit">Submit</button>
+      <button type="submit" className="btn btn-dark d-flex flex-end m-1">
+        Submit
+      </button>
     </form>
   );
 }
