@@ -29,29 +29,29 @@ function ProductItem(item) {
   // console.log('category', category);
   // console.log("reviews", reviews);
 
-  const { cart } = state
+  const { cart } = state;
   // console.log('page loading:', state)
 
   const addToCart = () => {
-    const itemInCart = cart.find((cartItem) => cartItem._id === _id)
+    const itemInCart = cart.find((cartItem) => cartItem._id === _id);
     if (itemInCart) {
       dispatch({
         type: UPDATE_CART_QUANTITY,
         _id: _id,
-        purchaseQuantity: parseInt(itemInCart.purchaseQuantity) + 1
+        purchaseQuantity: parseInt(itemInCart.purchaseQuantity) + 1,
       });
-      idbPromise('cart', 'put', {
+      idbPromise("cart", "put", {
         ...itemInCart,
-        purchaseQuantity: parseInt(itemInCart.purchaseQuantity) + 1
+        purchaseQuantity: parseInt(itemInCart.purchaseQuantity) + 1,
       });
     } else {
       dispatch({
         type: ADD_TO_CART,
-        product: { ...item, purchaseQuantity: 1 }
+        product: { ...item, purchaseQuantity: 1 },
       });
-      idbPromise('cart', 'put', { ...item, purchaseQuantity: 1 });
+      idbPromise("cart", "put", { ...item, purchaseQuantity: 1 });
     }
-  }
+  };
 
   return (
     <div className="product pt-5 col-xs-12 col-sm-8 col-md-8 col-lg-3 ">
@@ -65,7 +65,9 @@ function ProductItem(item) {
         <br />
 
         <div className="add-cart">
-          <button onClick={addToCart} className="btn btn-dark w-50 mx-auto">Add To Cart</button>
+          <button onClick={addToCart} className="btn btn-dark w-50 mx-auto">
+            Add To Cart
+          </button>
           <Link to={`/product/${_id}/reviews`} productid={_id}>
             See All Reviews <br />
             {displayAverageRating(reviews)}
@@ -89,7 +91,7 @@ export function displayAverageRating(reviews) {
   return (
     <div>
       {renderStars(averageRating)}
-      <span style={{ marginLeft: '0.5rem', color: 'blue', fontSize: '0.8rem' }}>
+      <span style={{ marginLeft: "0.5rem", color: "blue", fontSize: "0.8rem" }}>
         ({averageRating.toFixed(1)})
       </span>
     </div>

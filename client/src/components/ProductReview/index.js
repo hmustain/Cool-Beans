@@ -120,14 +120,20 @@ function ProductReviews() {
       <div className="product-container">
         <div className="product-details-container">
           <div className="product-card">
+            <h3>{product?.name}</h3>
             <div className="product-image">
               <img src={`/images/${product?.image}`} alt={product?.name} />
             </div>
-            <div className="product-details">
-              <h3>{product?.name}</h3>
-              <p>{product?.description}</p>
-              <div className="product-price">${product?.price}</div>
-              {displayAverageRating(product?.reviews)}
+            <div className="product-details ">
+              {/* <p>{product?.description}</p> */}
+              <p>Average Rating: {displayAverageRating(product?.reviews)}</p>
+
+              <AddReview
+                productId={productId}
+                userId={user}
+                onSubmit={handleAddReview}
+              />
+              {/* <div className="product-price">${product?.price}</div> */}
             </div>
           </div>
           <div className="reviews-container">
@@ -145,11 +151,6 @@ function ProductReviews() {
                 </Card.Body>
               </Card>
             ))}
-            <AddReview
-              productId={productId}
-              userId={user}
-              onSubmit={handleAddReview}
-            />
           </div>
         </div>
       </div>
@@ -164,17 +165,26 @@ export function renderStars(averageRating) {
   const stars = [];
   for (let i = 0; i < 5; i++) {
     if (i < filledStarsCount) {
-      stars.push(<span key={i} className="filled-star">&#9733;</span>);
+      stars.push(
+        <span key={i} className="filled-star">
+          &#9733;
+        </span>
+      );
     } else if (i === filledStarsCount && percentageFilled > 0) {
       stars.push(
-        <span key={i} className="partially-filled-star">&#9733;</span>
+        <span key={i} className="partially-filled-star">
+          &#9733;
+        </span>
       );
     } else {
-      stars.push(<span key={i} className="unfilled-star">&#9733;</span>);
+      stars.push(
+        <span key={i} className="unfilled-star">
+          &#9733;
+        </span>
+      );
     }
   }
   return <div>{stars}</div>;
 }
-
 
 export default ProductReviews;

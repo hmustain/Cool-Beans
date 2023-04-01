@@ -9,9 +9,11 @@ function Nav(props) {
     if (Auth.loggedIn()) {
       return (
         <ul className="navbar-nav mx-auto">
-          
           <li className="nav-item">
-            <Link  style={{ color: 'inherit', textDecoration: 'inherit'}} to="/Home">
+            <Link
+              style={{ color: "inherit", textDecoration: "inherit" }}
+              to="/Home"
+            >
               <p
                 className={
                   currentPage === "/Home" ? "nav-link active" : "nav-link"
@@ -22,7 +24,10 @@ function Nav(props) {
             </Link>
           </li>
           <li className="nav-item">
-            <Link style={{ color: 'inherit', textDecoration: 'inherit'}} to="/ShopAll">
+            <Link
+              style={{ color: "inherit", textDecoration: "inherit" }}
+              to="/ShopAll"
+            >
               <p
                 className={
                   currentPage === "/ShopAll" ? "nav-link active" : "nav-link"
@@ -36,12 +41,14 @@ function Nav(props) {
         <a className="nav-link" href="#about" onClick={() => handlePageChange('About')}>About</a>
       </li> */}
           <li className="nav-item">
-            <Link style={{ color: 'inherit', textDecoration: 'inherit'}} to="/Contact">
+            <Link
+              style={{ color: "inherit", textDecoration: "inherit" }}
+              to="/Contact"
+            >
               <p
                 href="/Contact"
                 className={
                   currentPage === "/Contact" ? "nav-link active" : "nav-link"
-                  
                 }
               >
                 Contact Us
@@ -50,7 +57,7 @@ function Nav(props) {
           </li>
           <li className="nav-item">
             {/* this is not using the Link component to logout or user and then refresh the application to the start */}
-            <Link style={{ color: 'inherit', textDecoration: 'inherit'}}>
+            <Link style={{ color: "inherit", textDecoration: "inherit" }}>
               <p
                 className="nav-link"
                 href="/logout"
@@ -66,7 +73,10 @@ function Nav(props) {
       return (
         <ul className="navbar-nav mx-auto">
           <li className="nav-item">
-            <Link style={{ color: 'inherit', textDecoration: 'inherit'}} to="/Home">
+            <Link
+              style={{ color: "inherit", textDecoration: "inherit" }}
+              to="/Home"
+            >
               <p
                 className={
                   currentPage === "/Home" ? "nav-link active" : "nav-link"
@@ -77,38 +87,50 @@ function Nav(props) {
             </Link>
           </li>
           <li className="nav-item">
-            <Link to="/ShopAll" style={{ color: 'inherit', textDecoration: 'inherit'}}>
-              <p id="shop" className={
-                currentPage === "/Contact" ? "nav-link active" : "nav-link"
-              }
-              >Shop All</p>
+            <Link
+              to="/ShopAll"
+              style={{ color: "inherit", textDecoration: "inherit" }}
+            >
+              <p
+                id="shop"
+                className={
+                  currentPage === "/Contact" ? "nav-link active" : "nav-link"
+                }
+              >
+                Shop All
+              </p>
             </Link>
           </li>
           {/* <li className="nav-item">
         <a className="nav-link" href="#about" onClick={() => handlePageChange('About')}>About</a>
       </li> */}
           <li className="nav-item">
-
-            <Link to="/Contact" style={{ color: 'inherit', textDecoration: 'inherit'}}>
-            <p
-              href="/Contact"
-              className={
-                currentPage === "/Contact" ? "nav-link active" : "nav-link"
-              }
-
+            <Link
+              to="/Contact"
+              style={{ color: "inherit", textDecoration: "inherit" }}
             >
-              Contact Us
-            </p>
+              <p
+                href="/Contact"
+                className={
+                  currentPage === "/Contact" ? "nav-link active" : "nav-link"
+                }
+              >
+                Contact Us
+              </p>
             </Link>
           </li>
           <li className="nav-item">
-          <Link to="/Signup" style={{ color: 'inherit', textDecoration: 'inherit'}}>
-            <p  className={
-                currentPage === "/Signup" ? "nav-link active" : "nav-link"
-              }>
-              Join Here
-            </p>
-
+            <Link
+              to="/Signup"
+              style={{ color: "inherit", textDecoration: "inherit" }}
+            >
+              <p
+                className={
+                  currentPage === "/Signup" ? "nav-link active" : "nav-link"
+                }
+              >
+                Join Here
+              </p>
             </Link>
           </li>
         </ul>
@@ -125,7 +147,8 @@ function Nav(props) {
                 id="icons"
                 href="/profile"
                 className="bi bi-person-circle"
-              ></span>Profile
+              ></span>
+              Profile
             </div>
           </Link>
         </div>
@@ -139,7 +162,8 @@ function Nav(props) {
                 id="icons"
                 href="/Login"
                 className="bi bi-person-circle"
-              ></span>Login
+              ></span>
+              Login
             </div>
           </Link>
         </div>
@@ -162,10 +186,7 @@ function Nav(props) {
       <header id="header">
         <nav className="navbar navbar-expand-lg ">
           <div className="container justify-content-center">
-
-            <div  id="navbarNav">
-              {showNavigation()}
-            </div>
+            <div id="navbarNav">{showNavigation()}</div>
           </div>
         </nav>
       </header>
