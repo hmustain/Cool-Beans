@@ -46,11 +46,10 @@ body {
 
 #header {
     border-bottom: 1px solid black;
-    background-color: rgba(13, 143, 104, 0.496);
     position: relative;
 }
 .nav-link{
-    background-color: rgba(10, 150, 108, 0.496);
+    
     border-radius: 10%;
 }
 
@@ -101,4 +100,7 @@ text-decoration: none;
 .text-link {
     color: inherit;
     text-decoration: inherit;
+}
+.navbar{
+    background-color: rgba(13, 143, 104, 0.496);
 }
