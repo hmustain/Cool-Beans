@@ -62,18 +62,4 @@
     margin: 0 .5rem 1rem 0;
   }
  
-  @media screen and (max-width: 768px) {
-    .cart {
-      position: relative;
-      max-width: 100%;
-      max-height: auto;
-      box-shadow: none;
-      background-color: inherit;
-    }
-  
-    .cart-closed {
-      position: relative;
-      margin: 0 auto;
-    }
-  }
-  
+ 
