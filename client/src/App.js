@@ -10,7 +10,6 @@ import {
 } from "@apollo/client";
 import { setContext } from "@apollo/client/link/context";
 import Login from "./pages/Login";
-import MainContainer from "./components/mainContainer";
 import Signup from "./pages/Signup";
 import Contact from "./pages/Contact";
 import ProductReviews from "./components/ProductReview";

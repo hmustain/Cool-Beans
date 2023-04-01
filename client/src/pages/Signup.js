@@ -87,7 +87,7 @@ return (
     </div>
   </form>
   <div className="card-info">
-    <p>already have an account? </p><Link to="/Login"><a>Login Here</a></Link>
+    <p>already have an account? </p><Link to="/Login"><p>Login Here</p></Link>
   </div>
 </div>
 
