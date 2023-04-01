@@ -21,79 +21,131 @@ import { useQuery } from "@apollo/client";
 const Profile = () => {
 
 
-const { loading, data } = useQuery(QUERY_ME);
+    const { loading, data } = useQuery(QUERY_ME);
 
-const user = data?.me;
+    const user = data?.me;
 
 
-console.log(user);
+    console.log(user);
 
-if (!user && !loading) {
+    if (!user && !loading) {
 
-window.location.assign('/login');
+        window.location.assign('/login');
 
-}
-function isadmin(){
-    if(user.role == "admin"){
-    return(
-        <div className="admindiv">
-        <div class="card">
-        <img src={sith} alt="sith lord" width="100%" height="100%"></img>
-        <div class="card-body">
-          <h5 class="card-title">Admin Details</h5>
-          <p class="card-text"></p>
-          
-        </div>
-        <ul class="list-group list-group-flush">
-          <li class="list-group-item">FirstName: {user.firstName}</li>
-          <li class="list-group-item">lastName: {user.lastName}</li>
-          <li class="list-group-item">Email: {user.email}</li>
-        </ul>
-      
-      </div>
-       <div class="card">
-  <div class="card-header">
-    Reviews
-  </div>
-  <div class="card-body">
-    <blockquote class="blockquote mb-0">
-      <p>A well-known quote, contained in a blockquote element.</p>
-      <footer class="blockquote-footer">{user.firstName}</footer>
-    </blockquote><br></br>
-    <blockquote class="blockquote mb-0">
-      <p>A well-known quote, contained in a blockquote element.</p>
-      <footer class="blockquote-footer">{user.firstName}</footer>
-    </blockquote><br></br>
-    <blockquote class="blockquote mb-0">
-      <p>A well-known quote, contained in a blockquote element.</p>
-      <footer class="blockquote-footer">{user.firstName}</footer>
-    </blockquote><br></br>
-  </div>
-</div> 
-</div>
-    ) } else{
-        return(
-            <div>
-                <h2>Role: User</h2>
-            <img src={feild} alt="not sith lord" width="100%" height="100%"></img>
-            </div>
-        )
     }
-}
+    function isadmin() {
+        if (user.role == "admin") {
+            return (
+                <div className="admindiv">
+                    <div className="card">
+                        <img src={sith} alt="sith lord" width="100%" height="100%"></img>
+                        <div className="card-body">
+                            <h5 className="card-title">Admin Details</h5>
+                            <p className="card-text"></p>
 
-return (
+                        </div>
+                        <ul className="list-group list-group-flush">
+                            <li className="list-group-item">FirstName: {user.firstName}</li>
+                            <li className="list-group-item">lastName: {user.lastName}</li>
+                            <li className="list-group-item">Email: {user.email}</li>
+                        </ul>
+                    </div>
 
-<div className="profilediv">
-
-<Nav />
-
-<h1>Welcome to your profile {loading? <p>loading...</p> : user.firstName}</h1>
-<div className="Profilediv">
-    {loading? <p>...</p> : isadmin()}
+                    <form className="card1">
+                        <div className="row">
+                            <div className="col-25">
+                                <label>Product Name</label>
+                            </div>
+                            <div className="col-75">
+                                <input type="text" placeholder="name.."></input>
+                            </div>
+                        </div>
+                        <div className="row">
+                            <div className="col-25">
+                                <label type="int">Price</label>
+                            </div>
+                            <div className="col-75">
+                                <div className="input-group">
+                                    <input type="text" class="form-control" aria-label="Dollar amount (with dot and two decimal places)"></input>
+                                    <span class="input-group-text">$</span>
+                                    <span class="input-group-text">0.00</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="row">
+                            <div className="col-25">
+                                <label>Category</label>
+                            </div>
+                            <div className="col-75">
+                                <select id="country" name="country">
+                                    <option value="australia">Light Roast</option>
+                                    <option value="canada">Medium Roast</option>
+                                    <option value="usa">Dark Roast</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div className="row">
+                            <div className="col-25">
+                                <label>Description</label>
+                            </div>
+                            <div className="col-75">
+                                <textarea id="subject" name="subject" placeholder="Write something.."></textarea>
+                            </div>
+                        </div>
+                        <label>Upload Product Image Below</label>
+                        <div class="input-group mb-3">
+  <input type="file" class="form-control" id="inputGroupFile02"></input>
+  <label class="input-group-text" for="inputGroupFile02">Upload</label>
 </div>
-</div>
+                        <div className="row">
+                           <button className="btn btn-dark w-50 mx-auto">Submit</button>
+                        </div>
+                    </form>
 
-);
+                    <div className="card">
+                        <div className="card-header">
+                            Reviews
+                        </div>
+                        <div className="card-body">
+                            <blockquote className="blockquote mb-0">
+                                <p>A well-known quote, contained in a blockquote element.</p>
+                                <footer className="blockquote-footer">{user.firstName}</footer>
+                            </blockquote><br></br>
+                            <blockquote className="blockquote mb-0">
+                                <p>A well-known quote, contained in a blockquote element.</p>
+                                <footer className="blockquote-footer">{user.firstName}</footer>
+                            </blockquote><br></br>
+                            <blockquote className="blockquote mb-0">
+                                <p>A well-known quote, contained in a blockquote element.</p>
+                                <footer className="blockquote-footer">{user.firstName}</footer>
+                            </blockquote><br></br>
+                        </div>
+                    </div>
+                </div>
+            )
+        } else {
+            return (
+                <div>
+                    <h2>Role: User</h2>
+                    <img src={feild} alt="not sith lord" width="100%" height="100%"></img>
+                </div>
+            )
+        }
+    }
+
+    return (
+
+        <div className="profilediv">
+
+            <Nav />
+
+            <h1>Welcome to your profile {loading ? <p>loading...</p> : user.firstName}</h1>
+            <div className="Profilediv">
+                {loading ? <p>...</p> : isadmin()}
+            </div>
+        </div>
+
+    );
 
 };
 
