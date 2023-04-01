@@ -120,19 +120,20 @@ function ProductReviews() {
       <div className="product-container">
         <div className="product-details-container">
           <div className="product-card">
+            <h3>{product?.name}</h3>
             <div className="product-image">
               <img src={`/images/${product?.image}`} alt={product?.name} />
             </div>
             <div className="product-details">
-              <h3>{product?.name}</h3>
-              <p>{product?.description}</p>
+              {/* <p>{product?.description}</p> */}
+              <p>Average Rating: {displayAverageRating(product?.reviews)}</p>
+
               <AddReview
                 productId={productId}
                 userId={user}
                 onSubmit={handleAddReview}
               />
-              <div className="product-price">${product?.price}</div>
-              {displayAverageRating(product?.reviews)}
+              {/* <div className="product-price">${product?.price}</div> */}
             </div>
           </div>
           <div className="reviews-container">
