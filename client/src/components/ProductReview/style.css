@@ -1,6 +1,7 @@
-.review-container {
-  margin: 0 auto;
-  max-width: 90%;
+.reviews-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
 }
 
 

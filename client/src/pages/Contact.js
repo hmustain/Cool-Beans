@@ -2,6 +2,7 @@ import React from "react";
 import { useForm, ValidationError } from "@formspree/react";
 import "../styles/form.css";
 import Nav from "../components/NavTabs";
+import Cart from "../components/Cart";
 function ContactForm() {
   const [state, handleSubmit] = useForm("xayzpyor");
   if (state.succeeded) {
@@ -9,8 +10,8 @@ function ContactForm() {
   }
   return (
     <>
-      <Nav />
       <div className="ContactContainer">
+        <Nav />
         <section className="contact-page">
           <div className="col-md-5 m-2">
             <ul className="list-unstyled ">
@@ -99,6 +100,7 @@ function ContactForm() {
             </form>
           </div>
         </section>
+        <Cart />
       </div>
     </>
   );

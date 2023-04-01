@@ -4,6 +4,7 @@ import { QUERY_PRODUCTS } from "../utils/queries";
 import ProductItem from "../components/ProductItem";
 import { useQuery } from "@apollo/client";
 import Nav from "../components/NavTabs";
+import Cart from "../components/Cart";
 import "../styles/home.css";
 
 function ControlledCarousel() {
@@ -107,6 +108,7 @@ function ControlledCarousel() {
           </p>
         </section>
       </div>
+      <Cart />
     </div>
   );
 }

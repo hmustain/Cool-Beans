@@ -124,7 +124,7 @@ function ProductReviews() {
             <div className="product-image">
               <img src={`/images/${product?.image}`} alt={product?.name} />
             </div>
-            <div className="product-details">
+            <div className="product-details ">
               {/* <p>{product?.description}</p> */}
               <p>Average Rating: {displayAverageRating(product?.reviews)}</p>
 
