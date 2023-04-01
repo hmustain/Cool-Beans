@@ -126,6 +126,11 @@ function ProductReviews() {
             <div className="product-details">
               <h3>{product?.name}</h3>
               <p>{product?.description}</p>
+              <AddReview
+                productId={productId}
+                userId={user}
+                onSubmit={handleAddReview}
+              />
               <div className="product-price">${product?.price}</div>
               {displayAverageRating(product?.reviews)}
             </div>
@@ -145,11 +150,6 @@ function ProductReviews() {
                 </Card.Body>
               </Card>
             ))}
-            <AddReview
-              productId={productId}
-              userId={user}
-              onSubmit={handleAddReview}
-            />
           </div>
         </div>
       </div>
@@ -164,17 +164,26 @@ export function renderStars(averageRating) {
   const stars = [];
   for (let i = 0; i < 5; i++) {
     if (i < filledStarsCount) {
-      stars.push(<span key={i} className="filled-star">&#9733;</span>);
+      stars.push(
+        <span key={i} className="filled-star">
+          &#9733;
+        </span>
+      );
     } else if (i === filledStarsCount && percentageFilled > 0) {
       stars.push(
-        <span key={i} className="partially-filled-star">&#9733;</span>
+        <span key={i} className="partially-filled-star">
+          &#9733;
+        </span>
       );
     } else {
-      stars.push(<span key={i} className="unfilled-star">&#9733;</span>);
+      stars.push(
+        <span key={i} className="unfilled-star">
+          &#9733;
+        </span>
+      );
     }
   }
   return <div>{stars}</div>;
 }
-
 
 export default ProductReviews;

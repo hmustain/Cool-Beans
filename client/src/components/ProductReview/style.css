@@ -12,9 +12,14 @@
     color: lightgray
   }
 
-  /* .product-container {
+.product-container {
   display: flex;
   align-items: center;
   justify-content: center;
-} */
-  
+} 
+
+.product-details-container {
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: center;
+}
