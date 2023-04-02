@@ -7,7 +7,12 @@ import { Link } from "react-router-dom";
 function ContactForm() {
   const [state, handleSubmit] = useForm("xayzpyor");
   if (state.succeeded) {
-    return <h1 className="thanks">Thanks for your feedback!</h1>;
+    return (
+    <div>
+     
+      <h1 className="thanks">Thanks for your feedback!<br></br>Back to home page click <Link to="/home">Me</Link></h1>;
+      </div>
+    )
   }
   return (
     <>
