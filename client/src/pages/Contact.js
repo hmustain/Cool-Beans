@@ -3,6 +3,7 @@ import { useForm, ValidationError } from "@formspree/react";
 import "../styles/form.css";
 import Nav from "../components/NavTabs";
 import Cart from "../components/Cart";
+import { Link } from "react-router-dom";
 function ContactForm() {
   const [state, handleSubmit] = useForm("xayzpyor");
   if (state.succeeded) {
@@ -38,7 +39,7 @@ function ContactForm() {
               <li>
                 <p className="info-headers">Products</p>
                 <p className="info-paragraph">
-                  View all of our products <a href="./home">here</a>
+                  View all of our products <Link to="/home">here</Link>
                 </p>
               </li>
             </ul>
