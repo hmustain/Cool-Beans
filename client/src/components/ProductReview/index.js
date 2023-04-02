@@ -138,13 +138,14 @@ function ProductReviews() {
           </div>
           <div className="reviews-container">
             {reviews.map((review) => (
+             
               <Card key={review._id} className="my-3">
                 <Card.Body>
                   <Card.Title className="mb-2 font-weight-bold">
                     {`${review.user.firstName} ${review.user.lastName}`}
                   </Card.Title>
                   <Card.Subtitle className="mb-2 text-muted">
-                    {new Date(review.createdAt).toLocaleDateString()}
+                    {review.createdAt}
                   </Card.Subtitle>
                   <div>{renderStars(review.rating)}</div>
                   <Card.Text className="mt-2">{review.comment}</Card.Text>
