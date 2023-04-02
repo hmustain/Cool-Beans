@@ -6,3 +6,10 @@
     justify-content: center;
   } 
 
+#producthead{
+  
+    text-align: center;
+    padding: 2%;
+    border-bottom: 1px inset black;
+  
+}

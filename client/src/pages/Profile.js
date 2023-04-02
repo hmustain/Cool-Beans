@@ -177,7 +177,7 @@ const Profile = () => {
 
             <Nav />
             
-            <h1>leave me here</h1>
+            <h1 id="profilehead">leave me here</h1>
             <h2>Welcome to your profile {loading ? <p>loading...</p> : user.firstName}</h2>
             <div className="Profilediv">
                 {loading ? <p>...</p> : isadmin()}

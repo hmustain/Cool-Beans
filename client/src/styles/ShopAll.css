@@ -9,3 +9,9 @@ h2{
 .ShopAllcontainer {
     background-color: rgb(235, 238, 235);
 }
+#homehead{
+        text-align: center;
+        padding: 2%;
+        border-bottom: 1px inset black;
+      
+}

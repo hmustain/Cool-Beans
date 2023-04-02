@@ -44,7 +44,7 @@ function Products() {
 
   return (
     <div className="my-2 container ">
-      <h2>Our Products:</h2>
+      <h2 id="producthead">Our Products:</h2>
       {loading ? (
         <div>Data is loading...</div>
       ) : (

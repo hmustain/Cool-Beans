@@ -45,7 +45,7 @@ function ControlledCarousel() {
       </Carousel>
       <div className="homepage-products">
         <div className="my-2 container ">
-          <h2>See our highest rated products!</h2>
+          <h2 id="homehead">See our highest rated products!</h2>
           {loading ? (
             <div>Data is loading</div>
           ) : (

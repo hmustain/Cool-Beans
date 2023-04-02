@@ -52,7 +52,7 @@ function CategoryMenu() {
   
   return (
     <div>
-      <h2>Sort by Category:</h2>
+      <h1>Sort by Category:</h1>
       <div className="Catdiv">
         
       <button className="btn btn-dark m-2" onClick={() => {
