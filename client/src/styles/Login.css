@@ -124,3 +124,6 @@ input {
 .Logincontainer {
 	background-color: rgb(235, 238, 235);
 }
+@media screen and (max-width: 550px) {
+	
+}

@@ -35,38 +35,34 @@ function CategoryMenu() {
     }
   }, [categoryData, loading, dispatch]);
 
-  // const handleClick = (name) => {
-  //     console.log(name)
-  //     switch (name) {
-  //       case 'Light Roast':
-  //         window.location.assign('/LightRoast');
-  //         console.log('you clicked lightroast');
-  //         break;
-  //       case 'Medium Roast':
-  //         console.log('you clicked medium');
-  //         window.location.assign('/MediumRoast');
-  //         break;
-  //       case 'Dark Roast':
-  //         window.location.assign('/DarkRoast');
-  //         console.log('clicked dark');
-  //         break;
-  //       default:
-  //         console.log(' is not available right now');
-  //       }
-  //   };
   const handleClick = (id) => {
+    if(id == ""){
+      dispatch({
+        type: UPDATE_CURRENT_CATEGORY,
+        currentCategory: "",
+      });
+    }
+    
     dispatch({
       type: UPDATE_CURRENT_CATEGORY,
       currentCategory: id,
     });
   };
-
+ 
+  
   return (
     <div>
       <h2>Sort by Category:</h2>
       <div className="Catdiv">
+        
+      <button className="btn btn-dark m-2" onClick={() => {
+              handleClick("");
+            }}> View All </button>
+     
         {categories.map((item) => (
+          
           <button
+          
             className="btn btn-dark m-2"
             key={item._id}
             onClick={() => {

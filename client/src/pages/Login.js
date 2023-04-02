@@ -113,11 +113,16 @@ handleFormSubmit(token)
             <label className="input-label">Password:</label>
           </div>
           <div id="errordiv"></div>
+          
           <div className="action">
+            <div className="recapdiv" >
           <ReCAPTCHA 
+          size="normal"
           sitekey={process.env.REACT_APP_SITE_KEY}
-          ref={captchaRef}/>
-          <div id="recap"></div>
+          ref={captchaRef}/> 
+          <div id="recap"></div><br></br>
+          
+          </div>
             <button className="action-button" type="submit">
               Login
             </button>
@@ -130,6 +135,7 @@ handleFormSubmit(token)
           </div>
         </div>
       </div>
+      
     </div>
   );
 }
