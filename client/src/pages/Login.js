@@ -20,11 +20,11 @@ const handleCaptcha = (e) => {
   
   const token = captchaRef.current.getValue();
   console.log(token,"here")
-  
+  captchaRef.current.reset();
 if(token){
 handleFormSubmit(token)
 }else{
-  document.getElementById("recap").innerHTML=`<span style="color:red;">Must check Recaptcha!</span>`;
+  document.getElementById("recap").innerHTML=`<span style="color:red;">Please check Recaptcha!</span>`;
 }
 
 }

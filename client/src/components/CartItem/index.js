@@ -2,7 +2,7 @@ import React from "react";
 import { useStoreContext } from "../../utils/GlobalState";
 import { REMOVE_FROM_CART, UPDATE_CART_QUANTITY } from "../../utils/actions";
 import { idbPromise } from "../../utils/helpers";
-
+import "../../styles/cartitem.css"
 const CartItem = ({ item }) => {
   const [, dispatch] = useStoreContext();
 
@@ -42,7 +42,7 @@ const CartItem = ({ item }) => {
           {item.name}: ${item.price}
         </div>
         <div>
-          <span>Qty:</span>
+          <span className="Qty">Qty:</span>
           <input
             type="number"
             placeholder="1"
