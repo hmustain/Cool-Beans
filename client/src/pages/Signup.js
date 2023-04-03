@@ -51,7 +51,7 @@ function Signup(props) {
   return (
     <div className="signupcontainer">
       <Nav />
-      <div className="card">
+      <div className="card custom-card">
         <div className="card-imageSU">
           <h2 className="card-heading2">
             Get started <br></br>
@@ -120,9 +120,7 @@ function Signup(props) {
         </form>
         <div className="card-info">
           <p>already have an account? </p>
-          <Link to="/Login">
-            Login Here
-          </Link>
+          <Link to="/Login">Login Here</Link>
         </div>
       </div>
 

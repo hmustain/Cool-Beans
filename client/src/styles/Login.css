@@ -30,7 +30,7 @@ input {
 }
 
 .card {
-	margin: 2rem auto;
+	margin: auto;
 	display: flex;
 	flex-direction: column;
 	width: 100%;
@@ -126,3 +126,6 @@ input {
 }
 
 
+.custom-card {
+	margin-top: 2rem;
+}
