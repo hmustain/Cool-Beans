@@ -2,10 +2,11 @@ import React from "react";
 import { useStoreContext } from "../../utils/GlobalState";
 import { REMOVE_FROM_CART, UPDATE_CART_QUANTITY } from "../../utils/actions";
 import { idbPromise } from "../../utils/helpers";
-
+import "../../styles/cartitem.css"
+//cart item component that represents all the single items in the cart
 const CartItem = ({ item }) => {
   const [, dispatch] = useStoreContext();
-
+  //function that handels removing single item from cart onclick
   const removeFromCart = (item) => {
     dispatch({
       type: REMOVE_FROM_CART,
@@ -13,7 +14,7 @@ const CartItem = ({ item }) => {
     });
     idbPromise("cart", "delete", { ...item });
   };
-
+  //onchange events for the QTY. if QTY = 0 remove it from cart else update the cart quantity
   const onChange = (e) => {
     const value = e.target.value;
     if (value === "0") {
@@ -42,7 +43,7 @@ const CartItem = ({ item }) => {
           {item.name}: ${item.price}
         </div>
         <div>
-          <span>Qty:</span>
+          <span className="Qty">Qty:</span>
           <input
             type="number"
             placeholder="1"

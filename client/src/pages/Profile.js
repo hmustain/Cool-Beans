@@ -53,6 +53,7 @@ const Profile = () => {
 
                     <form className="card1">
                         <div className="row">
+                            <h5>Add a Product</h5>
                             <div className="col-25">
                                 <label>Product Name</label>
                             </div>
@@ -110,14 +111,17 @@ const Profile = () => {
                             <blockquote className="blockquote mb-0">
                                 <p>A well-known quote, contained in a blockquote element.</p>
                                 <footer className="blockquote-footer">{user.firstName}</footer>
+                                <button>edit</button> <button>delete</button>
                             </blockquote><br></br>
                             <blockquote className="blockquote mb-0">
                                 <p>A well-known quote, contained in a blockquote element.</p>
                                 <footer className="blockquote-footer">{user.firstName}</footer>
+                                <button>edit</button> <button>delete</button>
                             </blockquote><br></br>
                             <blockquote className="blockquote mb-0">
                                 <p>A well-known quote, contained in a blockquote element.</p>
                                 <footer className="blockquote-footer">{user.firstName}</footer>
+                                <button>edit</button> <button>delete</button>
                             </blockquote><br></br>
                         </div>
                     </div>
@@ -125,9 +129,43 @@ const Profile = () => {
             )
         } else {
             return (
-                <div>
-                    <h2>Role: User</h2>
-                    <img src={feild} alt="not sith lord" width="100%" height="100%"></img>
+                <div className="admindiv">
+                    <div className="card">
+                        <img src={feild} alt="not sith lord" width="100%" height="100%"></img>
+                        <div className="card-body">
+                            <h5 className="card-title">User Details</h5>
+                            <p className="card-text"></p>
+
+                        </div>
+                        <ul className="list-group list-group-flush">
+                            <li className="list-group-item">FirstName: {user.firstName}</li>
+                            <li className="list-group-item">lastName: {user.lastName}</li>
+                            <li className="list-group-item">Email: {user.email}</li>
+                        </ul>
+                    </div>
+
+                    <div className="card">
+                        <div className="card-header">
+                            Your Reviews
+                        </div>
+                        <div className="card-body">
+                            <blockquote className="blockquote mb-0">
+                                <p>A well-known quote, contained in a blockquote element.</p>
+                                <footer className="blockquote-footer">{user.firstName}</footer>
+                                <button>edit</button> <button>delete</button>
+                            </blockquote><br></br>
+                            <blockquote className="blockquote mb-0">
+                                <p>A well-known quote, contained in a blockquote element.</p>
+                                <footer className="blockquote-footer">{user.firstName}</footer>
+                                <button>edit</button> <button>delete</button>
+                            </blockquote><br></br>
+                            <blockquote className="blockquote mb-0">
+                                <p>A well-known quote, contained in a blockquote element.</p>
+                                <footer className="blockquote-footer">{user.firstName}</footer>
+                                <button>edit</button> <button>delete</button>
+                            </blockquote><br></br>
+                        </div>
+                    </div>
                 </div>
             )
         }
@@ -138,8 +176,9 @@ const Profile = () => {
         <div className="profilediv">
 
             <Nav />
-
-            <h1>Welcome to your profile {loading ? <p>loading...</p> : user.firstName}</h1>
+            
+            <h1 id="profilehead">leave me here</h1>
+            <h2>Welcome to your profile {loading ? <p>loading...</p> : user.firstName}</h2>
             <div className="Profilediv">
                 {loading ? <p>...</p> : isadmin()}
             </div>

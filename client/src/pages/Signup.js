@@ -1,3 +1,4 @@
+//import style / mutations/ components /utils / usestate and link
 import "../styles/Signup.css";
 import { useMutation } from "@apollo/client";
 import React, { useState } from "react";
@@ -6,10 +7,13 @@ import Auth from "../utils/auth";
 import Cart from "../components/Cart";
 import { ADD_USER } from "../utils/mutations";
 import { Link } from "react-router-dom";
+//exported Signup page
 function Signup(props) {
+  //declare variables and states declare set variables.
   const [formState, setFormState] = useState({ email: "", password: "" });
   const [addUser] = useMutation(ADD_USER);
-
+  //after form submit run this function that adds user to database
+  //then logs them in giving them auth token
   const handleFormSubmit = async (event) => {
     event.preventDefault();
     const mutationResponse = await addUser({
@@ -23,7 +27,7 @@ function Signup(props) {
     const token = mutationResponse.data.addUser.token;
     Auth.login(token);
   };
-
+  //updates formstate onchange or when user types
   const handleChange = (event) => {
     const { name, value } = event.target;
     setFormState({
@@ -31,7 +35,7 @@ function Signup(props) {
       [name]: value,
     });
   };
-
+  //function not being used to validate password and confirm password on change but broke code
   function validatePassword() {
     var password = document.getElementById("password").value;
     var confirmPassword = document.getElementById("confirm-password").value;
@@ -117,7 +121,7 @@ function Signup(props) {
         <div className="card-info">
           <p>already have an account? </p>
           <Link to="/Login">
-            <a>Login Here</a>
+            Login Here
           </Link>
         </div>
       </div>

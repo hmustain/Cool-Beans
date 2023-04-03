@@ -1,5 +1,19 @@
-h1{
+#profilehead{
     text-align: center;
+    padding: 2%;
+    background: url("../styles/images/profilebanner.jpg");
+   background-size: 100% 100%;
+   background-repeat: no-repeat;
+    text-indent: -9999px;
+    height: 15vh;
+}
+h1{
+  text-align: center;
+  padding: 2%;
+}
+
+h5{
+  text-align: center;
 }
 
 li{
@@ -80,4 +94,16 @@ li{
         display: flex;
         flex-direction: column;
     }
+}
+@media screen and (min-width: 990px) {
+  #profilehead{
+ 
+   background-size:contain;
+   background-repeat: repeat;
+    
+   
+    
+    
+
+}
 }

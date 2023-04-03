@@ -5,8 +5,8 @@ import { useParams } from "react-router-dom";
 import Nav from "../NavTabs";
 import AddReview from "../AddReview";
 import { displayAverageRating } from "../ProductItem";
-// import ProductItem from "../ProductItem";
 
+//ProductReviews component that grabs and displays all reviews of an item when See all Reviews is clicked
 function ProductReviews() {
   const { productId } = useParams();
   const [reviews, setReviews] = useState([]);
@@ -14,8 +14,8 @@ function ProductReviews() {
   const [user, setUser] = useState(null);
 
   useEffect(() => {
+    // Fetch the authenticated user's ID and set it in state
     async function fetchUser() {
-      // Fetch the authenticated user's ID and set it in state
       const response = await fetch("http://localhost:3001/graphql", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -35,7 +35,7 @@ function ProductReviews() {
     }
     fetchUser();
   }, []);
-
+  // get product and all reviews of that product
   useEffect(() => {
     async function fetchProductAndReviews() {
       console.log("productId", productId);
@@ -81,7 +81,7 @@ function ProductReviews() {
   if (!product) {
     return <div>Loading product...</div>;
   }
-
+  //function to handle adding new reviews to product
   const handleAddReview = async (review) => {
     const response = await fetch("http://localhost:3001/graphql", {
       method: "POST",
@@ -138,13 +138,14 @@ function ProductReviews() {
           </div>
           <div className="reviews-container">
             {reviews.map((review) => (
+
               <Card key={review._id} className="my-3">
                 <Card.Body>
                   <Card.Title className="mb-2 font-weight-bold">
                     {`${review.user.firstName} ${review.user.lastName}`}
                   </Card.Title>
                   <Card.Subtitle className="mb-2 text-muted">
-                    {new Date(review.createdAt).toLocaleDateString()}
+                    {review.createdAt}
                   </Card.Subtitle>
                   <div>{renderStars(review.rating)}</div>
                   <Card.Text className="mt-2">{review.comment}</Card.Text>
@@ -157,7 +158,7 @@ function ProductReviews() {
     </>
   );
 }
-
+// function that renders stars based on the averageRating of product out of 5 maximun
 export function renderStars(averageRating) {
   const filledStarsCount = Math.floor(averageRating);
   const percentageFilled = (averageRating - filledStarsCount) * 100;

@@ -1,3 +1,4 @@
+//import components/ utils /styles / use effect and usequery
 import React, { useEffect } from "react";
 import ProductItem from "../ProductItem";
 import { useStoreContext } from "../../utils/GlobalState";
@@ -6,13 +7,14 @@ import { useQuery } from "@apollo/client";
 import { QUERY_PRODUCTS } from "../../utils/queries";
 import { idbPromise } from "../../utils/helpers";
 import "./style.css";
+//Products component that displays all products or filters by category
 function Products() {
   const [state, dispatch] = useStoreContext();
 
   const { currentCategory } = state;
 
   const { loading, data } = useQuery(QUERY_PRODUCTS);
-
+  //updates products
   useEffect(() => {
     if (data) {
       dispatch({
@@ -31,7 +33,7 @@ function Products() {
       });
     }
   }, [data, loading, dispatch]);
-
+  //filterProducts function that returns all products if there is no currentcategory selected or renders all products in a certain category based on what current category is
   function filterProducts() {
     if (!currentCategory) {
       return state.products;
@@ -44,7 +46,7 @@ function Products() {
 
   return (
     <div className="my-2 container ">
-      <h2>Our Products:</h2>
+      <h2 id="producthead">Our Products:</h2>
       {loading ? (
         <div>Data is loading...</div>
       ) : (
