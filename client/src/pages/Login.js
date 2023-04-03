@@ -4,6 +4,7 @@ import { useMutation } from "@apollo/client";
 import { Link } from "react-router-dom";
 import { LOGIN } from "../utils/mutations.js";
 import Auth from "../utils/auth";
+import {VerifiRecap} from '../utils/API'
 import "../styles/Login.css";
 import Nav from "../components/NavTabs.js";
 import Cart from "../components/Cart";
@@ -19,10 +20,10 @@ const handleCaptcha = (e) => {
   e.preventDefault();
   
   const token = captchaRef.current.getValue();
-  console.log(token,"here")
+  // console.log(token,"here")
   captchaRef.current.reset();
 if(token){
-handleFormSubmit(token)
+handleFormSubmit(e,token)
 }else{
   document.getElementById("recap").innerHTML=`<span style="color:red;">Please check Recaptcha!</span>`;
 }
@@ -31,28 +32,29 @@ handleFormSubmit(token)
 
 
 
-  const handleFormSubmit = async (token) => {
+  const handleFormSubmit = async (event,token) => {
+    event.preventDefault()
     // try {
+    //   // console.log("token again", token)
+      
     //   // Sending secret key and response token to Google Recaptcha API for authentication.
-    //   const response = await fetch(
-    //     `https://www.google.com/recaptcha/api/siteverify?secret=${process.env.SECRET_KEY}&response=${token}`
-    //   );
+    //   const response = await VerifiRecap(token);
   
     //   // Check response status and send back to the client-side
-    //   if (response.data.success) {
+    //   if (response.ok) {
     //     console.log("Human 👨 👩");
-    //     captchaRef.current.reset();
+        
     //   } else {
     //    console.log("Robot 🤖");
-    //    captchaRef.current.reset();
+      
     //   }
     // } catch (error) {
     //   // Handle any errors that occur during the reCAPTCHA verification process
     //   console.error(error);
-    //   captchaRef.current.reset();
+    
     //  }
 
-    
+  
     try {
       const mutationResponse = await login({
         variables: { email: formState.email, password: formState.password },
@@ -119,6 +121,7 @@ handleFormSubmit(token)
           <ReCAPTCHA 
           size="normal"
           sitekey={process.env.REACT_APP_SITE_KEY}
+          onChange={handleCaptcha}
           ref={captchaRef}/> 
           <div id="recap"></div><br></br>
           

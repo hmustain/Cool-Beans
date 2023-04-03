@@ -10,22 +10,22 @@ const Footer = () => {
         </div>
         <div>
           <a href="" className="me-4 link-secondary">
-            <i class="bi bi-facebook"></i>
+            <i className="bi bi-facebook"></i>
           </a>
           <a href="" className="me-4 link-secondary">
-            <i class="bi bi-twitter"></i>
+            <i className="bi bi-twitter"></i>
           </a>
           <a href="" className="me-4 link-secondary">
-            <i class="bi bi-google"></i>
+            <i className="bi bi-google"></i>
           </a>
           <a href="" className="me-4 link-secondary">
-            <i class="bi bi-instagram"></i>
+            <i className="bi bi-instagram"></i>
           </a>
           <a href="" className="me-4 link-secondary">
-            <i class="bi bi-linkedin"></i>
+            <i className="bi bi-linkedin"></i>
           </a>
           <a href="" className="me-4 link-secondary">
-            <i class="bi bi-github"></i>
+            <i className="bi bi-github"></i>
           </a>
         </div>
       </section>
