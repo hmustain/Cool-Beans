@@ -1,3 +1,5 @@
+//import components/ State effect/ utils querys etc
+//cart imported but not used on this page
 import React, { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { useQuery } from "@apollo/client";
@@ -12,18 +14,16 @@ import {
 } from "../utils/actions";
 import { QUERY_PRODUCT } from "../utils/queries";
 import { idbPromise } from "../utils/helpers";
-import { Nav } from "react-bootstrap";
 import Navtabs from "../components/NavTabs";
-// import spinner from '../assets/spinner.gif';
 
+//detail page that displays a single product with details about that product
 function Detail() {
   const [state, dispatch] = useStoreContext();
   const { id } = useParams();
   const stringId = String(id);
   const { loading, data, error, refetch } = useQuery(QUERY_PRODUCT);
-  console.log(id);
   const currentProduct = data?.product || [];
-  console.log(currentProduct);
+
 
   useEffect(() => {
     refetch({
@@ -62,7 +62,7 @@ function Detail() {
       });
     }
   }, [products, data, loading, dispatch, id]);
-
+  //addtocart currently not being used
   const addToCart = () => {
     const itemInCart = cart.find((cartItem) => cartItem._id === id);
     if (itemInCart) {
@@ -83,7 +83,7 @@ function Detail() {
       idbPromise("cart", "put", { ...currentProduct, purchaseQuantity: 1 });
     }
   };
-
+  //remove from cart currently not being used
   const removeFromCart = () => {
     dispatch({
       type: REMOVE_FROM_CART,
