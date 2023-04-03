@@ -4,18 +4,30 @@ import { useMutation } from "@apollo/client";
 import { Link } from "react-router-dom";
 import { LOGIN } from "../utils/mutations.js";
 import Auth from "../utils/auth";
-import {VerifiRecap} from '../utils/API'
+import { VerifiRecap } from "../utils/API";
 import "../styles/Login.css";
 import Nav from "../components/NavTabs.js";
 import Cart from "../components/Cart";
-import ReCAPTCHA from "react-google-recaptcha"
+import ReCAPTCHA from "react-google-recaptcha";
 function Login(props) {
-  const captchaRef = useRef(null)
+  const captchaRef = useRef(null);
   const [formState, setFormState] = useState({ email: "", password: "" });
   const [login, { error }] = useMutation(LOGIN);
 
+  const handleCaptcha = (e) => {
+    e.preventDefault();
 
-const handleCaptcha = (e) => {
+    const token = captchaRef.current.getValue();
+    // console.log(token,"here")
+    captchaRef.current.reset();
+    if (token) {
+      handleFormSubmit(e, token);
+    } else {
+      document.getElementById(
+        "recap"
+      ).innerHTML = `<span style="color:red;">Please check Recaptcha!</span>`;
+    }
+  };
 
   e.preventDefault();
   
@@ -54,7 +66,6 @@ handleFormSubmit(e,token)
     
     //  }
 
-  
     try {
       const mutationResponse = await login({
         variables: { email: formState.email, password: formState.password },
@@ -67,7 +78,6 @@ handleFormSubmit(e,token)
       ).innerHTML = `<span style="color:red;">Incorrect email or password!</span>`;
       console.log(e);
     }
-    
   };
 
   const handleChange = (event) => {
@@ -82,7 +92,7 @@ handleFormSubmit(e,token)
     <div className="Logincontainer">
       <Nav />
       <Cart />
-      <div className="card">
+      <div className="card custom-card">
         <div className="card-image">
           <h2 className="card-heading">
             <small>Sign in to your account</small>
@@ -115,30 +125,32 @@ handleFormSubmit(e,token)
             <label className="input-label">Password:</label>
           </div>
           <div id="errordiv"></div>
-          
+
           <div className="action">
-            <div className="recapdiv" >
-          <ReCAPTCHA 
-          size="normal"
-          sitekey={process.env.REACT_APP_SITE_KEY}
-          onChange={handleCaptcha}
-          ref={captchaRef}/> 
-          <div id="recap"></div><br></br>
-          
-          </div>
+            <div className="recapdiv">
+              <ReCAPTCHA
+                size="normal"
+                sitekey={process.env.REACT_APP_SITE_KEY}
+                onChange={handleCaptcha}
+                ref={captchaRef}
+              />
+              <div id="recap"></div>
+              <br></br>
+            </div>
             <button className="action-button" type="submit">
               Login
             </button>
           </div>
-         
         </form>
         <div className="card-info">
           <div>
-            Dont have an account? <Link to="/Signup"><p>Signup Here</p></Link>
+            Dont have an account?{" "}
+            <Link to="/Signup">
+              <p>Signup Here</p>
+            </Link>
           </div>
         </div>
       </div>
-      
     </div>
   );
 }
