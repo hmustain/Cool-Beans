@@ -5,8 +5,8 @@ import { useParams } from "react-router-dom";
 import Nav from "../NavTabs";
 import AddReview from "../AddReview";
 import { displayAverageRating } from "../ProductItem";
-// import ProductItem from "../ProductItem";
 
+//ProductReviews component that grabs and displays all reviews of an item when See all Reviews is clicked
 function ProductReviews() {
   const { productId } = useParams();
   const [reviews, setReviews] = useState([]);
@@ -14,6 +14,7 @@ function ProductReviews() {
   const [user, setUser] = useState(null);
 
   useEffect(() => {
+    // Fetch the authenticated user's ID and set it in state
     async function fetchUser() {
       // Fetch the authenticated user's ID and set it in state
       const response = await fetch("https://cool-beans-ecommerce.herokuapp.com/graphql", {
@@ -35,7 +36,7 @@ function ProductReviews() {
     }
     fetchUser();
   }, []);
-
+  // get product and all reviews of that product
   useEffect(() => {
     async function fetchProductAndReviews() {
       console.log("productId", productId);
@@ -81,7 +82,7 @@ function ProductReviews() {
   if (!product) {
     return <div>Loading product...</div>;
   }
-
+  //function to handle adding new reviews to product
   const handleAddReview = async (review) => {
     const response = await fetch("https://cool-beans-ecommerce.herokuapp.com/graphql", {
       method: "POST",
@@ -120,43 +121,45 @@ function ProductReviews() {
       <div className="product-container">
         <div className="product-details-container">
           <div className="product-card">
+            <h3>{product?.name}</h3>
             <div className="product-image">
               <img src={`/images/${product?.image}`} alt={product?.name} />
             </div>
-            <div className="product-details">
-              <h3>{product?.name}</h3>
-              <p>{product?.description}</p>
-              <div className="product-price">${product?.price}</div>
-              {displayAverageRating(product?.reviews)}
+            <div className="product-details ">
+              {/* <p>{product?.description}</p> */}
+              <p>Average Rating: {displayAverageRating(product?.reviews)}</p>
+
+              <AddReview
+                productId={productId}
+                userId={user}
+                onSubmit={handleAddReview}
+              />
+              {/* <div className="product-price">${product?.price}</div> */}
             </div>
           </div>
           <div className="reviews-container">
             {reviews.map((review) => (
+
               <Card key={review._id} className="my-3">
                 <Card.Body>
                   <Card.Title className="mb-2 font-weight-bold">
                     {`${review.user.firstName} ${review.user.lastName}`}
                   </Card.Title>
                   <Card.Subtitle className="mb-2 text-muted">
-                    {new Date(review.createdAt).toLocaleDateString()}
+                    {review.createdAt}
                   </Card.Subtitle>
                   <div>{renderStars(review.rating)}</div>
                   <Card.Text className="mt-2">{review.comment}</Card.Text>
                 </Card.Body>
               </Card>
             ))}
-            <AddReview
-              productId={productId}
-              userId={user}
-              onSubmit={handleAddReview}
-            />
           </div>
         </div>
       </div>
     </>
   );
 }
-
+// function that renders stars based on the averageRating of product out of 5 maximun
 export function renderStars(averageRating) {
   const filledStarsCount = Math.floor(averageRating);
   const percentageFilled = (averageRating - filledStarsCount) * 100;
@@ -164,17 +167,26 @@ export function renderStars(averageRating) {
   const stars = [];
   for (let i = 0; i < 5; i++) {
     if (i < filledStarsCount) {
-      stars.push(<span key={i} className="filled-star">&#9733;</span>);
+      stars.push(
+        <span key={i} className="filled-star">
+          &#9733;
+        </span>
+      );
     } else if (i === filledStarsCount && percentageFilled > 0) {
       stars.push(
-        <span key={i} className="partially-filled-star">&#9733;</span>
+        <span key={i} className="partially-filled-star">
+          &#9733;
+        </span>
       );
     } else {
-      stars.push(<span key={i} className="unfilled-star">&#9733;</span>);
+      stars.push(
+        <span key={i} className="unfilled-star">
+          &#9733;
+        </span>
+      );
     }
   }
   return <div>{stars}</div>;
 }
-
 
 export default ProductReviews;

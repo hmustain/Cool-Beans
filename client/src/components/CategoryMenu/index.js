@@ -1,21 +1,23 @@
-import React, { useEffect } from 'react';
-import { useQuery } from '@apollo/client';
-import { useStoreContext } from '../../utils/GlobalState';
+//import necessary methods/ components/ hooks /utils /actions /querys / styling etc
+import React, { useEffect } from "react";
+import { useQuery } from "@apollo/client";
+import { useStoreContext } from "../../utils/GlobalState";
 import {
   UPDATE_CATEGORIES,
   UPDATE_CURRENT_CATEGORY,
-} from '../../utils/actions';
-import { QUERY_CATEGORIES } from '../../utils/queries';
-import { idbPromise } from '../../utils/helpers';
-import { Link } from 'react-router-dom';
-import '../../styles/CM.css'
+} from "../../utils/actions";
+import { QUERY_CATEGORIES } from "../../utils/queries";
+import { idbPromise } from "../../utils/helpers";
+import "../../styles/CM.css";
+//Exportin Category menu function that handles displaying certain products based on category selection
 function CategoryMenu() {
+  //declare variables from global state
   const [state, dispatch] = useStoreContext();
-
+  // set state to category object
   const { categories } = state;
-
+  //query categorys that gets all categories
   const { loading, data: categoryData } = useQuery(QUERY_CATEGORIES);
-
+  //use effects that updates categorys for each catefory found in the query
   useEffect(() => {
     if (categoryData) {
       dispatch({
@@ -23,10 +25,10 @@ function CategoryMenu() {
         categories: categoryData.categories,
       });
       categoryData.categories.forEach((category) => {
-        idbPromise('categories', 'put', category);
+        idbPromise("categories", "put", category);
       });
     } else if (!loading) {
-      idbPromise('categories', 'get').then((categories) => {
+      idbPromise("categories", "get").then((categories) => {
         dispatch({
           type: UPDATE_CATEGORIES,
           categories: categories,
@@ -34,49 +36,47 @@ function CategoryMenu() {
       });
     }
   }, [categoryData, loading, dispatch]);
+  //onclik event that  that updates current category based on what button was clicked
+  // if view all was clicked id is set to empty and all items are shown.
+  //else run dispatch to update current_category
+  const handleClick = (id) => {
+    if (id == "") {
+      dispatch({
+        type: UPDATE_CURRENT_CATEGORY,
+        currentCategory: "",
+      });
+    }
 
-  
-    // const handleClick = (name) => {
-    //     console.log(name)
-    //     switch (name) {
-    //       case 'Light Roast':
-    //         window.location.assign('/LightRoast');
-    //         console.log('you clicked lightroast');
-    //         break;
-    //       case 'Medium Roast':
-    //         console.log('you clicked medium');
-    //         window.location.assign('/MediumRoast');
-    //         break;
-    //       case 'Dark Roast':
-    //         window.location.assign('/DarkRoast');
-    //         console.log('clicked dark');
-    //         break;
-    //       default:
-    //         console.log(' is not available right now');
-    //       }
-    //   };
-    const handleClick = (id) => {
-        dispatch({
-          type: UPDATE_CURRENT_CATEGORY,
-          currentCategory: id,
-        });
-      };
+    dispatch({
+      type: UPDATE_CURRENT_CATEGORY,
+      currentCategory: id,
+    });
+  };
+
 
   return (
     <div>
-    <h2>Sort by Category:</h2>
-    <div className='Catdiv'>
-      {categories.map((item) => (
-        <button className="btn btn-dark m-2"
-          key={item._id}
-          onClick={() => {
-            handleClick(item._id);
-          }}
-        >
-          {item.name}
-        </button>
-      ))}
-    </div>
+      <h1>Sort by Category:</h1>
+      <div className="Catdiv">
+
+        <button className="btn btn-dark m-2" onClick={() => {
+          handleClick("");
+        }}> View All </button>
+
+        {categories.map((item) => (
+
+          <button
+
+            className="btn btn-dark m-2"
+            key={item._id}
+            onClick={() => {
+              handleClick(item._id);
+            }}
+          >
+            {item.name}
+          </button>
+        ))}
+      </div>
     </div>
   );
 }

@@ -4,6 +4,7 @@ import { QUERY_PRODUCTS } from "../utils/queries";
 import ProductItem from "../components/ProductItem";
 import { useQuery } from "@apollo/client";
 import Nav from "../components/NavTabs";
+import Cart from "../components/Cart";
 import "../styles/home.css";
 
 function ControlledCarousel() {
@@ -17,7 +18,7 @@ function ControlledCarousel() {
     <div className="carousel w-100 mx-auto">
       <Carousel activeIndex={index} onSelect={handleSelect}>
         <Carousel.Item>
-          <img className="d-block w-100 first-ad" alt="First slide" />
+          <img className="d-block w-100 first-ad" />
           <Carousel.Caption>
             <h3>Free shipping on all orders over $50.</h3>
             <p>Try our premium roast coffee today.</p>
@@ -25,7 +26,7 @@ function ControlledCarousel() {
         </Carousel.Item>
 
         <Carousel.Item>
-          <img className="d-block  w-100 second-ad" alt="Second slide" />
+          <img className="d-block  w-100 second-ad" />
 
           <Carousel.Caption>
             <h3>
@@ -41,19 +42,10 @@ function ControlledCarousel() {
             </p>
           </Carousel.Caption>
         </Carousel.Item>
-
-        <Carousel.Item>
-          <img className="d-block  w-100 third-ad" alt="Third slide" />
-
-          <Carousel.Caption>
-            <h3>Reach out!</h3>
-            <p>Contact us if you have any special requests</p>
-          </Carousel.Caption>
-        </Carousel.Item>
       </Carousel>
       <div className="homepage-products">
         <div className="my-2 container ">
-          <h2>See our highest rated products!</h2>
+          <h2 id="homehead">See our highest rated products!</h2>
           {loading ? (
             <div>Data is loading</div>
           ) : (
@@ -116,6 +108,7 @@ function ControlledCarousel() {
           </p>
         </section>
       </div>
+      <Cart />
     </div>
   );
 }
