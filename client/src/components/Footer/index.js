@@ -1,6 +1,12 @@
 import React from "react";
 import "./footer.css";
-
+import { Link } from "react-router-dom";
+//iomport react and css and link for redirecting users to pages when clicked
+//style const used to style links at the bottom giving them a dark gray color
+const linkStyle = {
+  color: "#6c757d"
+};
+//Bootstrap Footer component thats rendered at the bottom of the page with links to socials info about site and links to other pages of app
 const Footer = () => {
   return (
     <footer className="text-center text-lg-start bg-dark text-muted">
@@ -9,22 +15,22 @@ const Footer = () => {
           <span>Get connected with us on social networks:</span>
         </div>
         <div>
-          <a href="" className="me-4 link-secondary">
+          <a href="http://www.facebook.com" className="me-4 link-secondary">
             <i className="bi bi-facebook"></i>
           </a>
-          <a href="" className="me-4 link-secondary">
+          <a href="http://www.twitter.com" className="me-4 link-secondary">
             <i className="bi bi-twitter"></i>
           </a>
-          <a href="" className="me-4 link-secondary">
+          <a href="http://www.google.com" className="me-4 link-secondary">
             <i className="bi bi-google"></i>
           </a>
-          <a href="" className="me-4 link-secondary">
+          <a href="http://www.instagram.com" className="me-4 link-secondary">
             <i className="bi bi-instagram"></i>
           </a>
-          <a href="" className="me-4 link-secondary">
+          <a href="http://www.linkedin.com" className="me-4 link-secondary">
             <i className="bi bi-linkedin"></i>
           </a>
-          <a href="" className="me-4 link-secondary">
+          <a href="https://github.com/hmustain/Cool-Beans" className="me-4 link-secondary">
             <i className="bi bi-github"></i>
           </a>
         </div>
@@ -43,24 +49,24 @@ const Footer = () => {
             <div className="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
               <h6 className="text-uppercase fw-bold mb-4">Products</h6>
               <p>
-                <a href="./Home" className="text-reset">
+                <Link to="/home" style={linkStyle}>
                   Home
-                </a>
+                </Link>
               </p>
               <p>
-                <a href="./ShopAll" className="text-reset">
+                <Link to="/shopall" style={linkStyle}>
                   Shop All
-                </a>
+                </Link>
               </p>
               <p>
-                <a href="./Contact" className="text-reset">
+                <Link to="/contact" style={linkStyle}>
                   Contact
-                </a>
+                </Link>
               </p>
               <p>
-                <a href="./Signup" className="text-reset">
+                <Link to="/signup" style={linkStyle}>
                   Join
-                </a>
+                </Link>
               </p>
             </div>
 
