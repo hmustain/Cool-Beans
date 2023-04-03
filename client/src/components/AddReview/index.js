@@ -1,15 +1,20 @@
 import React, { useState } from "react";
 //import react/usestate from react
-
+import { ADD_REVIEW } from "../../utils/mutations";
+import { useMutation } from "@apollo/client";
 //Add review function that takes in productid, userid and onsubmit
-function AddReview({ productId, userId, onSubmit }) {
+import { useParams } from "react-router-dom";
+function AddReview({  userId, onSubmit }) {
   //declare variables with functions to change them. seting default value with useState.
   const [rating, setRating] = useState(1);
   const [comment, setComment] = useState("");
+  const [ CreateReview ] = useMutation( ADD_REVIEW );
+  const { productId } = useParams()
   //on form submit handles data and resets rating and comment states.
   const handleSubmit = async (event) => {
     event.preventDefault();
-    await onSubmit({ productId, userId, rating, comment });
+    console.log("productId is", productId, rating, comment);
+    await CreateReview({ variables: {productId, rating, review:{comment}} });
     setRating(1);
     setComment("");
   };
