@@ -63,7 +63,9 @@ font-weight: lighter;
  }
 
  .about-us { 
+    background-color: rgb(235, 238, 235);
     margin-top: 30px;
-    margin-bottom: 100px;
+    padding-bottom: 100px;
  }
+
 

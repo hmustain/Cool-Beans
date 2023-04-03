@@ -24,7 +24,7 @@ input {
 }
 
 .card {
-	margin: 2rem auto;
+
 	display: flex;
 	flex-direction: column;
 	width: 100%;
