@@ -1,16 +1,19 @@
 import React, { useState } from "react";
+//import react/usestate from react
 
+//Add review function that takes in productid, userid and onsubmit
 function AddReview({ productId, userId, onSubmit }) {
+  //declare variables with functions to change them. seting default value with useState.
   const [rating, setRating] = useState(1);
   const [comment, setComment] = useState("");
-
+  //on form submit handles data and resets rating and comment states.
   const handleSubmit = async (event) => {
     event.preventDefault();
     await onSubmit({ productId, userId, rating, comment });
     setRating(1);
     setComment("");
   };
-
+  // rendered component
   return (
     <form onSubmit={handleSubmit}>
       <div className="form-group">
