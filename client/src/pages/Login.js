@@ -119,7 +119,7 @@ handleFormSubmit(e,token)
           <div className="action">
             <div className="recapdiv" >
           <ReCAPTCHA 
-          size="compact"
+          size="normal"
           sitekey={process.env.REACT_APP_SITE_KEY}
           onChange={handleCaptcha}
           ref={captchaRef}/> 
