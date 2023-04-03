@@ -172,6 +172,7 @@ const resolvers = {
       return { token, user };
     },
     createReview: async (parent, args, context) => {
+      console.log('args are', args);
       // Check if user has already reviewed the product
       const existingReview = await Review.findOne({
         user: context.user._id,
@@ -187,7 +188,7 @@ const resolvers = {
       const newReview = await Review.create({
         rating: args.rating,
         comment: args.review.comment,
-        createdAt: args.review.createdAt,
+        // createdAt: args.review.createdAt,
         user: context.user,
         product,
       });

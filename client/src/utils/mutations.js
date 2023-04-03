@@ -67,3 +67,29 @@ export const ADD_USER = gql`
     }
   }
 `;
+
+export const ADD_REVIEW = gql`
+mutation CreateReview($productId: ID!, $rating: Float!, $review: ReviewInput!) {
+  createReview(_id: $productId, rating: $rating, review: $review) {
+    _id
+    name
+    description
+    image
+    quantity
+    price
+    category {
+      _id
+      name
+    }
+    reviews {
+      _id
+      user {
+        firstName
+        lastName
+      }
+      comment
+      rating
+      createdAt
+    }
+  }
+}`
