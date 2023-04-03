@@ -1,5 +1,5 @@
 
-import React from "react";
+import React, { useState } from "react";
 
 import Products from "../components/Products";
 
@@ -19,14 +19,43 @@ import { QUERY_ME } from "../utils/queries";
 import { useQuery } from "@apollo/client";
 
 const Profile = () => {
-
-    const [] = useMutation(ADD_PRODUCT);
+    const [formState, setFormState] = useState({ name: "", description: "", price:0, image:"", quantity:"", category:""});
+    const [AddProduct] = useMutation(ADD_PRODUCT);
     const { loading, data } = useQuery(QUERY_ME);
+    const handleFormSubmit = async (event) => {
+        event.preventDefault();
+        console.log(formState)
+        const mutationResponse = await AddProduct({
+            
+            variables: {
+                name: formState.name,
+                description: formState.description,
+                image: formState.image,
+                price: formState.price,
+                quantity: formState.quantity,
+                category: formState.category
+
+            },
+            
+        });
+        console.log(mutationResponse,"here")
+
+    };
+
+    const handleChange = (event) => {
+       
+        const { name, value } = event.target;
+        setFormState({
+            ...formState,
+            [name]: value,
+        });
+        console.log(formState)
+    };
 
     const user = data?.me;
 
 
-    console.log(user);
+   
 
     if (!user && !loading) {
 
@@ -51,14 +80,16 @@ const Profile = () => {
                         </ul>
                     </div>
 
-                    <form className="card1">
+                    <form className="card1" onSubmit={handleFormSubmit}>
                         <div className="row">
                             <h5>Add a Product</h5>
                             <div className="col-25">
                                 <label>Product Name</label>
                             </div>
                             <div className="col-75">
-                                <input type="text" placeholder="name.."></input>
+                                <input type="text" placeholder="name.." id="name"
+                                    name="name"
+                                     onChange={handleChange}></input>
                             </div>
                         </div>
                         <div className="row">
@@ -67,18 +98,27 @@ const Profile = () => {
                             </div>
                             <div className="col-75">
                                 <div className="input-group">
-                                    <input type="text" class="form-control" aria-label="Dollar amount (with dot and two decimal places)"></input>
-                                    <span class="input-group-text">$</span>
-                                    <span class="input-group-text">0.00</span>
+                                    <input type="int" className="form-control" 
+                                     id="price"
+                                     name="price"
+                                     aria-label="Dollar amount (with dot and two decimal places)" onChange={handleChange}></input>
+                                    <span className="input-group-text">$</span>
+                                    <span className="input-group-text">0.00</span>
                                 </div>
                             </div>
                         </div>
+                        <div className="mb-3">
+    <label>Quantity</label>
+    <input type="number" className="form-control" id="quantity" name="quantity"></input>
+  </div>
                         <div className="row">
+
                             <div className="col-25">
                                 <label>Category</label>
                             </div>
                             <div className="col-75">
-                                <select id="country" name="country">
+                                <select id="category"  name="category"
+              type="category">
                                     <option value="australia">Light Roast</option>
                                     <option value="canada">Medium Roast</option>
                                     <option value="usa">Dark Roast</option>
@@ -90,16 +130,23 @@ const Profile = () => {
                                 <label>Description</label>
                             </div>
                             <div className="col-75">
-                                <textarea id="subject" name="subject" placeholder="Write something.."></textarea>
+                                <input type="text" 
+                                placeholder="Write something.." 
+                                id="description"
+                                name="description"
+                                
+                                onChange={handleChange}></input>
                             </div>
                         </div>
                         <label>Upload Product Image Below</label>
-                        <div class="input-group mb-3">
-  <input type="file" class="form-control" id="inputGroupFile02"></input>
-  <label class="input-group-text" for="inputGroupFile02">Upload</label>
-</div>
+                        <div className="input-group mb-3">
+                            <input type="file" className="form-control"  id="image"
+              name="image"
+              onChange={handleChange}></input>
+                           
+                        </div>
                         <div className="row">
-                           <button className="btn btn-dark w-50 mx-auto">Submit</button>
+                            <button className="btn btn-dark w-50 mx-auto">Submit</button>
                         </div>
                     </form>
 
@@ -176,7 +223,7 @@ const Profile = () => {
         <div className="profilediv">
 
             <Nav />
-            
+
             <h1 id="profilehead">leave me here</h1>
             <h2>Welcome to your profile {loading ? <p>loading...</p> : user.firstName}</h2>
             <div className="Profilediv">
