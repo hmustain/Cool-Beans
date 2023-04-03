@@ -159,6 +159,18 @@ const resolvers = {
         { new: true }
       );
     },
+    addProduct: async (parent ,args, context) =>{
+      // if(context.user.role !== "admin"){
+      //   throw new AuthenticationError("Not admin");
+      // }
+      const newProduct= await Product.create(
+        args.product
+        
+      );
+      console.log(newProduct,"here product")
+return newProduct
+      
+    },
     login: async (parent, { email, password }) => {
       const user = await User.findOne({ email });
       if (!user) {

@@ -33,26 +33,26 @@ handleFormSubmit(e,token)
 
 
   const handleFormSubmit = async (event,token) => {
-    event.preventDefault()
-    try {
-      // console.log("token again", token)
+    // event.preventDefault()
+    // try {
+    //   // console.log("token again", token)
       
-      // Sending secret key and response token to Google Recaptcha API for authentication.
-      const response = await VerifiRecap(token);
+    //   // Sending secret key and response token to Google Recaptcha API for authentication.
+    //   const response = await VerifiRecap(token);
   
-      // Check response status and send back to the client-side
-      if (response.ok) {
-        console.log("Human 👨 👩");
+    //   // Check response status and send back to the client-side
+    //   if (response.ok) {
+    //     console.log("Human 👨 👩");
         
-      } else {
-       console.log("Robot 🤖");
+    //   } else {
+    //    console.log("Robot 🤖");
       
-      }
-    } catch (error) {
-      // Handle any errors that occur during the reCAPTCHA verification process
-      console.error(error);
+    //   }
+    // } catch (error) {
+    //   // Handle any errors that occur during the reCAPTCHA verification process
+    //   console.error(error);
     
-     }
+    //  }
 
   
     try {

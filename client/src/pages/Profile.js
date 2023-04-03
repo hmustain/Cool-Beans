@@ -7,9 +7,9 @@ import Nav from "../components/NavTabs";
 import sith from "../styles/images/adminimg.jpg"
 import feild from "../styles/images/profileimg.jpg"
 import { redirect } from 'react-router-dom';
-
+import { useMutation } from "@apollo/client";
 // import CategoryMenu from "../components/CategoryMenu";
-
+import { ADD_PRODUCT } from "../utils/mutations";
 // import Cart from "../components/Cart";
 
 import "../styles/Profile.css";
@@ -20,7 +20,7 @@ import { useQuery } from "@apollo/client";
 
 const Profile = () => {
 
-
+    const [] = useMutation(ADD_PRODUCT);
     const { loading, data } = useQuery(QUERY_ME);
 
     const user = data?.me;

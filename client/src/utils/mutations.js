@@ -67,3 +67,11 @@ export const ADD_USER = gql`
     }
   }
 `;
+
+export const ADD_PRODUCT= gql`
+ mutation AddProduct($product: ProductInput) {
+  addProduct(product: $product) {
+    _id
+  }
+}
+`;
