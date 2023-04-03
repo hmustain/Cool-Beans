@@ -52,7 +52,7 @@ function App() {
               <Route path="/login" element={<Login />} />
               <Route path="/Signup" element={<Signup />} />
               <Route path="/Contact" element={<Contact />} />
-              <Route path="/success" element={<Success/>} />
+              {/* <Route path="/success" element={<Success/>} /> */}
               <Route
                 path="/product/:productId/reviews"
                 element={<ProductReviews />}
