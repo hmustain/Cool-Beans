@@ -35,6 +35,17 @@ body {
     padding: 8px;
 }
 
+.login-text {
+    font-size: larger;
+    font-weight: 600;
+    text-shadow: 1px 1px 1px rgb(146, 146, 180);
+    color: rgb(29, 29, 29);
+    opacity: 90%;
+}
+
+.join-save {
+  color: black;
+}
 .brand-name {
     margin: 0;
     font-size: 25px;
@@ -46,37 +57,43 @@ body {
 #header {
     background: rgb(151,222,203);
     background: linear-gradient(90deg, rgba(151,222,203,1) 31%, rgba(83,201,166,1) 66%, rgba(142,219,198,1) 97%);
-    position: relative;
-    box-shadow: inset 0px -2px 10px rgba(0,0,0,0.75);
+ 
+    box-shadow: inset 0px -4px 10px rgba(0,0,0,0.75);
 }
+
+@media (max-width: 767.98px) {
+    #header {
+      display: flex;
+      justify-content: start;
+    }
+
+
+  }
 .nav-link{
-    background-color: rgb(151,222,203);
-    background: linear-gradient(90deg, rgba(151,222,203,1) 31%, rgba(83,201,166,1) 66%, rgba(142,219,198,1) 97%);
+    background-color: rgba(13, 143, 104, 0.496);
+    opacity: 95%;
     border-radius: 10%;
 
 }
-.nav-link:hover{
-    border: 1px solid black;
+.nav-item:hover{
+    border: none;
 }
+
 .nav-item {
-    text-align: center;
+width: 100px;
+text-align: center;
 font-size: 4vh;
 padding-right: 25px;
 padding-left: 25px;
-/* border: 1px solid black; */
-margin: 2vh;
-border-radius: 20px;
+border: 1px solid black;
+margin: 4vh;
+border-radius: 10px;
 text-decoration: none;
 }
 .nav-item p{
     text-decoration: none;
 }
-.nav-item :hover{
-    background-color: rgba(9, 114, 82, 0.496);
-    border-radius: 20% ;
-    font-size: 3.8vh;
-    
-} 
+
 
 .subscribe p {
     margin: 0;
@@ -87,8 +104,8 @@ text-decoration: none;
 .cool-beans {
 	border-radius: 65px;
 	overflow: hidden;
-	padding-bottom: 220px;
-	background-image: url("./images/logo.svg");
+	padding-bottom: 180px;
+	background-image: url("./images/secondlogo.svg");
 	background-repeat: no-repeat;
     margin: 0;
     position: relative;
@@ -108,3 +125,4 @@ text-decoration: none;
     color: inherit;
     text-decoration: inherit;
 }
+
