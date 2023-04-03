@@ -1,16 +1,27 @@
+//import styles/ components and link. also includes formspree package!
 import React from "react";
 import { useForm, ValidationError } from "@formspree/react";
 import "../styles/form.css";
 import Nav from "../components/NavTabs";
+import Cart from "../components/Cart";
+import { Link } from "react-router-dom";
+//contact page that users can use to send emails with questions/concerns or if interested in working with us!?
+//also includes a link to All products page using Link from react-router.
+//function that if form is submited sucsessfully displays a thank you page with link back to home
 function ContactForm() {
   const [state, handleSubmit] = useForm("xayzpyor");
   if (state.succeeded) {
-    return <h1 className="thanks">Thanks for your feedback!</h1>;
+    return (
+      <div>
+
+        <h1 className="thanks">Thanks for your feedback!<br></br>Back to home page click <Link to="/home">Me</Link></h1>;
+      </div>
+    )
   }
   return (
     <>
-      <Nav />
       <div className="ContactContainer">
+        <Nav />
         <section className="contact-page">
           <div className="col-md-5 m-2">
             <ul className="list-unstyled ">
@@ -37,7 +48,7 @@ function ContactForm() {
               <li>
                 <p className="info-headers">Products</p>
                 <p className="info-paragraph">
-                  View all of our products <a href="./home">here</a>
+                  View all of our products <Link to="/home">here</Link>
                 </p>
               </li>
             </ul>
@@ -99,6 +110,7 @@ function ContactForm() {
             </form>
           </div>
         </section>
+        <Cart />
       </div>
     </>
   );

@@ -10,7 +10,6 @@ import {
 } from "@apollo/client";
 import { setContext } from "@apollo/client/link/context";
 import Login from "./pages/Login";
-import MainContainer from "./components/mainContainer";
 import Signup from "./pages/Signup";
 import Contact from "./pages/Contact";
 import ProductReviews from "./components/ProductReview";
@@ -18,7 +17,8 @@ import ShopAll from "./pages/ShopAll";
 import Detail from "./pages/Detail";
 import Profile from "./pages/Profile";
 import Home from "./pages/Home";
-
+import Pagenotfound from "./pages/pagenotfound";
+import Footer from "./components/Footer";
 const httpLink = createHttpLink({
   uri: "/graphql",
 });
@@ -45,6 +45,7 @@ function App() {
         <div>
           <StoreProvider>
             <Routes>
+              <Route path="*" element={<Pagenotfound />} />
               <Route path="/" element={<Home />} />
               <Route path="/Home" element={<Home />} />
               <Route path="/ShopAll" element={<ShopAll />} />
@@ -59,6 +60,7 @@ function App() {
               <Route path="/profile" element={<Profile />} />
             </Routes>
           </StoreProvider>
+          <Footer />
         </div>
       </Router>
     </ApolloProvider>

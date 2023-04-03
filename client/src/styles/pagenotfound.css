@@ -1,0 +1,7 @@
+.robotdiv{
+    align-items: center;
+    background-color: aliceblue;
+    justify-content: center;
+    display: flex;
+    flex-wrap: wrap;
+}
