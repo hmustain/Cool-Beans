@@ -6,9 +6,8 @@ import { ADD_TO_CART, UPDATE_CART_QUANTITY } from "../../utils/actions";
 import { idbPromise } from "../../utils/helpers";
 import "./style.css";
 import { renderStars } from "../ProductReview";
-
+//Productitem component that handles what info is displayed for each item in the Shop All page
 function ProductItem(item) {
-  // console.log(item, "here");
   const [state, dispatch] = useStoreContext();
   const {
     image,
@@ -20,18 +19,9 @@ function ProductItem(item) {
     category = "coffee",
     reviews,
   } = item;
-  // console.log("image", image);
-  // console.log("description", description);
-  // console.log("name", name);
-  // console.log("_id", _id);
-  // console.log("price", price);
-  // console.log('quantity', quantity);
-  // console.log('category', category);
-  // console.log("reviews", reviews);
-
   const { cart } = state;
-  // console.log('page loading:', state)
-
+  //addtocart function that adds item to the cart when the Add to cart button is clicked
+  //if item is in cart already updates quantity 
   const addToCart = () => {
     const itemInCart = cart.find((cartItem) => cartItem._id === _id);
     if (itemInCart) {
@@ -78,6 +68,7 @@ function ProductItem(item) {
     </div>
   );
 }
+//function that gets all ratings and displays the average for each item as nice stars
 export function displayAverageRating(reviews) {
   if (!reviews || !reviews.length) {
     return null;
