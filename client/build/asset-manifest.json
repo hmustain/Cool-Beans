@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/static/css/main.90e2f1b5.css",
-    "main.js": "/static/js/main.31d053f2.js",
+    "main.css": "/static/css/main.aacb7dc0.css",
+    "main.js": "/static/js/main.b4649b1b.js",
     "static/media/Neutral Minimalist Name LinkedIn Article Cover Image.svg": "/static/media/Neutral Minimalist Name LinkedIn Article Cover Image.f665141e1b699d948f4a.svg",
     "static/media/coffee.png": "/static/media/coffee.fe23bc12bd2d4722632e.png",
     "static/media/bootstrap-icons.woff?": "/static/media/bootstrap-icons.6959d0d983ee318f8880.woff",
@@ -11,11 +11,11 @@
     "static/media/adminimg.jpg": "/static/media/adminimg.3021e23643dc0251576d.jpg",
     "static/media/profilebanner.jpg": "/static/media/profilebanner.6bb5c572ebcefbf42d0f.jpg",
     "index.html": "/index.html",
-    "main.90e2f1b5.css.map": "/static/css/main.90e2f1b5.css.map",
-    "main.31d053f2.js.map": "/static/js/main.31d053f2.js.map"
+    "main.aacb7dc0.css.map": "/static/css/main.aacb7dc0.css.map",
+    "main.b4649b1b.js.map": "/static/js/main.b4649b1b.js.map"
   },
   "entrypoints": [
-    "static/css/main.90e2f1b5.css",
-    "static/js/main.31d053f2.js"
+    "static/css/main.aacb7dc0.css",
+    "static/js/main.b4649b1b.js"
   ]
 }
