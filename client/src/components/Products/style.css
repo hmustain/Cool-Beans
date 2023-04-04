@@ -4,7 +4,12 @@
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: center;
+ 
   } 
+
+.products img {
+  background-color: white;
+}
 
 #producthead{
   

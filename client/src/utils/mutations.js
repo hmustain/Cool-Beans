@@ -93,3 +93,11 @@ mutation CreateReview($productId: ID!, $rating: Float!, $review: ReviewInput!) {
     }
   }
 }`
+
+export const ADD_PRODUCT= gql`
+ mutation AddProduct($product: ProductInput) {
+  addProduct(product: $product) {
+    _id
+  }
+}
+`;
