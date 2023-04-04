@@ -29,42 +29,24 @@ function Login(props) {
     }
   };
 
-  e.preventDefault();
-  
-  const token = captchaRef.current.getValue();
-  // console.log(token,"here")
-  captchaRef.current.reset();
-if(token){
-handleFormSubmit(e,token)
-}else{
-  document.getElementById("recap").innerHTML=`<span style="color:red;">Please check Recaptcha!</span>`;
-}
-
-}
-
-
-
-  const handleFormSubmit = async (event,token) => {
-    // event.preventDefault()
+  const handleFormSubmit = async (event, token) => {
+    event.preventDefault();
     // try {
     //   // console.log("token again", token)
-      
+
     //   // Sending secret key and response token to Google Recaptcha API for authentication.
     //   const response = await VerifiRecap(token);
-  
+
     //   // Check response status and send back to the client-side
     //   if (response.ok) {
     //     console.log("Human 👨 👩");
-        
     //   } else {
-    //    console.log("Robot 🤖");
-      
+    //     console.log("Robot 🤖");
     //   }
     // } catch (error) {
     //   // Handle any errors that occur during the reCAPTCHA verification process
     //   console.error(error);
-    
-    //  }
+    // }
 
     try {
       const mutationResponse = await login({
