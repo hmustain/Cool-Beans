@@ -36,7 +36,7 @@ function Success() {
         <h1>Success!</h1>
         <h2>Thank you for your purchase!</h2>
         <h2>
-          Click <Link to="/home"> here</Link> to return home
+          You will now be returned to the home page!
         </h2>
       </Jumbotron>
     </div>
