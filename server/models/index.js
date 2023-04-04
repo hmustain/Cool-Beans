@@ -1,3 +1,4 @@
+//require then export all our models
 const User = require("./User");
 const Category = require("./Category");
 const Product = require("./Product");

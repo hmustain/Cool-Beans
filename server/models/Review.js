@@ -1,7 +1,9 @@
 const mongoose = require("mongoose");
 const { Schema } = mongoose;
 const dateFormat = require('../utils/dateFormat');
-
+//import mongoose and schema
+// import custom date format from utils
+//create review schema
 const reviewSchema = new Schema({
     user: {
       type: Schema.Types.ObjectId,

@@ -1,8 +1,8 @@
 const mongoose = require("mongoose");
 const dateFormat = require('../utils/dateFormat');
-
+//require mongoose and custom date formater from utils
 const { Schema } = mongoose;
-
+//create schema for order
 const orderSchema = new Schema({
   user: {
     type: Schema.Types.ObjectId,

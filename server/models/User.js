@@ -2,7 +2,10 @@ const mongoose = require("mongoose");
 const { Schema } = mongoose;
 const bcrypt = require("bcrypt");
 const Order = require("./Order");
-
+//require mongoose and schema from mongoose
+//require bycrypt to hash passwords
+//require order schema to be referenced in user schema
+//create userSchema
 const userSchema = new Schema({
   firstName: {
     type: String,
