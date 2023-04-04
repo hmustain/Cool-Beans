@@ -1,5 +1,6 @@
+//import gql from apollo
 import { gql } from "@apollo/client";
-
+// decalare mmutation for login
 export const LOGIN = gql`
   mutation login($email: String!, $password: String!) {
     login(email: $email, password: $password) {
@@ -10,7 +11,7 @@ export const LOGIN = gql`
     }
   }
 `;
-
+// decalare mmutation for adding an order
 export const ADD_ORDER = gql`
  mutation AddOrder($products: [ID]!, $total: Float!, $status: String!) {
   addOrder(products: $products, total: $total, status: $status) {
@@ -47,6 +48,7 @@ export const ADD_ORDER = gql`
   }
 }
 `;
+// decalare mmutation for adding a user
 export const ADD_USER = gql`
   mutation addUser(
     $firstName: String!
@@ -67,7 +69,7 @@ export const ADD_USER = gql`
     }
   }
 `;
-
+// decalare mmutation for adding a review
 export const ADD_REVIEW = gql`
 mutation CreateReview($productId: ID!, $rating: Float!, $review: ReviewInput!) {
   createReview(_id: $productId, rating: $rating, review: $review) {
@@ -93,7 +95,7 @@ mutation CreateReview($productId: ID!, $rating: Float!, $review: ReviewInput!) {
     }
   }
 }`
-
+// decalare mmutation for adding a product
 export const ADD_PRODUCT= gql`
  mutation AddProduct($product: ProductInput) {
   addProduct(product: $product) {
