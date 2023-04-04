@@ -70,6 +70,15 @@ const typeDefs = gql`
   input ReviewInput {
   comment: String!
   }
+ 
+  input ProductInput{
+    name: String!
+    description: String!
+    image: String!
+    quantity: Int!
+    price: Float!
+    category: ID!
+  }
 
   type Mutation {
     addUser(
@@ -78,6 +87,7 @@ const typeDefs = gql`
       email: String!
       password: String!
     ): Auth
+    addProduct(product: ProductInput): Product
     addOrder(products: [ID]!, total: Float!, status: String!): Order
     login(email: String!, password: String!): Auth
     updateProduct(_id: ID!, quantity: Int!): Product
