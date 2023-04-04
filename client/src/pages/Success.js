@@ -1,16 +1,16 @@
-import React, { useEffect } from 'react';
-import { useMutation } from '@apollo/client';
-import Jumbotron from '../components/Jumbotron';
-import { ADD_ORDER } from '../utils/mutations';
-import { idbPromise } from '../utils/helpers';
-import { Link } from 'react-router-dom';
+import React, { useEffect } from "react";
+import { useMutation } from "@apollo/client";
+import Jumbotron from "../components/Jumbotron";
+import { ADD_ORDER } from "../utils/mutations";
+import { idbPromise } from "../utils/helpers";
+import { Link } from "react-router-dom";
 
 function Success() {
   const [addOrder] = useMutation(ADD_ORDER);
 
   useEffect(() => {
     async function saveOrder() {
-      const cart = await idbPromise('cart', 'get');
+      const cart = await idbPromise("cart", "get");
       const products = cart.map((item) => item._id);
 
       if (products.length) {
@@ -18,12 +18,12 @@ function Success() {
         const productData = data.addOrder.products;
 
         productData.forEach((item) => {
-          idbPromise('cart', 'delete', item);
+          idbPromise("cart", "delete", item);
         });
       }
 
       setTimeout(() => {
-        window.location.assign('/');
+        window.location.assign("/");
       }, 3000);
     }
 
@@ -35,9 +35,9 @@ function Success() {
       <Jumbotron>
         <h1>Success!</h1>
         <h2>Thank you for your purchase!</h2>
-        <h2>Click here to return</h2>
-        <Link to="/home"> home
-        </Link>
+        <h2>
+          Click <Link to="/home"> here</Link> to return home
+        </h2>
       </Jumbotron>
     </div>
   );
