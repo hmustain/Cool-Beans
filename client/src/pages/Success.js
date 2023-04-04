@@ -1,12 +1,13 @@
+//import components/ utils and mutations/ react/ useeffect and jumbotron
 import React, { useEffect } from 'react';
 import { useMutation } from '@apollo/client';
 import Jumbotron from '../components/Jumbotron';
 import { ADD_ORDER } from '../utils/mutations';
 import { idbPromise } from '../utils/helpers';
-
+//Sucess function that displays a page thanking user after sucessful purchase
 function Success() {
   const [addOrder] = useMutation(ADD_ORDER);
-
+  //resets cart on sucess purchase
   useEffect(() => {
     async function saveOrder() {
       const cart = await idbPromise('cart', 'get');
@@ -22,7 +23,7 @@ function Success() {
       }
 
       setTimeout(() => {
-        window.location.assign('/');
+        window.location.assign('/home');
       }, 3000);
     }
 

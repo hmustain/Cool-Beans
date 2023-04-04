@@ -1,5 +1,5 @@
+//import needed components/ utils/ recaptcha/ Link /useStates/useRef/useMutations/cart /styles etc
 import React, { useState, useRef } from "react";
-
 import { useMutation } from "@apollo/client";
 import { Link } from "react-router-dom";
 import { LOGIN } from "../utils/mutations.js";
@@ -9,11 +9,15 @@ import "../styles/Login.css";
 import Nav from "../components/NavTabs.js";
 import Cart from "../components/Cart";
 import ReCAPTCHA from "react-google-recaptcha";
+
+//login function that returns login form with recaptcha and navtabs and cart
 function Login(props) {
   const captchaRef = useRef(null);
   const [formState, setFormState] = useState({ email: "", password: "" });
   const [login, { error }] = useMutation(LOGIN);
-
+//handleCaptcha function that stores the current token value into token and resets it
+// then runs the handleformsubmit function if there is a token aka if user completed catpcha or not
+//if user hasnt checked captcha display span with eror message saying to check captcha
   const handleCaptcha = (e) => {
     e.preventDefault();
 
@@ -28,9 +32,12 @@ function Login(props) {
       ).innerHTML = `<span style="color:red;">Please check Recaptcha!</span>`;
     }
   };
-
+//handleformsubmit that handles user login
+//if password and email match then assign login token
+//else display error message
   const handleFormSubmit = async (event, token) => {
     event.preventDefault();
+    //old fetch method that wasnt working for verifying recaptcha token
     // try {
     //   // console.log("token again", token)
 
@@ -61,7 +68,7 @@ function Login(props) {
       console.log(e);
     }
   };
-
+//handlechange that updates name and email variables while user types
   const handleChange = (event) => {
     const { name, value } = event.target;
     setFormState({

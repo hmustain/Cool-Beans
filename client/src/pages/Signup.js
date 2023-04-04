@@ -27,7 +27,7 @@ function Signup(props) {
     const token = mutationResponse.data.addUser.token;
     Auth.login(token);
   };
-  //updates formstate onchange or when user types
+  //updates formstate onchange when user types
   const handleChange = (event) => {
     const { name, value } = event.target;
     setFormState({
@@ -47,7 +47,7 @@ function Signup(props) {
     document.getElementById("errorspan").innerHTML = "";
     return true;
   }
-
+//ruturns submit form
   return (
     <div className="signupcontainer">
       <Nav />
