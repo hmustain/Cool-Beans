@@ -4,6 +4,7 @@ import { useMutation } from '@apollo/client';
 import Jumbotron from '../components/Jumbotron';
 import { ADD_ORDER } from '../utils/mutations';
 import { idbPromise } from '../utils/helpers';
+import { Link } from 'react-router-dom';
 //Sucess function that displays a page thanking user after sucessful purchase
 function Success() {
   const [addOrder] = useMutation(ADD_ORDER);
@@ -36,7 +37,7 @@ function Success() {
         <h1>Success!</h1>
         <h2>Thank you for your purchase!</h2>
         <h2>
-          You will now be returned to the home page!
+          Click <Link to="/home"> here</Link> to return home
         </h2>
       </Jumbotron>
     </div>
