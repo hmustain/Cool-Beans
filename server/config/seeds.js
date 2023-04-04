@@ -1,6 +1,6 @@
 const db = require("./connection");
 const bcrypt = require("bcrypt");
-const { User, Category, Product, Review, Order } = require("../models");
+const { User, Category, Product, Review } = require("../models");
 
 db.once("open", async () => {
   await User.deleteMany();

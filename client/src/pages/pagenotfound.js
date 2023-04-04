@@ -4,7 +4,7 @@ import { Samy, SvgProxy } from "react-samy-svg";
 import RobotAnimated from "../styles/robot-animated"
 import "../styles/pagenotfound.css"
 import { Link } from "react-router-dom";
-function pagenotfound(){
+function Pagenotfound(){
 return(
   <div>
   <div className="robotdiv">
@@ -18,4 +18,4 @@ return(
   </div>
 )
 }
-export default pagenotfound;
+export default Pagenotfound;
