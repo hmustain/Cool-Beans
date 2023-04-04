@@ -1,10 +1,11 @@
+// simple function that adds a s to pluralize name/count if its more than 1
 export function pluralize(name, count) {
     if (count === 1) {
       return name;
     }
     return name + 's';
   }
-  
+  //function for adding items in cart to store
   export function idbPromise(storeName, method, object) {
     return new Promise((resolve, reject) => {
       const request = window.indexedDB.open('shop-shop', 1);

@@ -1,3 +1,4 @@
+//import components/ useState /usequery/ utils / styles
 import React, { useState } from "react";
 import Carousel from "react-bootstrap/Carousel";
 import { QUERY_PRODUCTS } from "../utils/queries";
@@ -6,7 +7,8 @@ import { useQuery } from "@apollo/client";
 import Nav from "../components/NavTabs";
 import Cart from "../components/Cart";
 import "../styles/home.css";
-
+//big Carousel function that renders cool bootstrap Carousel component and shows all of our top reviewed products
+//displays cart and footer elements
 function ControlledCarousel() {
   const [index, setIndex] = useState(0);
   const { loading, data } = useQuery(QUERY_PRODUCTS);
@@ -112,7 +114,7 @@ function ControlledCarousel() {
     </div>
   );
 }
-
+//home that returns the big carousel function above and navtabs
 const Home = () => {
   return (
     <>

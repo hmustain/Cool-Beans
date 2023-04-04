@@ -1,8 +1,9 @@
+//require JWT authentication
+//declare variables with secret and expiration of 2hours
 const jwt = require('jsonwebtoken');
-
 const secret = 'mysecretsshhhhh';
 const expiration = '2h';
-
+//export middleware to assign tokens to users or sends Invalid token if something requires it and user doesnt have one/or expires
 module.exports = {
   authMiddleware: function ({ req }) {
     // allows token to be sent via req.body, req.query, or headers

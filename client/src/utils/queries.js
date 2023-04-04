@@ -1,5 +1,7 @@
+//import gql from apollo
 import { gql } from '@apollo/client';
-
+//ceclare querys for getting data
+//declare query for getting products
 export const QUERY_PRODUCTS = gql`
  query getProducts($category: ID) {
   products(category: $category) {
@@ -25,7 +27,7 @@ export const QUERY_PRODUCTS = gql`
   }
 }
 `;
-
+//declare query for getting checkout
 export const QUERY_CHECKOUT = gql`
   query getCheckout($products: [ID]!) {
     checkout(products: $products) {
@@ -33,7 +35,7 @@ export const QUERY_CHECKOUT = gql`
     }
   }
 `;
-
+//declare query for getting all products
 export const QUERY_ALL_PRODUCTS = gql`
   {
     products {
@@ -48,7 +50,7 @@ export const QUERY_ALL_PRODUCTS = gql`
     }
   }
 `;
-
+//declare query for getting categorys
 export const QUERY_CATEGORIES = gql`
   {
     categories {
@@ -57,7 +59,7 @@ export const QUERY_CATEGORIES = gql`
     }
   }
 `;
-
+//declare query for getting user info
 export const QUERY_USER = gql`
   {
     user {
@@ -78,6 +80,7 @@ export const QUERY_USER = gql`
     }
   }
 `;
+//declare query for getting me that has user info
 export const QUERY_ME = gql`
 {
 me {
@@ -88,6 +91,7 @@ email
 password
 }
 }`;
+//declare query for getting a product
 export const QUERY_PRODUCT = gql`
 query Product($id: ID!) {
 product(_id: $id) {

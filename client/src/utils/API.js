@@ -1,3 +1,4 @@
+//Api fetch for verifying token in recaptcha
 export const VerifiRecap = (token) => {
   // console.log("token final!!!!----------",token)
 //  console.log(process.env.REACT_APP_SECRET_KEY,"secret!!!!!!!!!")

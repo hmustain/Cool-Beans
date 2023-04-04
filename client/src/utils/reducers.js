@@ -1,3 +1,5 @@
+//import actions and useReducer
+//handles updateing categorys and cart
 import { useReducer } from 'react';
 import {
   UPDATE_PRODUCTS,

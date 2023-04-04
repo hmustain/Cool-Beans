@@ -1,6 +1,7 @@
 const mongoose = require("mongoose");
 const { Schema } = mongoose;
-
+//require mongoose and schema
+//declare product schema/modle
 const productSchema = new Schema({
   name: {
     type: String,

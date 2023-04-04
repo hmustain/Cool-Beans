@@ -1,7 +1,7 @@
+//import all packages components/  context/ router /pages
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { StoreProvider } from "./utils/GlobalState";
-
 import {
   ApolloClient,
   InMemoryCache,
@@ -20,10 +20,11 @@ import Home from "./pages/Home";
 import Pagenotfound from "./pages/pagenotfound";
 import Success from "./pages/Success";
 import Footer from "./components/Footer";
+//connection to graphql
 const httpLink = createHttpLink({
   uri: "/graphql",
 });
-
+//authorization header to it that contains a Bearer token. The token is retrieved from localStorage using the key id_token. If there is no token, the header is set to an empty string.
 const authLink = setContext((_, { headers }) => {
   const token = localStorage.getItem("id_token");
   return {
@@ -33,12 +34,14 @@ const authLink = setContext((_, { headers }) => {
     },
   };
 });
-
+//Finally, we create an ApolloClient instance using the client constant. The link property is set to authLink.concat(httpLink), which combines the authLink and httpLink instances. The cache property is set to a new instance of InMemoryCache, which is the default cache implementation used by Apollo Client.
 const client = new ApolloClient({
   link: authLink.concat(httpLink),
   cache: new InMemoryCache(),
 });
-
+//function app that is wraped in appollo provider and router
+//declare all our routes and which page will be rendered
+//footer is always at the bottom
 function App() {
   return (
     <ApolloProvider client={client}>

@@ -2,13 +2,17 @@ const { AuthenticationError } = require("apollo-server-express");
 const { User, Category, Product, Review, Order } = require("../models");
 const { signToken } = require("../utils/auth");
 const stripe = require("stripe")(
-"sk_test_51MrZYVJnjl6y4QyETfkbBV2ivhB2TnwWoCGCvuExq1EBfvvXaR8SaRT8ohJHmZo7jok6at08mzKbVIK3XIv3mRud00Ei9b3ndR"
+  "sk_test_51MrZYVJnjl6y4QyETfkbBV2ivhB2TnwWoCGCvuExq1EBfvvXaR8SaRT8ohJHmZo7jok6at08mzKbVIK3XIv3mRud00Ei9b3ndR"
 );
+//require Models signToken from utils. stripe. and authentication error.
 
-console.log(process.env.STRIPE_SECRET_KEY);
-
+//console.log(process.env.STRIPE_SECRET_KEY);
+//here we define our resolvers 
+//mutations are declared at the bottom which are just functions to handle changes to the database
+//while querys just get data from the datebase
 const resolvers = {
   Query: {
+    //query to get products and get reviews for that product
     products: async (parent, { category, name }) => {
       const params = {};
 
@@ -35,6 +39,7 @@ const resolvers = {
 
       return products;
     },
+    //query to get single product by id
     product: async (parent, { _id }) => {
       const product = await Product.findById(_id)
         .populate("category")
@@ -45,9 +50,11 @@ const resolvers = {
       );
       return product;
     },
+    //find all catagories
     categories: async () => {
       return await Category.find();
     },
+    //find all reviews
     reviews: async () => {
       return await Review.find()
         .populate("user", "_id email firstName lastName")
@@ -56,12 +63,12 @@ const resolvers = {
           populate: { path: "reviews", populate: { path: "createdAt" } },
         });
     },
-
+    //find users
     users: async () => {
       const users = await User.find();
       return users;
     },
-
+    //find info of loged in user
     me: async (parent, args, context) => {
       if (context.user) {
         const user = await User.findById(context.user._id);
@@ -69,6 +76,7 @@ const resolvers = {
       }
       throw new AuthenticationError("Not logged in");
     },
+    //finds all orders
     order: async (parent, { _id }, context) => {
       if (context.user) {
         const user = await User.findById(context.user._id).populate({
@@ -80,6 +88,7 @@ const resolvers = {
       }
       throw new AuthenticationError("Not logged in");
     },
+    //handles checkout gets all products in cart etc.
     checkout: async (parent, args, context) => {
       const url = new URL(context.headers.referer).origin;
       const order = new Order({
@@ -119,7 +128,7 @@ const resolvers = {
       return { session: session.id };
     },
   },
-
+  //mutations to add user. addOrder.
   Mutation: {
     addUser: async (parent, args) => {
       const user = await User.create(args);
@@ -150,6 +159,7 @@ const resolvers = {
       }
       throw new AuthenticationError("Not logged in");
     },
+    //update products quantity if its been sold
     updateProduct: async (parent, { _id, quantity }) => {
       const decrement = Math.abs(quantity) * -1;
 
@@ -159,18 +169,21 @@ const resolvers = {
         { new: true }
       );
     },
-    addProduct: async (parent ,args, context) =>{
+    //to add product to database
+    addProduct: async (parent, args, context) => {
       // if(context.user.role !== "admin"){
       //   throw new AuthenticationError("Not admin");
       // }
-      const newProduct= await Product.create(
+      const newProduct = await Product.create(
         args.product
-        
+
       );
-      console.log(newProduct,"here product")
-return newProduct
-      
+      console.log(newProduct, "here product")
+      return newProduct
+
     },
+    //login logic if password and email are found in database
+    //login user with token
     login: async (parent, { email, password }) => {
       const user = await User.findOne({ email });
       if (!user) {
@@ -183,6 +196,7 @@ return newProduct
       const token = signToken(user);
       return { token, user };
     },
+    //create a review logic
     createReview: async (parent, args, context) => {
       console.log('args are', args);
       // Check if user has already reviewed the product

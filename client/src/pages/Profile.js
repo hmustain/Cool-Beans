@@ -1,32 +1,24 @@
-
+//import components/ react/usestate/usemutation/ utils to handle future addproduct./ query/ styles etc..
 import React, { useState } from "react";
-
-import Products from "../components/Products";
-
 import Nav from "../components/NavTabs";
 import sith from "../styles/images/adminimg.jpg"
 import feild from "../styles/images/profileimg.jpg"
-import { redirect } from 'react-router-dom';
 import { useMutation } from "@apollo/client";
-// import CategoryMenu from "../components/CategoryMenu";
 import { ADD_PRODUCT } from "../utils/mutations";
-// import Cart from "../components/Cart";
-
 import "../styles/Profile.css";
-
 import { QUERY_ME } from "../utils/queries";
-
 import { useQuery } from "@apollo/client";
-
+//big profile function that displays either a Admin profile or User profile based on user.role
 const Profile = () => {
-    const [formState, setFormState] = useState({ name: "", description: "", price:0, image:"", quantity:"", category:""});
+    //
+    const [formState, setFormState] = useState({ name: "", description: "", price: 0, image: "", quantity: "", category: "" });
     const [AddProduct] = useMutation(ADD_PRODUCT);
     const { loading, data } = useQuery(QUERY_ME);
     const handleFormSubmit = async (event) => {
         event.preventDefault();
         console.log(formState)
         const mutationResponse = await AddProduct({
-            
+
             variables: {
                 name: formState.name,
                 description: formState.description,
@@ -36,14 +28,14 @@ const Profile = () => {
                 category: formState.category
 
             },
-            
+
         });
-        console.log(mutationResponse,"here")
+        console.log(mutationResponse, "here")
 
     };
-
+    //handle change to update and save input feilds while user is typing
     const handleChange = (event) => {
-       
+
         const { name, value } = event.target;
         setFormState({
             ...formState,
@@ -51,17 +43,16 @@ const Profile = () => {
         });
         console.log(formState)
     };
-
+    //if statement that redirects user to home page if they arent logged in
     const user = data?.me;
-
-
-   
-
     if (!user && !loading) {
 
         window.location.assign('/login');
 
     }
+    //if admin display admin details
+    //form for adding a new product
+    //dummy card displaying all reviews user made
     function isadmin() {
         if (user.role == "admin") {
             return (
@@ -89,7 +80,7 @@ const Profile = () => {
                             <div className="col-75">
                                 <input type="text" placeholder="name.." id="name"
                                     name="name"
-                                     onChange={handleChange}></input>
+                                    onChange={handleChange}></input>
                             </div>
                         </div>
                         <div className="row">
@@ -98,27 +89,27 @@ const Profile = () => {
                             </div>
                             <div className="col-75">
                                 <div className="input-group">
-                                    <input type="int" className="form-control" 
-                                     id="price"
-                                     name="price"
-                                     aria-label="Dollar amount (with dot and two decimal places)" onChange={handleChange}></input>
+                                    <input type="int" className="form-control"
+                                        id="price"
+                                        name="price"
+                                        aria-label="Dollar amount (with dot and two decimal places)" onChange={handleChange}></input>
                                     <span className="input-group-text">$</span>
                                     <span className="input-group-text">0.00</span>
                                 </div>
                             </div>
                         </div>
                         <div className="mb-3">
-    <label>Quantity</label>
-    <input type="number" className="form-control" id="quantity" name="quantity"></input>
-  </div>
+                            <label>Quantity</label>
+                            <input type="number" className="form-control" id="quantity" name="quantity"></input>
+                        </div>
                         <div className="row">
 
                             <div className="col-25">
                                 <label>Category</label>
                             </div>
                             <div className="col-75">
-                                <select id="category"  name="category"
-              type="category">
+                                <select id="category" name="category"
+                                    type="category">
                                     <option value="australia">Light Roast</option>
                                     <option value="canada">Medium Roast</option>
                                     <option value="usa">Dark Roast</option>
@@ -130,20 +121,20 @@ const Profile = () => {
                                 <label>Description</label>
                             </div>
                             <div className="col-75">
-                                <input type="text" 
-                                placeholder="Write something.." 
-                                id="description"
-                                name="description"
-                                
-                                onChange={handleChange}></input>
+                                <input type="text"
+                                    placeholder="Write something.."
+                                    id="description"
+                                    name="description"
+
+                                    onChange={handleChange}></input>
                             </div>
                         </div>
                         <label>Upload Product Image Below</label>
                         <div className="input-group mb-3">
-                            <input type="file" className="form-control"  id="image"
-              name="image"
-              onChange={handleChange}></input>
-                           
+                            <input type="file" className="form-control" id="image"
+                                name="image"
+                                onChange={handleChange}></input>
+
                         </div>
                         <div className="row">
                             <button className="btn btn-dark w-50 mx-auto">Submit</button>
@@ -174,6 +165,8 @@ const Profile = () => {
                     </div>
                 </div>
             )
+            //else return user info
+            //and dummy card displaying reviews user made
         } else {
             return (
                 <div className="admindiv">
@@ -237,22 +230,3 @@ const Profile = () => {
 
 
 export default Profile;
-// reviews template
-
-
-/* <div>
-<h2>I see your an admin...</h2>
-
-<div className="card">
-<img src={sith} alt="sith lord" width="100%" height="100%"></img>
-<div class="card-body">
-<h5 class="card-title">Admin Info</h5>
-<p>hi</p>
-</div>
-<ul class="list-group list-group-flush">
-<li class="list-group-item">An item</li>
-<li class="list-group-item">A second item</li>
-<li class="list-group-item">A third item</li>
-</ul>
-</div>
-    </div> */
