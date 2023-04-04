@@ -18,6 +18,7 @@ import Detail from "./pages/Detail";
 import Profile from "./pages/Profile";
 import Home from "./pages/Home";
 import Pagenotfound from "./pages/pagenotfound";
+import Success from "./pages/Success";
 import Footer from "./components/Footer";
 const httpLink = createHttpLink({
   uri: "/graphql",
@@ -52,7 +53,7 @@ function App() {
               <Route path="/login" element={<Login />} />
               <Route path="/Signup" element={<Signup />} />
               <Route path="/Contact" element={<Contact />} />
-              {/* <Route path="/success" element={<Success/>} /> */}
+              <Route path="/success" element={<Success/>} />
               <Route
                 path="/product/:productId/reviews"
                 element={<ProductReviews />}
