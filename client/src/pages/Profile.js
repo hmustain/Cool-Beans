@@ -16,7 +16,7 @@ const Profile = () => {
     const { loading, data } = useQuery(QUERY_ME);
     const handleFormSubmit = async (event) => {
         event.preventDefault();
-        console.log(formState)
+        console.log(formState,"on submit here")
         const mutationResponse = await AddProduct({
 
             variables: {
@@ -30,18 +30,20 @@ const Profile = () => {
             },
 
         });
-        console.log(mutationResponse, "here")
+        console.log(mutationResponse, "mutation here")
 
     };
     //handle change to update and save input feilds while user is typing
     const handleChange = (event) => {
 
         const { name, value } = event.target;
+        console.log(name,"name")
+        console.log(value,"val")
         setFormState({
             ...formState,
             [name]: value,
         });
-        console.log(formState)
+        console.log(formState.category,"cat after")
     };
     //if statement that redirects user to home page if they arent logged in
     const user = data?.me;
@@ -100,7 +102,7 @@ const Profile = () => {
                         </div>
                         <div className="mb-3">
                             <label>Quantity</label>
-                            <input type="number" className="form-control" id="quantity" name="quantity"></input>
+                            <input type="number" className="form-control" id="quantity" name="quantity" onChange={handleChange}></input>
                         </div>
                         <div className="row">
 
@@ -108,11 +110,10 @@ const Profile = () => {
                                 <label>Category</label>
                             </div>
                             <div className="col-75">
-                                <select id="category" name="category"
-                                    type="category">
-                                    <option value="australia">Light Roast</option>
-                                    <option value="canada">Medium Roast</option>
-                                    <option value="usa">Dark Roast</option>
+                                <select id="category" name="category" onChange={handleChange}>
+                                    <option value="Light Roast">Light Roast</option>
+                                    <option value="Medium Roast">Medium Roast</option>
+                                    <option value="Dark Roast">Dark Roast</option>
                                 </select>
                             </div>
                         </div>
