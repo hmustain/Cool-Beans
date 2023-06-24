@@ -15,28 +15,25 @@ body {
     padding-bottom: 16px;
  }
 
-
-
-.bi-person-cycle {
-    font-size: 15px;
-    padding: 8px;
-}
+ .mainheader {
+    background: rgb(151,222,203);
+    background: linear-gradient(90deg, rgba(151,222,203,1) 31%, rgba(83,201,166,1) 66%, rgba(142,219,198,1) 97%);
+ }
 
 .icons {
     display: flex;
     justify-content: flex-start;
     padding-right: 15px;
-    background: rgb(151,222,203);
-    background: linear-gradient(90deg, rgba(151,222,203,1) 31%, rgba(83,201,166,1) 66%, rgba(142,219,198,1) 97%);
+
 }
 #icons{
     color: black;
-    font-size: 25px;
+    font-size: 18px;
     padding: 8px;
 }
 
 .login-text {
-    font-size: larger;
+    font-size: 13px;
     font-weight: 600;
     text-shadow: 1px 1px 1px rgb(146, 146, 180);
     color: rgb(29, 29, 29);
@@ -54,22 +51,13 @@ body {
     font-weight: 450;
 }
 
-#header {
-    background: rgb(151,222,203);
-    background: linear-gradient(90deg, rgba(151,222,203,1) 31%, rgba(83,201,166,1) 66%, rgba(142,219,198,1) 97%);
- 
-    box-shadow: inset 0px -4px 10px rgba(0,0,0,0.75);
-}
 
 @media (max-width: 767.98px) {
     #header {
       display: flex;
       justify-content: start;
     }
-
-
   }
-
 
 .nav-item {
 width: 100px;
@@ -77,8 +65,7 @@ text-align: center;
 font-size: 4vh;
 padding-right: 25px;
 padding-left: 25px;
-
-margin: 4vh;
+margin: 1vh;
 border-radius: 10px;
 text-decoration: none;
 }
@@ -95,21 +82,17 @@ text-decoration: none;
 
 .cool-beans {
 	border-radius: 65px;
-	overflow: hidden;
-	padding-bottom: 180px;
+	padding-bottom: 140px;
 	background-image: url("./images/secondlogo.svg");
 	background-repeat: no-repeat;
     margin: 0;
     position: relative;
-    width: 40%;
+    width: 500px;
     background-position: center;
     background-size:contain;
-
 }
 
 .logo {
-    background: rgb(151,222,203);
-    background: linear-gradient(90deg, rgba(151,222,203,1) 31%, rgba(83,201,166,1) 66%, rgba(142,219,198,1) 97%);
     display: flex;
     justify-content: center;
 }

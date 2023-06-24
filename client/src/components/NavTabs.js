@@ -103,7 +103,7 @@ function Navs(props) {
     }
   }
   return (
-    <>
+    <div className="mainheader">
       <div className="subscribe">
         <p>
           <a className="join-save" href="login">
@@ -125,7 +125,7 @@ function Navs(props) {
           </div>
         </nav>
       </header>
-    </>
+    </div>
   );
 }
 export default Navs;

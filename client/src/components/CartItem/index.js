@@ -2,7 +2,7 @@ import React from "react";
 import { useStoreContext } from "../../utils/GlobalState";
 import { REMOVE_FROM_CART, UPDATE_CART_QUANTITY } from "../../utils/actions";
 import { idbPromise } from "../../utils/helpers";
-import "../../styles/cartitem.css"
+import "../../styles/cartitem.css";
 //cart item component that represents all the single items in the cart
 const CartItem = ({ item }) => {
   const [, dispatch] = useStoreContext();
