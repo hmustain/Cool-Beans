@@ -16,7 +16,7 @@ function Navs(props) {
     if (Auth.loggedIn()) {
       return (
         <Navbar expand="lg" className="peanuts">
-          <Container>
+          <Container className="navbar-sticky">
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Navbar.Collapse id="basic-navbar-nav">
               <Nav className="me-auto navbar-nav">

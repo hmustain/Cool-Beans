@@ -3,21 +3,26 @@
 }
 body {
     margin: 0;    
+    scroll-behavior: smooth;
 } /*-- default width of body is 100% --*/
 
 #noneall p{
     text-decoration:none;
 }
- ul {
-    margin-top: 0;
-    margin-bottom: 0;
-    padding-top: 16px;
-    padding-bottom: 16px;
- }
 
  .mainheader {
-    background: rgb(151,222,203);
-    background: linear-gradient(90deg, rgba(151,222,203,1) 31%, rgba(83,201,166,1) 66%, rgba(142,219,198,1) 97%);
+    background-color: rgb(213, 213, 213);
+    height: 60vh;
+    display: block;
+ }
+
+ .navbar-expand-md {
+    background-color: rgb(213, 213, 213);
+    border-radius: 15px;
+    z-index: 999;
+ }
+ .navbar-nav {
+    border-radius: 15px;
  }
 
 .icons {
@@ -85,7 +90,6 @@ text-decoration: none;
 	padding-bottom: 140px;
 	background-image: url("./images/secondlogo.svg");
 	background-repeat: no-repeat;
-    margin: 0;
     position: relative;
     width: 500px;
     background-position: center;
@@ -93,6 +97,7 @@ text-decoration: none;
 }
 
 .logo {
+    margin-top: 15px;
     display: flex;
     justify-content: center;
 }
@@ -101,3 +106,7 @@ text-decoration: none;
     text-decoration: inherit;
 }
 
+.navbar
+{
+    margin-top: 25px;
+}
