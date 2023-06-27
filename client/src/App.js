@@ -22,7 +22,7 @@ import Success from "./pages/Success";
 import Footer from "./components/Footer";
 //connection to graphql
 const httpLink = createHttpLink({
-  uri: "/graphql",
+  uri: "http://localhost:3001/graphql",
 });
 //authorization header to it that contains a Bearer token. The token is retrieved from localStorage using the key id_token. If there is no token, the header is set to an empty string.
 const authLink = setContext((_, { headers }) => {

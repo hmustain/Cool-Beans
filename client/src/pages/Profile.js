@@ -6,33 +6,39 @@ import feild from "../styles/images/profileimg.jpg"
 import { useMutation } from "@apollo/client";
 import { ADD_PRODUCT } from "../utils/mutations";
 import "../styles/Profile.css";
-import { QUERY_ME } from "../utils/queries";
+import { QUERY_ME, QUERY_CATEGORIES } from "../utils/queries";
 import { useQuery } from "@apollo/client";
 //big profile function that displays either a Admin profile or User profile based on user.role
 const Profile = () => {
     //
-    const [formState, setFormState] = useState({ name: "", description: "", price: 0, image: "", quantity: "", category: "" });
+    const { loading: categoriesLoading, data: categoriesData } = useQuery(QUERY_CATEGORIES);
+
+    const [formState, setFormState] = useState({ name: "", description: "", price: 0, image: "", quantity: "", category:"6494e1bcdb853bbb909d5fbe"  });
     const [AddProduct] = useMutation(ADD_PRODUCT);
     const { loading, data } = useQuery(QUERY_ME);
     const handleFormSubmit = async (event) => {
         event.preventDefault();
-        console.log(formState,"on submit here")
+        console.log(formState.category, "on submit here");
         const mutationResponse = await AddProduct({
-
-            variables: {
-                name: formState.name,
-                description: formState.description,
-                image: formState.image,
-                price: formState.price,
-                quantity: formState.quantity,
-                category: formState.category
-
-            },
-
+          variables: {
+            product: {
+                 name: formState.name,
+             description: formState.description,
+            image: formState.image,
+            price: parseInt(formState.price),
+            quantity: parseInt(formState.quantity),
+            category: formState.category ? formState.category : null
+              }
+            // name: formState.name,
+            // description: formState.description,
+            // image: formState.image,
+            // price: parseInt(formState.price),
+            // quantity: parseInt(formState.quantity),
+            // category: formState.category
+          }
         });
-        console.log(mutationResponse, "mutation here")
-
-    };
+        console.log(mutationResponse, "mutation here");
+      };
     //handle change to update and save input feilds while user is typing
     const handleChange = (event) => {
 
@@ -57,6 +63,10 @@ const Profile = () => {
     //dummy card displaying all reviews user made
     function isadmin() {
         if (user.role == "admin") {
+            if (categoriesLoading) {
+                return <p>Loading categories...</p>;
+              }
+            const categories = categoriesData?.categories || [];
             return (
                 <div className="admindiv">
                     <div className="card">
@@ -91,7 +101,7 @@ const Profile = () => {
                             </div>
                             <div className="col-75">
                                 <div className="input-group">
-                                    <input type="int" className="form-control"
+                                    <input type="number" className="form-control"
                                         id="price"
                                         name="price"
                                         aria-label="Dollar amount (with dot and two decimal places)" onChange={handleChange}></input>
@@ -110,11 +120,13 @@ const Profile = () => {
                                 <label>Category</label>
                             </div>
                             <div className="col-75">
-                                <select id="category" name="category" onChange={handleChange}>
-                                    <option value="Light Roast">Light Roast</option>
-                                    <option value="Medium Roast">Medium Roast</option>
-                                    <option value="Dark Roast">Dark Roast</option>
-                                </select>
+                            <select id="category" name="category" onChange={handleChange}>
+                  {categories.map((category) => (
+                    <option key={category._id} value={category._id}>
+                      {category.name}
+                    </option>
+                  ))}
+                </select>
                             </div>
                         </div>
                         <div className="row">

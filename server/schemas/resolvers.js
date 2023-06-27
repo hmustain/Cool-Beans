@@ -171,16 +171,21 @@ const resolvers = {
     },
     //to add product to database
     addProduct: async (parent, args, context) => {
-      // if(context.user.role !== "admin"){
-      //   throw new AuthenticationError("Not admin");
-      // }
-      const newProduct = await Product.create(
-        args.product
-
-      );
-      console.log(newProduct, "here product")
-      return newProduct
-
+      // Retrieve the actual Category object from the database
+      const category = await Category.findById(args.product.category);
+      
+      if (!category) {
+        throw new Error("Category not found");
+      }
+    
+      // Create a new product object with the category populated
+      const newProduct = await Product.create({
+        ...args.product,
+        category: category._id // Assign the category object or its ID to the category field
+      });
+    
+      console.log(newProduct, "new product");
+      return newProduct;
     },
     //login logic if password and email are found in database
     //login user with token

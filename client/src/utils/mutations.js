@@ -96,10 +96,18 @@ mutation CreateReview($productId: ID!, $rating: Float!, $review: ReviewInput!) {
   }
 }`
 // decalare mmutation for adding a product
-export const ADD_PRODUCT= gql`
- mutation AddProduct($product: ProductInput) {
+export const ADD_PRODUCT = gql`
+  mutation AddProduct($product: ProductInput!) {
   addProduct(product: $product) {
     _id
+    name
+    description
+    image
+    quantity
+    price
+    category {
+      _id
+    }
   }
 }
 `;
