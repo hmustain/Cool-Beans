@@ -1,32 +1,45 @@
 //import components/ react/usestate/usemutation/ utils to handle future addproduct./ query/ styles etc..
-import React, { useState } from "react";
-import Nav from "../components/NavTabs";
-import sith from "../styles/images/adminimg.jpg"
-import feild from "../styles/images/profileimg.jpg"
-import { useMutation } from "@apollo/client";
+import React, { useState,useEffect } from "react";
+import { useMutation, useQuery } from "@apollo/client";
 import { ADD_PRODUCT } from "../utils/mutations";
-import "../styles/Profile.css";
 import { QUERY_ME, QUERY_CATEGORIES } from "../utils/queries";
-import { useQuery } from "@apollo/client";
+import Nav from "../components/NavTabs";
+import sith from "../styles/images/adminimg.jpg";
+import feild from "../styles/images/profileimg.jpg";
+import "../styles/Profile.css";
 //big profile function that displays either a Admin profile or User profile based on user.role
 const Profile = () => {
-    //
-    const { loading: categoriesLoading, data: categoriesData } = useQuery(QUERY_CATEGORIES);
-
-    const [formState, setFormState] = useState({ name: "", description: "", price: 0, image: "", quantity: "", category:"6494e1bcdb853bbb909d5fbe"  });
+    const [formState, setFormState] = useState({
+        name: "",
+        description: "",
+        price: 0,
+        image: "",
+        quantity: "",
+        category: "",
+      });
     const [AddProduct] = useMutation(ADD_PRODUCT);
     const { loading, data } = useQuery(QUERY_ME);
+const { loading: categoriesLoading, data: categoriesData } = useQuery(QUERY_CATEGORIES);
+useEffect(() => {
+    if (categoriesData && categoriesData.categories.length > 0) {
+      const defaultCategoryId = categoriesData.categories[0]._id;
+      setFormState((prevState) => ({
+        ...prevState,
+        category: defaultCategoryId,
+      }));
+    }
+  }, [categoriesData]);
     const handleFormSubmit = async (event) => {
         event.preventDefault();
-        console.log(formState.category, "on submit here");
+        console.log(formState.category, "image on submit here");
         const mutationResponse = await AddProduct({
           variables: {
             product: {
                  name: formState.name,
              description: formState.description,
             image: formState.image,
-            price: parseInt(formState.price),
-            quantity: parseInt(formState.quantity),
+            price: parseInt(formState.price, 10),
+            quantity: parseInt(formState.quantity, 10),
             category: formState.category ? formState.category : null
               }
             // name: formState.name,
@@ -41,7 +54,8 @@ const Profile = () => {
       };
     //handle change to update and save input feilds while user is typing
     const handleChange = (event) => {
-
+        
+        
         const { name, value } = event.target;
         console.log(name,"name")
         console.log(value,"val")
@@ -58,15 +72,19 @@ const Profile = () => {
         window.location.assign('/login');
 
     }
+    
     //if admin display admin details
     //form for adding a new product
     //dummy card displaying all reviews user made
     function isadmin() {
+        
         if (user.role == "admin") {
             if (categoriesLoading) {
                 return <p>Loading categories...</p>;
               }
             const categories = categoriesData?.categories || [];
+            const defaultCategoryId = categoriesData?.categories.length > 0 ? categoriesData.categories[0]._id : "";
+            
             return (
                 <div className="admindiv">
                     <div className="card">
@@ -122,7 +140,7 @@ const Profile = () => {
                             <div className="col-75">
                             <select id="category" name="category" onChange={handleChange}>
                   {categories.map((category) => (
-                    <option key={category._id} value={category._id}>
+                    <option key={category._id} value={category._id} >
                       {category.name}
                     </option>
                   ))}
