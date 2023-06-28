@@ -42,7 +42,7 @@ useEffect(() => {
                  name: formState.name,
              description: formState.description,
              image: formState.image,
-            price: parseInt(formState.price, 10),
+            price: parseFloat(formState.price),
             quantity: parseInt(formState.quantity, 10),
             category: formState.category ? formState.category : null
               }
@@ -124,10 +124,14 @@ useEffect(() => {
                             </div>
                             <div className="col-75">
                                 <div className="input-group">
-                                    <input type="number" className="form-control"
-                                        id="price"
-                                        name="price"
-                                        aria-label="Dollar amount (with dot and two decimal places)" onChange={handleChange}></input>
+                                <input type="number" className="form-control"
+    id="price"
+    name="price"
+    aria-label="Dollar amount (with dot and two decimal places)"
+    step="0.01"
+    min="0.99"
+    onChange={handleChange}
+/>
                                     <span className="input-group-text">$</span>
                                     <span className="input-group-text">0.00</span>
                                 </div>
@@ -169,7 +173,7 @@ useEffect(() => {
                         <div className="input-group mb-3">
                             <input type="file" className="form-control" id="image"
                                 name="image"
-                                disabled="true"
+                                disabled={true}
                                 // accept="image/*"
                                 onChange={handleChange}></input>
 
