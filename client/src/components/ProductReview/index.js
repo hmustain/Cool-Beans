@@ -5,7 +5,9 @@ import { useParams } from "react-router-dom";
 import Nav from "../NavTabs";
 import AddReview from "../AddReview";
 import { displayAverageRating } from "../ProductItem";
-
+const endpoint = process.env.NODE_ENV === 'production'
+? 'https://cool-beans-ecommerce.herokuapp.com/graphql'
+: 'http://localhost:3001/graphql';
 //ProductReviews component that grabs and displays all reviews of an item when See all Reviews is clicked
 function ProductReviews() {
   const { productId } = useParams();
@@ -17,7 +19,7 @@ function ProductReviews() {
     // Fetch the authenticated user's ID and set it in state
     async function fetchUser() {
       // Fetch the authenticated user's ID and set it in state
-      const response = await fetch("https://cool-beans-ecommerce.herokuapp.com/graphql", {
+      const response = await fetch(endpoint, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         credentials: "include",
@@ -40,7 +42,7 @@ function ProductReviews() {
   useEffect(() => {
     async function fetchProductAndReviews() {
       console.log("productId", productId);
-      const response = await fetch("https://cool-beans-ecommerce.herokuapp.com/graphql", {
+      const response = await fetch(endpoint, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -84,7 +86,7 @@ function ProductReviews() {
   }
   //function to handle adding new reviews to product
   const handleAddReview = async (review) => {
-    const response = await fetch("https://cool-beans-ecommerce.herokuapp.com/graphql", {
+    const response = await fetch(endpoint, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       credentials: "include",

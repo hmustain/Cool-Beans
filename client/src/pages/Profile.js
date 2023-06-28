@@ -7,16 +7,18 @@ import Nav from "../components/NavTabs";
 import sith from "../styles/images/adminimg.jpg";
 import feild from "../styles/images/profileimg.jpg";
 import "../styles/Profile.css";
+
 //big profile function that displays either a Admin profile or User profile based on user.role
 const Profile = () => {
     const [formState, setFormState] = useState({
         name: "",
         description: "",
         price: 0,
-        image: "",
+        image: "noimage.png",
         quantity: "",
         category: "",
       });
+     
     const [AddProduct] = useMutation(ADD_PRODUCT);
     const { loading, data } = useQuery(QUERY_ME);
 const { loading: categoriesLoading, data: categoriesData } = useQuery(QUERY_CATEGORIES);
@@ -32,12 +34,14 @@ useEffect(() => {
     const handleFormSubmit = async (event) => {
         event.preventDefault();
         console.log(formState.category, "image on submit here");
+//         const formData = new FormData();
+//   formData.append("image", selectedImage);
         const mutationResponse = await AddProduct({
           variables: {
             product: {
                  name: formState.name,
              description: formState.description,
-            image: formState.image,
+             image: formState.image,
             price: parseInt(formState.price, 10),
             quantity: parseInt(formState.quantity, 10),
             category: formState.category ? formState.category : null
@@ -54,7 +58,7 @@ useEffect(() => {
       };
     //handle change to update and save input feilds while user is typing
     const handleChange = (event) => {
-        
+     
         
         const { name, value } = event.target;
         console.log(name,"name")
@@ -64,15 +68,16 @@ useEffect(() => {
             [name]: value,
         });
         console.log(formState.category,"cat after")
-    };
-    //if statement that redirects user to home page if they arent logged in
-    const user = data?.me;
-    if (!user && !loading) {
-
-        window.location.assign('/login');
-
-    }
     
+    };
+ 
+       //if statement that redirects user to home page if they arent logged in
+       const user = data?.me;
+       if (!user && !loading) {
+   
+           window.location.assign('/login');
+   
+       }
     //if admin display admin details
     //form for adding a new product
     //dummy card displaying all reviews user made
@@ -164,6 +169,8 @@ useEffect(() => {
                         <div className="input-group mb-3">
                             <input type="file" className="form-control" id="image"
                                 name="image"
+                                disabled="true"
+                                // accept="image/*"
                                 onChange={handleChange}></input>
 
                         </div>
