@@ -33,9 +33,6 @@ useEffect(() => {
   }, [categoriesData]);
     const handleFormSubmit = async (event) => {
         event.preventDefault();
-        console.log(formState.category, "image on submit here");
-//         const formData = new FormData();
-//   formData.append("image", selectedImage);
         const mutationResponse = await AddProduct({
           variables: {
             product: {
@@ -46,28 +43,18 @@ useEffect(() => {
             quantity: parseInt(formState.quantity, 10),
             category: formState.category ? formState.category : null
               }
-            // name: formState.name,
-            // description: formState.description,
-            // image: formState.image,
-            // price: parseInt(formState.price),
-            // quantity: parseInt(formState.quantity),
-            // category: formState.category
           }
         });
-        console.log(mutationResponse, "mutation here");
       };
     //handle change to update and save input feilds while user is typing
     const handleChange = (event) => {
      
         
         const { name, value } = event.target;
-        console.log(name,"name")
-        console.log(value,"val")
         setFormState({
             ...formState,
             [name]: value,
         });
-        console.log(formState.category,"cat after")
     
     };
  
