@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/static/css/main.aacb7dc0.css",
-    "main.js": "/static/js/main.84d15140.js",
+    "main.js": "/static/js/main.ef093477.js",
     "static/media/Neutral Minimalist Name LinkedIn Article Cover Image.svg": "/static/media/Neutral Minimalist Name LinkedIn Article Cover Image.f665141e1b699d948f4a.svg",
     "static/media/coffee.png": "/static/media/coffee.fe23bc12bd2d4722632e.png",
     "static/media/bootstrap-icons.woff?": "/static/media/bootstrap-icons.6959d0d983ee318f8880.woff",
@@ -12,10 +12,10 @@
     "static/media/profilebanner.jpg": "/static/media/profilebanner.6bb5c572ebcefbf42d0f.jpg",
     "index.html": "/index.html",
     "main.aacb7dc0.css.map": "/static/css/main.aacb7dc0.css.map",
-    "main.84d15140.js.map": "/static/js/main.84d15140.js.map"
+    "main.ef093477.js.map": "/static/js/main.ef093477.js.map"
   },
   "entrypoints": [
     "static/css/main.aacb7dc0.css",
-    "static/js/main.84d15140.js"
+    "static/js/main.ef093477.js"
   ]
 }

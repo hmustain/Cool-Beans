@@ -84,6 +84,7 @@ export const QUERY_USER = gql`
 export const QUERY_ME = gql`
 {
 me {
+_id
 firstName
 lastName
 role
@@ -91,6 +92,27 @@ email
 password
 }
 }`;
+
+export const GET_USER_REVIEWS = gql`
+query ReviewsByUser($userId: ID!) {
+  userReviews(userId: $userId) {
+    _id
+    user {
+      _id
+      firstName
+      lastName
+      email
+      password
+      role
+    }
+    comment
+    rating
+    createdAt
+  }
+}
+`;
+
+
 //declare query for getting a product
 export const QUERY_PRODUCT = gql`
 query Product($id: ID!) {
@@ -117,3 +139,4 @@ user {
          }
   }
 }`
+

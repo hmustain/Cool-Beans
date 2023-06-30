@@ -68,7 +68,7 @@ const resolvers = {
       const users = await User.find();
       return users;
     },
-    //find info of loged in user
+    //find info of logged in user
     me: async (parent, args, context) => {
       if (context.user) {
         const user = await User.findById(context.user._id);
@@ -76,7 +76,7 @@ const resolvers = {
       }
       throw new AuthenticationError("Not logged in");
     },
-    //finds all orders
+    //finds a specific order
     order: async (parent, { _id }, context) => {
       if (context.user) {
         const user = await User.findById(context.user._id).populate({
@@ -88,7 +88,13 @@ const resolvers = {
       }
       throw new AuthenticationError("Not logged in");
     },
-    //handles checkout gets all products in cart etc.
+    //find reviews by the logged-in user
+    userReviews: async (_, { userId }) => {
+      // Fetch reviews by the provided userId
+      // Implement your logic here
+      // Return the reviews
+    },
+    //handles checkout and gets all products in cart, etc.
     checkout: async (parent, args, context) => {
       const url = new URL(context.headers.referer).origin;
       const order = new Order({
@@ -124,11 +130,10 @@ const resolvers = {
         cancel_url: `${url}/`,
       });
 
-
       return { session: session.id };
     },
   },
-  //mutations to add user. addOrder.
+  
   Mutation: {
     addUser: async (parent, args) => {
       const user = await User.create(args);
@@ -159,7 +164,6 @@ const resolvers = {
       }
       throw new AuthenticationError("Not logged in");
     },
-    //update products quantity if its been sold
     updateProduct: async (parent, { _id, quantity }) => {
       const decrement = Math.abs(quantity) * -1;
 
@@ -169,26 +173,21 @@ const resolvers = {
         { new: true }
       );
     },
-    //to add product to database
     addProduct: async (parent, args, context) => {
-      // Retrieve the actual Category object from the database
       const category = await Category.findById(args.product.category);
       
       if (!category) {
         throw new Error("Category not found");
       }
     
-      // Create a new product object with the category populated
       const newProduct = await Product.create({
         ...args.product,
-        category: category._id // Assign the category object or its ID to the category field
+        category: category._id
       });
     
       console.log(newProduct, "new product");
       return newProduct;
     },
-    //login logic if password and email are found in database
-    //login user with token
     login: async (parent, { email, password }) => {
       const user = await User.findOne({ email });
       if (!user) {
@@ -201,45 +200,15 @@ const resolvers = {
       const token = signToken(user);
       return { token, user };
     },
-    //create a review logic
     createReview: async (parent, args, context) => {
       console.log('args are', args);
-      // Check if user has already reviewed the product
-      const existingReview = await Review.findOne({
-        user: context.user._id,
-        product: args._id,
-      });
-
-      if (existingReview) {
-        throw new Error("You've already reviewed this product!");
+      if (context.user) {
+        const review = await Review.create({ ...args, user: context.user._id });
+        await Product.findByIdAndUpdate(args.product, { $push: { reviews: review._id } });
+        const populatedReview = await review.populate("user", "_id email firstName lastName");
+        return populatedReview;
       }
-
-      // Create new review
-      const product = await Product.findById(args._id);
-      const newReview = await Review.create({
-        rating: args.rating,
-        comment: args.review.comment,
-        // createdAt: args.review.createdAt,
-        user: context.user,
-        product,
-      });
-
-      try {
-        // Add review to product and save to database
-        const updatedProduct = await Product.findOneAndUpdate(
-          { _id: args._id },
-          { $push: { reviews: newReview } },
-          { new: true }
-        )
-          .populate("reviews")
-          .populate({ path: "reviews", populate: "user" })
-          .populate("category");
-
-        return updatedProduct;
-      } catch (err) {
-        console.log(err);
-        throw new AuthenticationError("Invalid token");
-      }
+      throw new AuthenticationError("Not logged in");
     },
   },
 };

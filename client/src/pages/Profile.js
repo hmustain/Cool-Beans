@@ -2,14 +2,18 @@
 import React, { useState,useEffect } from "react";
 import { useMutation, useQuery } from "@apollo/client";
 import { ADD_PRODUCT } from "../utils/mutations";
-import { QUERY_ME, QUERY_CATEGORIES } from "../utils/queries";
+import { QUERY_ME, QUERY_CATEGORIES, GET_USER_REVIEWS } from "../utils/queries";
 import Nav from "../components/NavTabs";
 import sith from "../styles/images/adminimg.jpg";
 import feild from "../styles/images/profileimg.jpg";
 import "../styles/Profile.css";
 
+
+
 //big profile function that displays either a Admin profile or User profile based on user.role
 const Profile = () => {
+
+
     const [formState, setFormState] = useState({
         name: "",
         description: "",
@@ -21,6 +25,23 @@ const Profile = () => {
      
     const [AddProduct] = useMutation(ADD_PRODUCT);
     const { loading, data } = useQuery(QUERY_ME);
+       //if statement that redirects user to home page if they arent logged in
+       const user = data?.me;
+       if(!loading){
+        console.log(user._id,"userdata")
+       }
+       if (!user && !loading) {
+   
+           window.location.assign('/login');
+   
+       }
+       //const userId = user._id; // Replace with the actual user ID
+       const { loading: reviewloading, data: reviewdata } = useQuery(GET_USER_REVIEWS, {
+         //variables: { userId },
+       });
+       if(!reviewloading){
+        console.log(reviewdata,"reviewdata")
+       }
 const { loading: categoriesLoading, data: categoriesData } = useQuery(QUERY_CATEGORIES);
 useEffect(() => {
     if (categoriesData && categoriesData.categories.length > 0) {
@@ -45,6 +66,7 @@ useEffect(() => {
               }
           }
         });
+        alert("product added")
       };
     //handle change to update and save input feilds while user is typing
     const handleChange = (event) => {
@@ -58,13 +80,7 @@ useEffect(() => {
     
     };
  
-       //if statement that redirects user to home page if they arent logged in
-       const user = data?.me;
-       if (!user && !loading) {
-   
-           window.location.assign('/login');
-   
-       }
+    
     //if admin display admin details
     //form for adding a new product
     //dummy card displaying all reviews user made
@@ -75,7 +91,7 @@ useEffect(() => {
                 return <p>Loading categories...</p>;
               }
             const categories = categoriesData?.categories || [];
-            const defaultCategoryId = categoriesData?.categories.length > 0 ? categoriesData.categories[0]._id : "";
+    
             
             return (
                 <div className="admindiv">
@@ -175,16 +191,6 @@ useEffect(() => {
                             Reviews
                         </div>
                         <div className="card-body">
-                            <blockquote className="blockquote mb-0">
-                                <p>A well-known quote, contained in a blockquote element.</p>
-                                <footer className="blockquote-footer">{user.firstName}</footer>
-                                <button>edit</button> <button>delete</button>
-                            </blockquote><br></br>
-                            <blockquote className="blockquote mb-0">
-                                <p>A well-known quote, contained in a blockquote element.</p>
-                                <footer className="blockquote-footer">{user.firstName}</footer>
-                                <button>edit</button> <button>delete</button>
-                            </blockquote><br></br>
                             <blockquote className="blockquote mb-0">
                                 <p>A well-known quote, contained in a blockquote element.</p>
                                 <footer className="blockquote-footer">{user.firstName}</footer>
